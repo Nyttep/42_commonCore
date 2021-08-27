@@ -18,6 +18,7 @@ ft_lstdelone
 ft_lstclear
 ft_lstiter
 ft_lstmap
+ft_isalpha		DONE
 ft_isdigit
 ft_isalnum
 ft_isascii
