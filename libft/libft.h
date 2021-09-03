@@ -10,7 +10,7 @@ int	ft_isascii(int c);
 int	ft_isdigit(int c);
 int	ft_isprint(int c);
 int	ft_atoi(const char* str);
-int	ft_strlen(char	*str);
+int	ft_strlen(const char	*str);
 
 char *ft_substr(char const *s, unsigned int start, size_t len);
 char *ft_strjoin(char const *s1, char const *s2);
