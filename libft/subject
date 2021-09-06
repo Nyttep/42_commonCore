@@ -5,9 +5,9 @@ ft_isalnum		DONE
 ft_isascii		DONE
 ft_isprint		DONE
 ft_strlen		DONE
-ft_memset
-ft_bzero
-ft_memcpy
+ft_memset		DONE
+ft_bzero		DONE
+ft_memcpy		DONE
 ft_memmove
 ft_strlcpy
 ft_strlcat
