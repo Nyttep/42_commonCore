@@ -40,7 +40,7 @@ static char	*ft_strcpy(char const *s, int *i, int size)
 	return (ret);
 }
 
-char	**ft_25_lines(int size)
+static char	**ft_25_lines(int size)
 {
 	char	**ret;
 

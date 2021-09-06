@@ -25,11 +25,11 @@ ft_strdup
 PARTIE 2
 ft_substr		DONE
 ft_strjoin		DONE
-ft_strtrim
+ft_strtrim		DONE
 ft_split		DONE
 ft_itoa			DONE
-ft_strmapi
-ft_striteri
+ft_strmapi		????
+ft_striteri		????
 ft_putchar_fd	DONE
 ft_putstr_fd	DONE
 ft_putendl_fd	DONE
