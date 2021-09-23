@@ -1,4 +1,5 @@
 #!/bin/bash
+
 NBRDONE=$(grep -c "DONE" subject)
 echo "done ${NBRDONE}/43"
 
