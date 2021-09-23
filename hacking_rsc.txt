@@ -1,0 +1,41 @@
+common exploits/attacks : 
+	https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-exploits.html
+nmap :
+	bypass firewall/spoofing : https://nmap.org/book/man-bypass-firewalls-ids.html
+	scripts : https://nmap.org/nsedoc/categories/vuln.html
+	script usage : https://nmap.org/book/nse-usage.html
+
+wireshark :
+	filters :
+		https://wiki.wireshark.org/DisplayFilters#DisplayFilters-1
+		https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+
+metasploit :
+	TryHackMe room
+
+BurpSuite :
+	TryHackMe room
+	extender (+the whole doc) https://portswigger.net/burp/documentation/desktop/tools/extender
+	top 10 extensions : https://portswigger.net/solutions/penetration-testing/penetration-testing-tools
+	in-depth course on webhacking with burp : https://portswigger.net/web-security
+
+smb :
+	smbclient ???
+	enum : https://github.com/CiscoCXSecurity/enum4linux
+
+upload/dwnload files from another computer through http/s :
+	python : SimpleHTTPServer
+	updog : https://github.com/sc0tfree/updog
+
+http :
+	status codes : https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+	cookies : https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+	send cookies w/ curl : https://stackoverflow.com/a/15996114
+	curl examples : https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+
+reverse shell :
+	cheatsheet : https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
+
+XXE payloads : https://github.com/payloadbox/xxe-injection-payload-list
+
+
