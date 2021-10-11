@@ -21,7 +21,7 @@ ft_memcmp
 ft_strnstr
 ft_atoi			DONE
 ft_calloc
-ft_strdup
+ft_strdup		DONE
 PARTIE 2
 ft_substr		DONE
 ft_strjoin		DONE
