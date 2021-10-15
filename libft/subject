@@ -28,8 +28,8 @@ ft_strjoin		DONE
 ft_strtrim		DONE
 ft_split		DONE
 ft_itoa			DONE
-ft_strmapi		????
-ft_striteri		????
+ft_strmapi		DONE
+ft_striteri		DONE
 ft_putchar_fd	DONE
 ft_putstr_fd	DONE
 ft_putendl_fd	DONE
