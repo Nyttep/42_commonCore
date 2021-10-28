@@ -13,7 +13,7 @@ ft_strlcpy
 ft_strlcat
 ft_toupper		DONE
 ft_tolower		DONE
-ft_strchr
+ft_strchr		DONE
 ft_strrchr
 ft_strncmp
 ft_memchr
