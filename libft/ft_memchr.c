@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/26 02:32:01 by pdubois           #+#    #+#             */
+/*   Updated: 2021/11/26 04:35:10 by pdubois          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*tmps;
 	unsigned char		tmpc;
@@ -12,7 +24,7 @@ void *ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (tmps[i] == tmpc)
-			return (tmps + i);
+			return ((void *)(s + i));
 		i++;
 	}
 	return (NULL);

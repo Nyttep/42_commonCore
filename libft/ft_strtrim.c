@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/26 02:34:03 by pdubois           #+#    #+#             */
+/*   Updated: 2021/11/26 09:04:52 by pdubois          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_is_in_charset(char const c, char const *set)
@@ -41,6 +53,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	j = 0;
 	ret = (char *) malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (NULL);
 	ret[len] = 0;
 	while (ft_is_in_charset(s1[i], set) && s1[i])
 		i++;
