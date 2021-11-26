@@ -16,8 +16,8 @@ ft_tolower		DONE
 ft_strchr		DONE
 ft_strrchr		DONE
 ft_strncmp		DONE
-ft_memchr
-ft_memcmp
+ft_memchr		DONE
+ft_memcmp		DONE
 ft_strnstr		DONE
 ft_atoi			DONE
 ft_calloc		DONE
@@ -35,15 +35,15 @@ ft_putstr_fd	DONE
 ft_putendl_fd	DONE
 ft_putnbr_fd	DONE
 BONUS
-ft_lstnew
-ft_lstadd_front
-ft_lstsize
-ft_lstlast
-ft_lstadd_back
-ft_lstdelone
-ft_lstclear
-ft_lstiter
-ft_lstmap
+ft_lstnew		DONE
+ft_lstadd_front	????
+ft_lstsize		????
+ft_lstlast		????
+ft_lstadd_back	????
+ft_lstdelone	????
+ft_lstclear		????
+ft_lstiter		????
+ft_lstmap		????
 
 Function name ft_substr
 Prototype char *ft_substr(char const *s, unsigned int start, size_t len);

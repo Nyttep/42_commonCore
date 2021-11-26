@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 23:06:39 by pdubois           #+#    #+#             */
-/*   Updated: 2021/11/24 16:53:58 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/24 18:55:45 by pdubois           #+#    #+#             */
+/*   Updated: 2021/11/24 18:56:01 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	const char	*tmp1;
-	char		*tmp2;
-	int			i;
+	t_list	*new;
 
-	i = -1;
-	tmp1 = src;
-	tmp2 = dest;
-	if (src < dest)
-	{
-		i = n;
-		while (i-- >= 0)
-			tmp2[i] = tmp1[i];
-	}
-	else
-		while (++i < n)
-			tmp2[i] = tmp1[i];
-	return (dest);
+	new = malloc(sizeof(new));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
