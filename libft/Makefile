@@ -6,7 +6,7 @@
 #    By: pdubois <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 04:33:49 by pdubois           #+#    #+#              #
-#    Updated: 2021/11/26 04:48:48 by pdubois          ###   ########.fr        #
+#    Updated: 2021/12/01 17:05:06 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,18 @@ SRCS =	ft_atoi.c \
 
 OBJS = $(SRCS:.c=.o)
 
+SRCS_BONUS = 	ft_lstadd_back.c \
+				ft_lstadd_front.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstiter.c \
+				ft_lstlast.c \
+				ft_lstmap.c \
+				ft_lstnew.c \
+				ft_lstsize.c \
+
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+
 all: $(NAME)
 
 .c.o:
@@ -58,8 +70,12 @@ all: $(NAME)
 
 ${NAME}:	${OBJS}
 			ar rc $@ $^
+
+bonus:		${OBJS_BONUS}
+			ar rc ${NAME} $^
+
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean:		clean
 			rm -f ${NAME}

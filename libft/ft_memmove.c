@@ -6,7 +6,7 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 23:06:39 by pdubois           #+#    #+#             */
-/*   Updated: 2021/11/26 04:39:21 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/11/29 18:37:35 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	const char	*tmp1;
 	char		*tmp2;
-	size_t		i;
+	int			i;
 
-	i = 0;
+	i = -1;
 	tmp1 = src;
 	tmp2 = dest;
+	if (!dest && !src)
+		return (NULL);
 	if (src < dest)
 	{
 		i = n;
@@ -31,12 +33,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	else
-	{
-		while (i < n)
-		{
+		while ((size_t)++i < n)
 			tmp2[i] = tmp1[i];
-			i++;
-		}
-	}
 	return (dest);
 }

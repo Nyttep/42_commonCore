@@ -6,7 +6,7 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 02:33:14 by pdubois           #+#    #+#             */
-/*   Updated: 2021/11/26 02:33:16 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/11/29 19:46:06 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (i <= len)
 	{
-		if (s[i] == c)
+		if (s[i] == (char) c)
 			return ((char *) s + i);
 		i++;
 	}
