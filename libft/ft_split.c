@@ -6,7 +6,7 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 02:33:07 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/01 21:03:47 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/01 21:50:00 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ static char	**ft_25_lines(int size)
 	return (ret);
 }
 
+static char	**ft_free(char	**ret, int k)
+{
+	while (k >= 0)
+	{
+		free(ret[k]);
+		k--;
+	}
+	free(ret);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char charset)
 {
 	char	**ret;
@@ -73,7 +84,7 @@ char	**ft_split(char const *s, char charset)
 	k = -1;
 	i = 0;
 	ret = ft_25_lines(ft_count_word(s, charset));
-	if (ret == NULL)
+	if (!ret)
 		return (NULL);
 	while (s[i])
 	{
@@ -83,8 +94,8 @@ char	**ft_split(char const *s, char charset)
 			while (s[j] != charset && s[j])
 				j++;
 			ret[++k] = ft_strcpy(s, &i, j - i);
-			if (ret[k] == NULL)
-				return (NULL);
+			if (!ret[k])
+				return (ft_free(ret, k));
 		}
 		else
 			i++;
