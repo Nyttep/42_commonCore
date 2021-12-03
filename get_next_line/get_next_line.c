@@ -6,13 +6,13 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:52:34 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/03 19:16:12 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/03 23:53:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-int	ft_is_newline(char	*s)
+int	ft_is_newline_EOF(char	*s)
 {
 	int	i;
 
@@ -76,10 +76,12 @@ char	*ft_get_reste(char	*s, char	*reste)
 
 	j = 0;
 	i = 0;
-	while (s[i] != '\n')
+	while (s[i] != '\n' && s[i])
 		i++;
-	while (s[i + 1])
-		reste[j++] = s[++i];
+	if (s[i] == 0)
+		return (reste);
+	while (s[++i])
+		reste[j++] = s[i];
 	reste[j] = 0;
 	return (reste);
 }
@@ -98,7 +100,7 @@ char	*ft_cpy_and_rst_reste(char	*ret, char	*reste)
 	}
 	if (reste[i] == '\n')
 		ret[i] = reste[i];
-	while (reste[++i - 1])
+	while (reste[++i])
 	{
 		reste[j] = reste[i];
 		j++;
@@ -114,27 +116,30 @@ char	*get_next_line(int fd)
 	char		*ret;
 	static char	*reste = NULL;
 	int			found;
+	int read_return;
 
 	if (!reste)
-	{
 		reste = malloc(BUFFER_SIZE);
-		reste[0] = 0;
-	}
 	//printf("|RESTE : %s|", reste);
 	s = malloc(BUFFER_SIZE + 1);
 	ret = malloc(BUFFER_SIZE + 1);
 	ret[BUFFER_SIZE] = 0;
 	ret = ft_cpy_and_rst_reste(ret, reste);
-	found = ft_is_newline(ret);
-	while (!found)
+	found = ft_is_newline_EOF(ret);
+	//printf(" found = %d\n", found);
+	while (!found && (read_return = read(fd, s, BUFFER_SIZE)))
 	{
-		read(fd, s, BUFFER_SIZE);
-		s[BUFFER_SIZE] = 0;
-		found = ft_is_newline(s);
+		s[read_return] = '\0';
+		found = ft_is_newline_EOF(s);
 		ret = ft_kinda_strcat(s, ret);
 	}
-	if (reste[0] == 0)
-		reste = ft_get_reste(s, reste);
+	if (!read_return && !ft_strlen(ret))
+	{
+		free(ret);
+		return (NULL);
+	}
+	//if (!reste[0])
+	reste = ft_get_reste(s, reste);
 	free(s);
 	return (ret);
 }
