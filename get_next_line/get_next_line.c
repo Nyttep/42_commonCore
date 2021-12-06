@@ -99,15 +99,29 @@ char	*ft_cpy_and_rst_reste(char	*ret, char	*reste)
 		i++;
 	}
 	if (reste[i] == '\n')
+	{
 		ret[i] = reste[i];
-	while (reste[++i])
+		i++;
+	}
+	ret[i] = 0;
+	while (reste[i])
 	{
 		reste[j] = reste[i];
 		j++;
+		i++;
 	}
 	while (j < BUFFER_SIZE)
 		reste[j++] = 0;
 	return (ret);
+}
+
+char	*ft_free(char *ret, char *s, char *reste)
+{
+	free(ret);
+	free(s);
+	free(reste);
+	reste = NULL;
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -120,25 +134,19 @@ char	*get_next_line(int fd)
 
 	if (!reste)
 		reste = malloc(BUFFER_SIZE);
-	//printf("|RESTE : %s|", reste);
 	s = malloc(BUFFER_SIZE + 1);
 	ret = malloc(BUFFER_SIZE + 1);
-	ret[BUFFER_SIZE] = 0;
+	ret[0] = 0;
 	ret = ft_cpy_and_rst_reste(ret, reste);
 	found = ft_is_newline_EOF(ret);
-	//printf(" found = %d\n", found);
-	while (!found && (read_return = read(fd, s, BUFFER_SIZE)))
+	while (!found && (read_return = read(fd, s, BUFFER_SIZE)) > 0)
 	{
 		s[read_return] = '\0';
 		found = ft_is_newline_EOF(s);
 		ret = ft_kinda_strcat(s, ret);
 	}
-	if (!read_return && !ft_strlen(ret))
-	{
-		free(ret);
-		return (NULL);
-	}
-	//if (!reste[0])
+	if (read_return <= 0 && !ft_strlen(ret))
+		return (ft_free(ret, s, reste));
 	reste = ft_get_reste(s, reste);
 	free(s);
 	return (ret);
