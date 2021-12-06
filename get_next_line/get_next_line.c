@@ -6,7 +6,7 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:52:34 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/03 23:53:10 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/06 14:12:41 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -115,12 +115,12 @@ char	*ft_cpy_and_rst_reste(char	*ret, char	*reste)
 	return (ret);
 }
 
-char	*ft_free(char *ret, char *s, char *reste)
+char	*ft_free(char *ret, char *s, char **reste)
 {
 	free(ret);
 	free(s);
-	free(reste);
-	reste = NULL;
+	free(*reste);
+	*reste = NULL;
 	return (NULL);
 }
 
@@ -146,7 +146,7 @@ char	*get_next_line(int fd)
 		ret = ft_kinda_strcat(s, ret);
 	}
 	if (read_return <= 0 && !ft_strlen(ret))
-		return (ft_free(ret, s, reste));
+		return (ft_free(ret, s, &reste));
 	reste = ft_get_reste(s, reste);
 	free(s);
 	return (ret);

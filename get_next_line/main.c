@@ -4,11 +4,32 @@
 char	*get_next_line(int fd);
 int	main(void)
 {
-	//int		fd;
+	int		fd;
 	char	*str;
 
-	//fd = open("./text.txt", O_RDONLY);
-	str = get_next_line(1000);
+	fd = open("./text.txt", O_RDONLY);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
 	printf("%s", str);
 	free(str);
 }
