@@ -6,148 +6,60 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:52:34 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/06 14:12:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:16:24 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-int	ft_is_newline_EOF(char	*s)
-{
-	int	i;
+#include "get_next_line.h"
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_strlen(char	*s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (s[i] == '\n')
-		i++;
-	return (i);
-}
-
-char	*ft_kinda_strcat(char	*s, char	*init)
-{
-	char	*ret;
-	int		len_s;
-	int		len_init;
-	int		i;
-	int		j;
-
-	i = -1;
-	j = 0;
-	len_s = ft_strlen(s);
-	len_init = ft_strlen(init);
-	ret = malloc(len_init + len_s + 1);
-	ret[len_init + len_s] = 0;
-	while (++i < len_init)
-		ret[i] = init[i];
-	j = i;
-	i = 0;
-	free(init);
-	while (i < len_s && s[i] != '\n')
-	{
-		ret[i + j] = s[i];
-		i++;
-	}
-	if (s[i] == '\n')
-		ret[i + j] = '\n';
-	return (ret);
-}
-
-char	*ft_get_reste(char	*s, char	*reste)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (s[i] != '\n' && s[i])
-		i++;
-	if (s[i] == 0)
-		return (reste);
-	while (s[++i])
-		reste[j++] = s[i];
-	reste[j] = 0;
-	return (reste);
-}
-
-char	*ft_cpy_and_rst_reste(char	*ret, char	*reste)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (reste[i] && reste[i] != '\n')
-	{
-		ret[i] = reste[i];
-		i++;
-	}
-	if (reste[i] == '\n')
-	{
-		ret[i] = reste[i];
-		i++;
-	}
-	ret[i] = 0;
-	while (reste[i])
-	{
-		reste[j] = reste[i];
-		j++;
-		i++;
-	}
-	while (j < BUFFER_SIZE)
-		reste[j++] = 0;
-	return (ret);
-}
-
-char	*ft_free(char *ret, char *s, char **reste)
+char	*ft_free(char *ret, char *s)
 {
 	free(ret);
 	free(s);
-	free(*reste);
-	*reste = NULL;
 	return (NULL);
+}
+
+void	ft_init(char	**s, char	**ret, int	*read_return, char	*reste)
+{
+	*s = malloc(BUFFER_SIZE + 1);
+	if (!(*s))
+		return ;
+	*ret = malloc(BUFFER_SIZE + 1);
+	if (!(*ret))
+	{
+		free(s);
+		return ;
+	}
+	*s[0] = 0;
+	*ret[0] = 0;
+	*ret = ft_cpy_and_rst_reste(*ret, reste);
+	*read_return = 0;
 }
 
 char	*get_next_line(int fd)
 {
 	char		*s;
 	char		*ret;
-	static char	*reste = NULL;
+	static char	reste[BUFFER_SIZE];
 	int			found;
-	int read_return;
+	int			read_return;
 
-	if (!reste)
-		reste = malloc(BUFFER_SIZE);
-	s = malloc(BUFFER_SIZE + 1);
-	ret = malloc(BUFFER_SIZE + 1);
-	ret[0] = 0;
-	ret = ft_cpy_and_rst_reste(ret, reste);
-	found = ft_is_newline_EOF(ret);
-	while (!found && (read_return = read(fd, s, BUFFER_SIZE)) > 0)
+	ft_init(&s, &ret, &read_return, reste);
+	if (!ret || !s)
+		return (NULL);
+	found = ft_is_newline(ret);
+	if (!found)
+		read_return = read(fd, s, BUFFER_SIZE);
+	while (!found && read_return > 0)
 	{
-		s[read_return] = '\0';
-		found = ft_is_newline_EOF(s);
+		s[read_return] = 0;
+		found = ft_is_newline(s);
 		ret = ft_kinda_strcat(s, ret);
+		if (!found)
+			read_return = read(fd, s, BUFFER_SIZE);
 	}
 	if (read_return <= 0 && !ft_strlen(ret))
-		return (ft_free(ret, s, &reste));
-	reste = ft_get_reste(s, reste);
+		return (ft_free(ret, s));
+	ft_get_reste(s, reste, read_return);
 	free(s);
 	return (ret);
 }

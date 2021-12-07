@@ -1,14 +1,24 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
 char	*get_next_line(int fd);
 int	main(void)
 {
 	int		fd;
 	char	*str;
 
-	fd = open("./text.txt", O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
 	str = get_next_line(fd);
+	while (str)
+	{
+		printf("%s", str);
+		free(str);
+		str = get_next_line(fd);
+	}
+	free(str);
+	close(fd);
+	/*str = get_next_line(fd);
 	printf("%s", str);
 	free(str);
 	str = get_next_line(fd);
@@ -28,8 +38,5 @@ int	main(void)
 	free(str);
 	str = get_next_line(fd);
 	printf("%s", str);
-	free(str);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
+	free(str);*/
 }
