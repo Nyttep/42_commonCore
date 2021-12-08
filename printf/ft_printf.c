@@ -6,7 +6,7 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:01:23 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/09 00:01:16 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/09 00:45:56 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	ft_s(char *str)
 {
 	int	len;
 
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
@@ -99,7 +104,7 @@ int ft_putnbr(int nbr)
 	return (i);
 }
 
-int	ft_putnbr_u(int nbr)
+int	ft_putnbr_u(unsigned int nbr)
 {
 	int		i;
 
@@ -195,7 +200,7 @@ void	ft_find_format(const char *str, int i, int *j, va_list args)
 	else if (str[i] == 'i' || str[i] == 'd')
 		*j += ft_putnbr(va_arg(args, int));
 	else if (str[i] == 'u')
-		*j += ft_putnbr_u(va_rg(args, unsigned int));
+		*j += ft_putnbr_u(va_arg(args, unsigned int));
 	else if (str[i] == 'x')
 		*j += ft_putnbr_hexa(va_arg(args, int));
 	else if (str[i] == 'X')
