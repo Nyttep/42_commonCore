@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pdubois <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 04:33:49 by pdubois           #+#    #+#              #
-#    Updated: 2021/12/01 17:05:06 by pdubois          ###   ########.fr        #
+#    Updated: 2021/12/18 21:56:42 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCS =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c \
+		ft_toupper.c 
 
 OBJS = $(SRCS:.c=.o)
 
