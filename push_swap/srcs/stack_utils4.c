@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 05:50:50 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/19 07:00:21 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/06 00:13:15 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_rra(t_Stack *stack_a)
 		i++;
 	}
 	stack_a->array[stack_a->top] = tmp;
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_Stack *stack_b)
@@ -45,10 +46,12 @@ void	ft_rrb(t_Stack *stack_b)
 		i++;
 	}
 	stack_b->array[stack_b->top] = tmp;
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_Stack *stack_a, t_Stack *stack_b)
 {
 	ft_rra(stack_a);
 	ft_rrb(stack_b);
+	write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 04:17:48 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/05 19:49:19 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/05 22:05:34 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void	ft_sb(t_Stack	*stack_b)
 	tmp = stack_b->array[stack_b->top];
 	stack_b->array[stack_b->top] = stack_b->array[stack_b->top -1];
 	stack_b->array[stack_b->top -1] = tmp;
+	write(1, "sb\n", 3);
 }
 
 void	ft_ss(t_Stack *stack_a, t_Stack *stack_b)
 {
 	ft_sa(stack_a);
 	ft_sb(stack_b);
+	write(1, "ss\n", 3);
 }
 
 void	ft_pa(t_Stack *stack_a, t_Stack *stack_b)
@@ -47,6 +49,7 @@ void	ft_pa(t_Stack *stack_a, t_Stack *stack_b)
 	if (ft_is_empty(stack_b))
 		return ;
 	ft_add(stack_a, stack_b->array[stack_b->top--]);
+	write(1, "pa\n", 3);
 }
 
 void	ft_pb(t_Stack *stack_a, t_Stack *stack_b)
@@ -54,4 +57,5 @@ void	ft_pb(t_Stack *stack_a, t_Stack *stack_b)
 	if (ft_is_empty(stack_a))
 		return ;
 	ft_add(stack_b, stack_a->array[stack_a->top--]);
+	write(1, "pb\n", 3);
 }

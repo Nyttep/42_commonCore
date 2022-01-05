@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/17 21:14:22 by pdubois           #+#    #+#              #
-#    Updated: 2021/12/19 07:00:26 by pdubois          ###   ########.fr        #
+#    Updated: 2022/01/06 00:35:49 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,13 @@ NAME = push_swap
 SRCS_NAME = main.c \
 			free_utils.c \
 			push_swap_utils1.c \
+			push_swap_utils2.c \
 			stack_utils1.c \
 			stack_utils2.c \
 			stack_utils3.c \
-			stack_utils4.c
+			stack_utils4.c \
+			algo_utils1.c \
+			algo.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INC_NAME = push_swap.h

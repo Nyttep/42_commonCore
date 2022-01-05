@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:19:41 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/05 19:49:20 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/06 00:35:50 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ void			ft_rrb(t_Stack *stack_b);
 void			ft_rrr(t_Stack *stack_a, t_Stack *stack_b);
 long long int	ft_long_atoi(const char *str);
 int				ft_check(int argc, char **argv);
+int				ft_is_sorted(t_Stack *stack);
+void			ft_algo(t_Stack *stack_a, t_Stack *stack_b);
 #endif

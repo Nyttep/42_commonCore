@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:19:42 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/05 19:49:18 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/06 00:35:46 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_display(t_Stack *stack_a, t_Stack *stack_b)
 		j--;
 		i--;
 	}
-	printf("_   _\na   b\n---------------------\n");
+	ft_putstr_fd("_   _\na   b\n---------------------\n", 1);
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +53,8 @@ int	main(int argc, char **argv)
 	 	return (ft_error());
 	if (!ft_init(&stack_a, &stack_b, argc, argv))
 		return (ft_error());
-	ft_sa(stack_a);
+	ft_display(stack_a, stack_b);
+	ft_algo(stack_a, stack_b);
 	ft_display(stack_a, stack_b);
 	free(stack_a->array);
 	free(stack_a);

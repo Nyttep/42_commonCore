@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   algo_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 02:32:37 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/05 22:54:01 by pdubois          ###   ########.fr       */
+/*   Created: 2022/01/05 22:18:54 by pdubois           #+#    #+#             */
+/*   Updated: 2022/01/06 00:35:43 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
+#include "../libft/libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_is_sorted(t_Stack *stack)
 {
-	write(fd, s, ft_strlen(s));
+	int	i;
+
+	i = stack->top;
+	while (i > 0)
+	{
+		if (stack->array[i] > stack->array[i - 1])
+			return (i);
+		i--;
+	}
+	return (0);
 }
