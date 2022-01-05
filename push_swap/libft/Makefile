@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 04:33:49 by pdubois           #+#    #+#              #
-#    Updated: 2021/12/18 21:56:42 by pdubois          ###   ########.fr        #
+#    Updated: 2022/01/05 19:25:38 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS =	ft_atoi.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
 		ft_strmapi.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
@@ -59,7 +60,7 @@ SRCS_BONUS = 	ft_lstadd_back.c \
 				ft_lstlast.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
-				ft_lstsize.c \
+				ft_lstsize.c 
 
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 

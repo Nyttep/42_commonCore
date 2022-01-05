@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pdubois <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 04:33:49 by pdubois           #+#    #+#              #
-#    Updated: 2021/12/01 17:05:06 by pdubois          ###   ########.fr        #
+#    Updated: 2022/01/05 19:19:18 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,14 @@ SRCS =	ft_atoi.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
 		ft_strmapi.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c \
+		ft_toupper.c 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -59,7 +60,7 @@ SRCS_BONUS = 	ft_lstadd_back.c \
 				ft_lstlast.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
-				ft_lstsize.c \
+				ft_lstsize.c 
 
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 04:17:48 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/19 05:07:25 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/05 19:49:19 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_sa(t_Stack	*stack_a)
 	tmp = stack_a->array[stack_a->top];
 	stack_a->array[stack_a->top] = stack_a->array[stack_a->top -1];
 	stack_a->array[stack_a->top -1] = tmp;
+	write(1, "sa\n", 3);
 }
 
 void	ft_sb(t_Stack	*stack_b)

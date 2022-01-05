@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:19:42 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/19 07:00:29 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/05 19:49:18 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	// if (!ft_check(argc, argv))
-	// 	return (ft_error());
+	if (!ft_check(argc, argv))
+	 	return (ft_error());
 	if (!ft_init(&stack_a, &stack_b, argc, argv))
 		return (ft_error());
+	ft_sa(stack_a);
 	ft_display(stack_a, stack_b);
 	free(stack_a->array);
 	free(stack_a);
