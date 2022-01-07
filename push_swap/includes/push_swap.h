@@ -43,5 +43,6 @@ void			ft_rrr(t_Stack *stack_a, t_Stack *stack_b);
 long long int	ft_long_atoi(const char *str);
 int				ft_check(int argc, char **argv);
 int				ft_is_sorted(t_Stack *stack);
-void			ft_algo(t_Stack *stack_a, t_Stack *stack_b);
+void			ft_very_smol_algo(t_Stack *stack_a);
+void			ft_smol_algo(t_Stack *stack_a, t_Stack *stack_b);
 #endif
