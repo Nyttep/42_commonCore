@@ -53,9 +53,9 @@ int	main(int argc, char **argv)
 	 	return (ft_error());
 	if (!ft_init(&stack_a, &stack_b, argc, argv))
 		return (ft_error());
-	ft_display(stack_a, stack_b);
-	ft_smol_algo(stack_a, stack_b);
-	ft_display(stack_a, stack_b);
+	// ft_display(stack_a, stack_b);
+	ft_algo(stack_a, stack_b);
+	// ft_display(stack_a, stack_b);
 	free(stack_a->array);
 	free(stack_a);
 	free(stack_b->array);

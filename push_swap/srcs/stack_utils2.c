@@ -39,8 +39,18 @@ void	ft_sb(t_Stack	*stack_b)
 
 void	ft_ss(t_Stack *stack_a, t_Stack *stack_b)
 {
-	ft_sa(stack_a);
-	ft_sb(stack_b);
+	int	tmp;
+
+	if (ft_is_empty(stack_a) || stack_a->top == 0)
+		return ;
+	tmp = stack_a->array[stack_a->top];
+	stack_a->array[stack_a->top] = stack_a->array[stack_a->top -1];
+	stack_a->array[stack_a->top -1] = tmp;
+	if (ft_is_empty(stack_b) || stack_b->top == 0)
+		return ;
+	tmp = stack_b->array[stack_b->top];
+	stack_b->array[stack_b->top] = stack_b->array[stack_b->top -1];
+	stack_b->array[stack_b->top -1] = tmp;
 	write(1, "ss\n", 3);
 }
 

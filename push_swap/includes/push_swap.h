@@ -12,7 +12,10 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+#define TOP_A stack_a->array[stack_a->top]
+#define TOP_B stack_b->array[stack_b->top]
+#define BOTTOM_A stack_a->array[0]
+#define BOTTOM_B stack_b->array[0]
 typedef struct s_Stack
 {
 	int		top;
@@ -45,4 +48,9 @@ int				ft_check(int argc, char **argv);
 int				ft_is_sorted(t_Stack *stack);
 void			ft_very_smol_algo(t_Stack *stack_a);
 void			ft_smol_algo(t_Stack *stack_a, t_Stack *stack_b);
+void			ft_algo(t_Stack *stack_a, t_Stack *stack_b);
+int				ft_find_max(t_Stack *stack);
+int				ft_find_min(t_Stack *stack);
+int				ft_find_nearest(t_Stack *stack_a, t_Stack *stack_b);
+void			ft_go_to(t_Stack *stack, int target);
 #endif

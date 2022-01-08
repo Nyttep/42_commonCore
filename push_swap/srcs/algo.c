@@ -25,22 +25,45 @@ void	ft_very_smol_algo(t_Stack *stack_a)
 	}
 }
 
-void	ft_smol_algo(t_Stack *stack_a, t_Stack *stack_b)
+int	ft_find_place(int top_a, t_Stack *stack_b)
 {
-	if (stack_a->top == 4)
+	int	i;
+
+	i = stack_b->top;
+	if (top_a > ft_find_max(stack_b))
+		while (i && ft_find_max(stack_b) != stack_b->array[i - 1])
+			i--;
+	else if (top_a < ft_find_min(stack_b))
+		while (ft_find_min(stack_b) != stack_b->array[i])
+			i--;
+	else
+		while (!(top_a < stack_b->array[i] && top_a > stack_b->array[i - 1]) && i)
+			i--;
+	return (i);
+}
+
+void	ft_algo(t_Stack *stack_a, t_Stack *stack_b)
+{
+	int	place;
+
+	ft_pb(stack_a, stack_b);
+	ft_pb(stack_a, stack_b);
+	if (TOP_B < BOTTOM_B)
+		ft_rb(stack_b);
+	while (!ft_is_empty(stack_a))
 	{
-		ft_pb(stack_a, stack_b);
+		ft_go_to(stack_a, ft_find_nearest(stack_a, stack_b));
+		place = ft_find_place(TOP_A, stack_b);
+		if (place > (stack_b->top + 1) / 2)
+			while ((stack_b->top - place++) + 1)
+				ft_rb(stack_b);
+		else
+			while (place--)
+				ft_rrb(stack_b);
 		ft_pb(stack_a, stack_b);
 	}
-	else
-		ft_pb(stack_a, stack_b);
-	ft_very_smol_algo(stack_a);
-	while (stack_b->array[stack_b->top] > stack_a->array[stack_a->top])
-		ft_ra(stack_a);
-	ft_pa(stack_a, stack_b);
-	while (stack_b->array[stack_b->top] > stack_a->array[stack_a->top] && stack_b->top != -1)
-		ft_ra(stack_a);
-	ft_pa(stack_a, stack_b);
+	while (!ft_is_empty(stack_b))
+		ft_pa(stack_a, stack_b);
 	while (ft_is_sorted(stack_a))
 		ft_ra(stack_a);
 }
