@@ -27,9 +27,12 @@ void	ft_display(t_Stack *stack_a, t_Stack *stack_b)
 
 	i = stack_a->top;
 	j = stack_b->top;
-	while (i >= 0)
+	while (i >= 0 || j >= 0)
 	{
-		printf("%d   ", stack_a->array[i]);
+		if (i >= 0)
+			printf("%d   ", stack_a->array[i]);
+		else
+			printf("    ");
 		if (j >= 0)
 			printf("%d\n", stack_b->array[j]);
 		else

@@ -52,5 +52,6 @@ void			ft_algo(t_Stack *stack_a, t_Stack *stack_b);
 int				ft_find_max(t_Stack *stack);
 int				ft_find_min(t_Stack *stack);
 int				ft_find_nearest(t_Stack *stack_a, t_Stack *stack_b);
-void			ft_go_to(t_Stack *stack, int target);
+void			ft_move_stacks(t_Stack *stack_a, t_Stack *stack_b, int ind_target, int ind_place);
+void			ft_display(t_Stack *stack_a, t_Stack *stack_b);
 #endif
