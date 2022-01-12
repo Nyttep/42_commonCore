@@ -45,10 +45,10 @@ ${LIBS}:
 ${NAME}:	${OBJS} ${INC} ${LIBS}
 			${CC} -g -o ${NAME} ${OBJS} ${LIBS}
 clean:
-			${RM} ${OBJS} ${OBJS_BONUS}; cd libft; make fclean
+			${RM} ${OBJS} ${OBJS_BONUS}; cd libft; make clean
 
 fclean:		clean
-			${RM} ${NAME}
+			${RM} ${NAME}; cd libft; make fclean
 
 re:			fclean all
 
