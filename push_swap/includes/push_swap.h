@@ -13,6 +13,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <unistd.h>
+# include <stdlib.h>
+
 typedef struct s_Stack
 {
 	int		top;
@@ -51,5 +54,4 @@ int		ft_find_nearest(t_Stack *stack_a, t_Stack *stack_b);
 int		ft_find_place_a(int target, t_Stack *stack_b);
 int		ft_find_place_b(int target, t_Stack *stack_b);
 void	ft_move_stacks(t_Stack *stack_a, t_Stack *stack_b, int i_t, int i_p);
-void	ft_display(t_Stack *stack_a, t_Stack *stack_b);
 #endif

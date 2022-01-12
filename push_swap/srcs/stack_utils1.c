@@ -17,7 +17,7 @@ t_Stack	*ft_create_stack(unsigned int capacity)
 {
 	t_Stack	*stack;
 
-	stack = malloc(sizeof(stack));
+	stack = malloc(sizeof(t_Stack));
 	if (!stack)
 		return (NULL);
 	stack->top = -1;

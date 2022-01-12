@@ -23,5 +23,6 @@ void	*ft_free_strs(char	**s)
 		free (s[i]);
 		i++;
 	}
+	free(s);
 	return (NULL);
 }
