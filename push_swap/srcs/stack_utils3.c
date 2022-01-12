@@ -53,7 +53,7 @@ void	ft_rr(t_Stack	*stack_a, t_Stack *stack_b)
 {
 	int	i;
 	int	tmp;
-	
+
 	if (ft_is_empty(stack_a))
 		return ;
 	i = stack_a->top;

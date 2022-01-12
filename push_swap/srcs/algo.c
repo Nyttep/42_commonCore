@@ -15,31 +15,31 @@
 
 void	ft_very_smol_algo(t_Stack *stack_a)
 {
-	if (ft_is_sorted(stack_a))
+	while (ft_is_sorted(stack_a))
 	{
 		if (stack_a->array[stack_a->top] > stack_a->array[stack_a->top - 1])
 			ft_sa(stack_a);
 		else
 			ft_rra(stack_a);
-		ft_very_smol_algo(stack_a);
 	}
 }
 
-int	ft_find_place(int target, t_Stack *stack_b)
+void	ft_smol_algo(t_Stack *stack_a, t_Stack *stack_b)
 {
-	int	i;
+	int	place;
 
-	i = stack_b->top;
-	if (target > ft_find_max(stack_b))
-		while (i && ft_find_max(stack_b) != stack_b->array[i - 1])
-			i--;
-	else if (target < ft_find_min(stack_b))
-		while (ft_find_min(stack_b) != stack_b->array[i])
-			i--;
-	else
-		while (!(target < stack_b->array[i] && target > stack_b->array[i - 1]) && i)
-			i--;
-	return (i);
+	while (stack_a->top != 2)
+		ft_pb(stack_a, stack_b);
+	ft_very_smol_algo(stack_a);
+	while (!ft_is_empty(stack_b))
+	{
+		place = ft_find_place_a(stack_b->array[stack_b->top], stack_a);
+		if (place)
+			ft_move_stacks(stack_a, stack_b, place - 1, 0);
+		ft_pa(stack_a, stack_b);
+	}
+	while (ft_is_sorted(stack_a))
+		ft_move_stacks(stack_a, stack_b, ft_is_sorted(stack_a) - 1, 0);
 }
 
 void	ft_algo(t_Stack *stack_a, t_Stack *stack_b)
@@ -49,12 +49,12 @@ void	ft_algo(t_Stack *stack_a, t_Stack *stack_b)
 
 	ft_pb(stack_a, stack_b);
 	ft_pb(stack_a, stack_b);
-	if (TOP_B < BOTTOM_B)
+	if (stack_b->array[stack_b->top] < stack_b->array[0])
 		ft_rb(stack_b);
 	while (!ft_is_empty(stack_a))
 	{
 		nearest = ft_find_nearest(stack_a, stack_b);
-		place = ft_find_place(stack_a->array[nearest], stack_b);
+		place = ft_find_place_b(stack_a->array[nearest], stack_b);
 		ft_move_stacks(stack_a, stack_b, nearest, place);
 		ft_pb(stack_a, stack_b);
 	}
@@ -64,35 +64,40 @@ void	ft_algo(t_Stack *stack_a, t_Stack *stack_b)
 		ft_move_stacks(stack_a, stack_b, ft_is_sorted(stack_a) - 1, 0);
 }
 
-void	ft_move_stacks(t_Stack *stack_a, t_Stack *stack_b, int ind_target, int ind_place)
+void	ft_move_b(t_Stack *stack_b, int place, int ind_place)
+{
+	while (stack_b->array[0] != place)
+	{
+		if (ind_place >= (stack_b->top + 1) / 2)
+			ft_rb(stack_b);
+		else
+			ft_rrb(stack_b);
+	}
+}
+
+void	ft_move_stacks(t_Stack *stack_a, t_Stack *stack_b, int i_t, int i_p)
 {
 	int	target;
-	int place;
+	int	place;
 
-	target = stack_a->array[ind_target];
-	place = stack_b->array[ind_place];
-	while(TOP_A != target)
+	target = stack_a->array[i_t];
+	place = stack_b->array[i_p];
+	while (stack_a->array[stack_a->top] != target)
 	{
-		if(ind_target > (stack_a->top + 1) / 2)
+		if (i_t >= (stack_a->top + 1) / 2)
 		{
-			if (ind_place > (stack_b->top + 1) / 2 && BOTTOM_B != place)
+			if (i_p > (stack_b->top + 1) / 2 && stack_b->array[0] != place)
 				ft_rr(stack_a, stack_b);
 			else
 				ft_ra(stack_a);
 		}
 		else
 		{
-			if (ind_place <= (stack_b->top + 1) / 2 && BOTTOM_B != place)
+			if (i_p < (stack_b->top + 1) / 2 && stack_b->array[0] != place)
 				ft_rrr(stack_a, stack_b);
 			else
 				ft_rra(stack_a);
 		}
 	}
-	while(BOTTOM_B != place)
-	{
-		if (ind_place > (stack_b->top + 1) / 2)
-			ft_rb(stack_b);
-		else
-			ft_rrb(stack_b);
-	}
+	ft_move_b(stack_b, place, i_p);
 }

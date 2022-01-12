@@ -53,12 +53,15 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (!ft_check(argc, argv))
-	 	return (ft_error());
+		return (ft_error());
 	if (!ft_init(&stack_a, &stack_b, argc, argv))
 		return (ft_error());
-	// ft_display(stack_a, stack_b);
-	ft_algo(stack_a, stack_b);
-	// ft_display(stack_a, stack_b);
+	if (stack_a->capacity <= 3)
+		ft_very_smol_algo(stack_a);
+	else if (stack_a->capacity <= 5)
+		ft_smol_algo(stack_a, stack_b);
+	else
+		ft_algo(stack_a, stack_b);
 	free(stack_a->array);
 	free(stack_a);
 	free(stack_b->array);

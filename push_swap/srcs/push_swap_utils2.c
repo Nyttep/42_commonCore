@@ -15,7 +15,7 @@
 
 long long int	ft_long_atoi(const char *str)
 {
-	int	i;
+	int				i;
 	long long int	neg;
 	long long int	res;
 
@@ -38,7 +38,7 @@ long long int	ft_long_atoi(const char *str)
 	return (res * neg);
 }
 
-int ft_check_digit(int argc, char**argv)
+int	ft_check_digit(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ int ft_check_digit(int argc, char**argv)
 			if (!ft_isdigit((int) argv[i][j]) && argv[i][j] != ' ')
 				return (0);
 	}
-	return(1);
+	return (1);
 }
 
 int	ft_check_intmax(char **s)
@@ -77,7 +77,7 @@ int	ft_check_duplicate(char **s)
 	j = 1;
 	while (s[i])
 	{
-		while(s[j])
+		while (s[j])
 		{
 			if (ft_strcmp(s[i], s[j]) == 0)
 				return (0);
@@ -93,7 +93,6 @@ int	ft_check(int argc, char **argv)
 	char	**s;
 
 	s = NULL;
-	
 	if (!ft_check_digit(argc, argv))
 		return (0);
 	while (--argc > 0)

@@ -22,8 +22,9 @@ SRCS_NAME = main.c \
 			stack_utils2.c \
 			stack_utils3.c \
 			stack_utils4.c \
+			algo.c \
 			algo_utils1.c \
-			algo.c
+			algo_utils2.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INC_NAME = push_swap.h

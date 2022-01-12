@@ -59,77 +59,38 @@ int	ft_find_min(t_Stack *stack)
 	return (min);
 }
 
-
-
-int	ft_find_nearest(t_Stack *stack_a, t_Stack *stack_b)
+int	ft_find_place_a(int target, t_Stack *stack_a)
 {
 	int	i;
-	int	j;
-	int	nearest;
-	int	diff[5];
 
-	i = (stack_b->top / 15); // a ameliorer
-	if (i > stack_a->top)
-		i = stack_a->top - 1;
-	j = (stack_b->top / 250); // a ameliorer
-	if (j > stack_b->top)
-		j = stack_b->top - 1;
-	nearest = 0;
-	diff[0] = 2147483647;
-	while (j >= 0)
-	{
-		while (i >= 0)
-		{
-			diff[1] = stack_b->array[stack_b->top - j] - stack_a->array[stack_a->top - i]; //a ameliorer
-			diff[2] = stack_b->array[stack_b->top - j] - stack_a->array[i];  // a ameliorer
-			diff[3] = stack_b->array[j] - stack_a->array[stack_a->top - i]; //a ameliorer
-			diff[4] = stack_b->array[j] - stack_a->array[i];  // a ameliorer
-			if (diff[1] < 0)
-				diff[1] *= -1;
-			if (diff[2] < 0)
-				diff[2] *= -1;
-			if (diff[3] < 0)
-				diff[3] *= -1;
-			if (diff[4] < 0)
-				diff[4] *= -1;
-			if (diff[1] <= diff[0])
-				nearest = stack_a->top - i;
-			else if (diff[2] <= diff[0])
-				nearest = i;
-			else if (diff[3] <= diff[0])
-				nearest = stack_a->top - i;
-			else if (diff[4] <= diff[0])
-				nearest = i;
-			if (diff[1] <= diff[0])
-				diff[0] = diff[1];
-			else if (diff[2] <= diff[0])
-				diff[0] = diff[2];
-			else if (diff[3] <= diff[0])
-				diff[0] = diff[3];
-			else if (diff[4] <= diff[0])
-				diff[0] = diff[4];
+	i = stack_a->top;
+	if (target > ft_find_max(stack_a))
+		while (ft_find_max(stack_a) != stack_a->array[i])
 			i--;
-		}
-		j--;
-	}
-	// while (i >= 0 )
-	// {
-	// 	diff[1] = TOP_B - stack_a->array[stack_a->top - i]; //a ameliorer
-	// 	diff[2] = TOP_B - stack_a->array[i];  // a ameliorer
-	// 	if (diff[1] < 0)
-	// 		diff[1] *= -1;
-	// 	if (diff[2] < 0)
-	// 		diff[2] *= -1;
-	// 	if (diff[1] <= diff[0])
-	// 		nearest = stack_a->top - i;
-	// 	else if (diff[2] <= diff[0])
-	// 		nearest = i;
-	// 	if (diff[1] <= diff[0])
-	// 		diff[0] = diff[1];
-	// 	else if (diff[2] <= diff[0])
-	// 		diff[0] = diff[2];
-	// 	i--;
-	// }
-	return (nearest);
+	else if (target < ft_find_min(stack_a))
+		while (i && ft_find_min(stack_a) != stack_a->array[i - 1])
+			i--;
+	else
+		while (!(target < stack_a->array[i - 1]
+				&& target > stack_a->array[i]) && i)
+			i--;
+	return (i);
 }
 
+int	ft_find_place_b(int target, t_Stack *stack_b)
+{
+	int	i;
+
+	i = stack_b->top;
+	if (target > ft_find_max(stack_b))
+		while (i && ft_find_max(stack_b) != stack_b->array[i - 1])
+			i--;
+	else if (target < ft_find_min(stack_b))
+		while (ft_find_min(stack_b) != stack_b->array[i])
+			i--;
+	else
+		while (!(target < stack_b->array[i]
+				&& target > stack_b->array[i - 1]) && i)
+			i--;
+	return (i);
+}

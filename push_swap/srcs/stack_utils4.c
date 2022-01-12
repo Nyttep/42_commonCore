@@ -73,6 +73,6 @@ void	ft_rrr(t_Stack *stack_a, t_Stack *stack_b)
 		stack_b->array[i] = stack_b->array[i + 1];
 		i++;
 	}
-	stack_b->array[stack_b->top] = tmp;	
+	stack_b->array[stack_b->top] = tmp;
 	write(1, "rrr\n", 4);
 }
