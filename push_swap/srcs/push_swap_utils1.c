@@ -26,27 +26,27 @@ int	ft_strslen(char	**s)
 char	**ft_strsjoin(char **s2, char **s1)
 {
 	char	**ret;
-	int		k;
-	int		i;
+	int		i[2];
 
-	k = -1;
+	i[0] = -1;
 	if (!s2)
 		return (s1);
-	ret = malloc (sizeof(char *) * (ft_strslen(s1) + ft_strslen(s2)+ 1));
-	while (s1[++k])
+	ret = malloc (sizeof(char *) * (ft_strslen(s1) + ft_strslen(s2) + 1));
+	while (s1[++i[0]] && ret)
 	{
-		ret[k] = ft_strdup(s1[k]);
-		if (!ret[k])
+		ret[i[0]] = ft_strdup(s1[i[0]]);
+		if (!ret[i[0]])
 			return (ft_free_strs(ret));
 	}
-	i = -1;
-	while (s2[++i])
+	i[1] = -1;
+	while (s2[++i[1]] && ret)
 	{
-		ret[k + i] = ft_strdup(s2[i]);
-		if (!ret[k + i])
+		ret[i[0] + i[1]] = ft_strdup(s2[i[1]]);
+		if (!ret[i[0] + i[1]])
 			return (ft_free_strs(ret));
 	}
-	ret[k + i] = NULL;
+	if (ret)
+		ret[i[0] + i[1]] = NULL;
 	ft_free_strs(s1);
 	ft_free_strs(s2);
 	return (ret);

@@ -18,6 +18,8 @@ void	*ft_free_strs(char	**s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (s[i])
 	{
 		free (s[i]);
