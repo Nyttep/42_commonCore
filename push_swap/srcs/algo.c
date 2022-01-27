@@ -28,6 +28,8 @@ void	ft_smol_algo(t_Stack *stack_a, t_Stack *stack_b)
 {
 	int	place;
 
+	if (!ft_is_sorted(stack_a))
+		return;
 	while (stack_a->top != 2)
 		ft_pb(stack_a, stack_b);
 	ft_very_smol_algo(stack_a);
@@ -47,6 +49,8 @@ void	ft_algo(t_Stack *stack_a, t_Stack *stack_b)
 	int	place;
 	int	nearest;
 
+	if (!ft_is_sorted(stack_a))
+		return;
 	ft_pb(stack_a, stack_b);
 	ft_pb(stack_a, stack_b);
 	if (stack_b->array[stack_b->top] < stack_b->array[0])

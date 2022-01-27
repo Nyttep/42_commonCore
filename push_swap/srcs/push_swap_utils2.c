@@ -61,7 +61,7 @@ int	ft_check_intmax(char **s)
 	i = 0;
 	while (s[i])
 	{
-		if (ft_long_atoi(s[i]) > 2147483647 || ft_long_atoi(s[i]) < -2147483648)
+		if (ft_long_atoi(s[i]) > 2147483647 || ft_long_atoi(s[i]) < -2147483648 || ft_strlen(s[i]) > 12)
 			return (0);
 		i++;
 	}
