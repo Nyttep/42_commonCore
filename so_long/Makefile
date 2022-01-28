@@ -12,38 +12,35 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lmlx -lXext -lX11
+MLXFLAGS = -lXext -lX11
 
 NAME = so_long
-SRCS_NAME = main.c
+SRCS_NAME = test.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = so_long.h
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
-LIBS_NAME = libft.a \
-			libmlx.a
-LIBS_PATH = libft \
-			minilibx
-LIBS = $(addprefix $(LIBS_PATH)/, $(LIBS_NAME))
+LIBS = libft/libft.a \
+		minilibx/libmlx_Linux.a
 RM = rm -rf
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 %.o : %.c
-			${CC} ${CFLAGS} ${MLXFLAGS} -g -I ${INCS_PATH} -c $< -o $@
+			${CC} ${CFLAGS} -g -I ${INCS_PATH} -I libft -I minilibx -c $< -o $@
 
 ${LIBS}:
-			cd ${LIBS_PATH}; make
+			make -C libft; make -C minilibx
 
 ${NAME}:	${OBJS} ${INCS} ${LIBS}
-			${CC} -g -o ${NAME} ${OBJS} ${LIBS}
+			${CC} -g -o ${NAME} ${OBJS} ${LIBS} ${MLXFLAGS}
 clean:
-			${RM} ${OBJS}; cd libft; make clean
+			${RM} ${OBJS}; make -C libft clean; make -C minilibx clean
 
 fclean:		clean
-			${RM} ${NAME}; cd libft; make fclean
+			${RM} ${NAME}; make -C libft fclean
 
 re:			fclean all
 
