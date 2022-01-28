@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:25:10 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/12 11:34:37 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:38 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 int	ft_compare_diff(t_Stack *stack_a, int *diff, int i)
 {

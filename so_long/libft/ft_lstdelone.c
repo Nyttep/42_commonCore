@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/12/01 21:02:31 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:06:27 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-	{
-		free (s[i]);
-		i++;
-	}
-	free(s);
-	return (NULL);
+	del(lst->content);
+	free(lst);
 }

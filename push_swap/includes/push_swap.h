@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:19:41 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/06 00:35:50 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:08 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "../libft/libft.h"
 
 typedef struct s_Stack
 {

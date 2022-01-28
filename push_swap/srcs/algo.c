@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 23:02:14 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/06 00:35:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:27 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 void	ft_very_smol_algo(t_Stack *stack_a)
 {

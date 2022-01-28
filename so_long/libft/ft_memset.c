@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:32:19 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:03:23 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
+	char	*tmp;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
+	tmp = s;
+	while (i < n)
 	{
-		free (s[i]);
+		tmp[i] = (char) c;
 		i++;
 	}
-	free(s);
-	return (NULL);
+	return (s);
 }

@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:31:26 by pdubois           #+#    #+#             */
+/*   Updated: 2021/11/29 19:22:17 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
+	void	*ret;
 
-	i = 0;
-	if (!s)
+	ret = malloc(nmemb * size);
+	if (!ret)
 		return (NULL);
-	while (s[i])
-	{
-		free (s[i]);
-		i++;
-	}
-	free(s);
-	return (NULL);
+	ft_bzero(ret, nmemb * size);
+	return (ret);
 }

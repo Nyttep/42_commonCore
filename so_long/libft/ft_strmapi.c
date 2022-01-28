@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:33:44 by pdubois           #+#    #+#             */
+/*   Updated: 2021/11/26 09:04:15 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	size_t	len;
+	char	*ret;
+	size_t	i;
 
 	i = 0;
-	if (!s)
+	len = ft_strlen(s);
+	ret = (char *) malloc(sizeof(char) * (len + 1));
+	if (!ret)
 		return (NULL);
-	while (s[i])
+	ret[len] = 0;
+	while (i < len)
 	{
-		free (s[i]);
+		ret[i] = f(i, s[i]);
 		i++;
 	}
-	free(s);
-	return (NULL);
+	return (ret);
 }

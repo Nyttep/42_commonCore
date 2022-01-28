@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:32:10 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:03:16 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	char		*tmp1;
+	const char	*tmp2;
+	size_t		i;
 
 	i = 0;
-	if (!s)
+	tmp1 = dest;
+	tmp2 = src;
+	if (!dest && !src)
 		return (NULL);
-	while (s[i])
+	while (n > i)
 	{
-		free (s[i]);
+		tmp1[i] = tmp2[i];
 		i++;
 	}
-	free(s);
-	return (NULL);
+	return (dest);
 }

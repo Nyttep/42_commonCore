@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:33:14 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:03:50 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
+	int	len;
 
+	len = ft_strlen(s);
 	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
+	while (i <= len)
 	{
-		free (s[i]);
+		if (s[i] == (char) c)
+			return ((char *) s + i);
 		i++;
 	}
-	free(s);
 	return (NULL);
 }

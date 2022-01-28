@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/12/01 21:02:25 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:08:04 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*current;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
+	current = *lst;
+	while (*lst)
 	{
-		free (s[i]);
-		i++;
+		current = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = current;
 	}
-	free(s);
-	return (NULL);
+	lst = NULL;
 }

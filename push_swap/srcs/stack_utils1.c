@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 21:31:20 by pdubois           #+#    #+#             */
-/*   Updated: 2021/12/19 07:00:23 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:29:04 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 t_Stack	*ft_create_stack(unsigned int capacity)
 {

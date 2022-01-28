@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/12/01 21:03:04 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/01 21:07:49 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	int		ret;
+	t_list	*begin;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
+	begin = lst;
+	ret = 0;
+	while (lst)
 	{
-		free (s[i]);
-		i++;
+		ret++;
+		lst = lst->next;
 	}
-	free(s);
-	return (NULL);
+	lst = begin;
+	return (ret);
 }

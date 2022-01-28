@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 23:15:34 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/06 00:35:44 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:54 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 int	ft_strslen(char	**s)
 {

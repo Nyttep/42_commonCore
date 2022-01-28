@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 22:17:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/05 22:17:53 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:58 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 long long int	ft_long_atoi(const char *str)
 {

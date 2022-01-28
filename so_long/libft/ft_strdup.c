@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:44 by pdubois          ###   ########.fr       */
+/*   Created: 2021/11/26 02:33:18 by pdubois           #+#    #+#             */
+/*   Updated: 2021/12/19 01:22:24 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*ft_free_strs(char	**s)
+char	*ft_strdup(const char *s)
 {
-	int	i;
+	int		len;
+	char	*ret;
+	int		i;
 
-	i = 0;
-	if (!s)
+	i = -1;
+	len = ft_strlen(s);
+	ret = (char *) malloc(sizeof(char) * (len + 1));
+	if (!ret)
 		return (NULL);
-	while (s[i])
-	{
-		free (s[i]);
-		i++;
-	}
-	free(s);
-	return (NULL);
+	while (s[++i])
+		ret[i] = s[i];
+	ret[len] = 0;
+	return (ret);
 }

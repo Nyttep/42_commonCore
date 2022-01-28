@@ -6,12 +6,11 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 22:18:54 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/06 00:35:43 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/01/28 02:28:33 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 int	ft_is_sorted(t_Stack *stack)
 {
