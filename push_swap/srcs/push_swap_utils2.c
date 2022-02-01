@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 22:17:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/01/28 02:28:58 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/02/01 13:48:23 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ int	ft_check_digit(int argc, char **argv)
 	{
 		j = -1;
 		while (argv[i][++j])
+		{
+			if (argv[i][j] == '-' || argv[i][j] == '+')
+				if (argv[i][j + 1] == '-' || argv[i][j + 1] == '+')
+					return (0);
 			if (!ft_isdigit((int) argv[i][j]) && argv[i][j] != ' ')
 				return (0);
+		}
 	}
 	return (1);
 }
@@ -60,7 +65,8 @@ int	ft_check_intmax(char **s)
 	i = 0;
 	while (s[i])
 	{
-		if (ft_long_atoi(s[i]) > 2147483647 || ft_long_atoi(s[i]) < -2147483648 || ft_strlen(s[i]) > 12)
+		if (ft_long_atoi(s[i]) > 2147483647 || ft_long_atoi(s[i]) < -2147483648
+			|| ft_strlen(s[i]) > 12)
 			return (0);
 		i++;
 	}
@@ -78,7 +84,7 @@ int	ft_check_duplicate(char **s)
 	{
 		while (s[j])
 		{
-			if (ft_strcmp(s[i], s[j]) == 0)
+			if (ft_atoi(s[i]) == ft_atoi(s[j]))
 				return (0);
 			j++;
 		}
