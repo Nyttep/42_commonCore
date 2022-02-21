@@ -15,7 +15,12 @@ CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -lXext -lX11
 
 NAME = so_long
-SRCS_NAME = test.c
+SRCS_NAME = main.c \
+			get_next_line.c \
+			get_next_line_utils.c \
+			error.c \
+			initialization.c \
+			check.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = so_long.h

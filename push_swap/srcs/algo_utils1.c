@@ -64,14 +64,14 @@ int	ft_find_place_a(int target, t_Stack *stack_a)
 
 	i = stack_a->top;
 	if (target > ft_find_max(stack_a))
-		while (ft_find_max(stack_a) != stack_a->array[i])
+		while (i != -1 && ft_find_max(stack_a) != stack_a->array[i])
 			i--;
 	else if (target < ft_find_min(stack_a))
 		while (i && ft_find_min(stack_a) != stack_a->array[i - 1])
 			i--;
 	else
-		while (!(target < stack_a->array[i - 1]
-				&& target > stack_a->array[i]) && i)
+		while (i && !(target < stack_a->array[i - 1]
+				&& target > stack_a->array[i]))
 			i--;
 	return (i);
 }
@@ -85,11 +85,11 @@ int	ft_find_place_b(int target, t_Stack *stack_b)
 		while (i && ft_find_max(stack_b) != stack_b->array[i - 1])
 			i--;
 	else if (target < ft_find_min(stack_b))
-		while (ft_find_min(stack_b) != stack_b->array[i])
+		while (i != -1 && ft_find_min(stack_b) != stack_b->array[i])
 			i--;
 	else
-		while (!(target < stack_b->array[i]
-				&& target > stack_b->array[i - 1]) && i)
+		while (i && !(target < stack_b->array[i]
+				&& target > stack_b->array[i - 1]))
 			i--;
 	return (i);
 }

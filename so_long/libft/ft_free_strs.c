@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_free_strs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 02:31:47 by pdubois           #+#    #+#             */
-/*   Updated: 2021/11/26 02:31:50 by pdubois          ###   ########.fr       */
+/*   Created: 2021/12/19 00:02:40 by pdubois           #+#    #+#             */
+/*   Updated: 2022/02/21 01:51:01 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+void	*ft_free_strs(char	**s)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i])
+	{
+		free (s[i]);
+		i++;
+	}
+	free(s);
+	return (NULL);
 }

@@ -37,23 +37,24 @@ long long int	ft_long_atoi(const char *str)
 	return (res * neg);
 }
 
-int	ft_check_digit(int argc, char **argv)
+int	ft_check_digit(char **s)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (++i < argc)
+	while (s[i])
 	{
-		j = -1;
-		while (argv[i][++j])
+		j = 0;
+		if (s[i][j] == '-' || s[i][j] == '+')
+			j++;
+		while (s[i][j])
 		{
-			if (argv[i][j] == '-' || argv[i][j] == '+')
-				if (argv[i][j + 1] == '-' || argv[i][j + 1] == '+')
-					return (0);
-			if (!ft_isdigit((int) argv[i][j]) && argv[i][j] != ' ')
+			if (!ft_isdigit((int) s[i][j]))
 				return (0);
+			j++;
 		}
+		i++;
 	}
 	return (1);
 }
@@ -98,18 +99,18 @@ int	ft_check(int argc, char **argv)
 	char	**s;
 
 	s = NULL;
-	if (!ft_check_digit(argc, argv))
-		return (0);
 	while (--argc > 0)
 	{
 		s = ft_strsjoin(s, ft_split(argv[argc], ' '));
 		if (!s)
 			return (ft_free_strs(s), 0);
 	}
+	if (!ft_check_digit(s))
+		return (ft_free_strs(s), 0);
 	if (!ft_check_intmax(s))
-		return (0);
+		return (ft_free_strs(s), 0);
 	if (!ft_check_duplicate(s))
-		return (0);
+		return (ft_free_strs(s), 0);
 	ft_free_strs(s);
 	return (1);
 }

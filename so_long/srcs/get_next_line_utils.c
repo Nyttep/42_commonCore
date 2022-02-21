@@ -6,12 +6,12 @@
 /*   By: pdubois <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:46:14 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/21 01:34:23 by pdubois          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:16:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "so_long.h"
 
-int	ft_is_newline(char	*s)
+int	ft_is_newline_gnl(char	*s)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	ft_is_newline(char	*s)
 	return (0);
 }
 
-int	ft_strlen(char	*s)
+int	ft_strlen_gnl(char	*s)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ int	ft_strlen(char	*s)
 	return (i);
 }
 
-char	*ft_kinda_strcat(char	*s, char	*init)
+char	*ft_kinda_strcat_gnl(char	*s, char	*init)
 {
 	char	*ret;
 	int		len_s;
@@ -49,8 +49,8 @@ char	*ft_kinda_strcat(char	*s, char	*init)
 
 	i = -1;
 	j = 0;
-	len_s = ft_strlen(s);
-	len_init = ft_strlen(init);
+	len_s = ft_strlen_gnl(s);
+	len_init = ft_strlen_gnl(init);
 	ret = malloc(len_init + len_s + 1);
 	ret[len_init + len_s] = 0;
 	while (++i < len_init)
@@ -68,7 +68,7 @@ char	*ft_kinda_strcat(char	*s, char	*init)
 	return (ret);
 }
 
-void	ft_get_reste(char	*s, char	*reste, int read_return)
+void	ft_get_reste_gnl(char	*s, char	*reste, int read_return)
 {
 	int	i;
 	int	j;
@@ -86,7 +86,7 @@ void	ft_get_reste(char	*s, char	*reste, int read_return)
 	reste[j] = 0;
 }
 
-char	*ft_cpy_and_rst_reste(char	*ret, char	*reste)
+char	*ft_cpy_and_rst_reste_gnl(char	*ret, char	*reste)
 {
 	int	i;
 	int	j;

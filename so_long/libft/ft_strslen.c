@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strslen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 06:58:07 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/21 06:24:38 by pdubois          ###   ########.fr       */
+/*   Created: 2022/02/21 04:29:50 by pdubois           #+#    #+#             */
+/*   Updated: 2022/02/21 04:40:13 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strslen(char	**s)
 {
-	// t_game	game;
-	
-	ft_check(argc, argv);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
