@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 #include "so_long.h"
 
-int	ft_free_gnl(char *ret, char *s)
+int	ft_free_gnl(char **ret, char *s)
 {
-	free(ret);
+	free(*ret);
+	*ret = NULL;
 	free(s);
 	return (0);
 }
@@ -23,7 +24,7 @@ void	ft_init_gnl(char **s, char **ret, int *read_return, char *reste)
 	*s = malloc(BUFFER_SIZE + 1);
 	if (!(*s))
 		return ;
-	if (ret)
+	if (*ret)
 		free(*ret);
 	*ret = malloc(BUFFER_SIZE + 1);
 	if (!(*ret))
@@ -37,28 +38,28 @@ void	ft_init_gnl(char **s, char **ret, int *read_return, char *reste)
 	*read_return = 0;
 }
 
-int	get_next_line(int fd, char *ret)
+int	get_next_line(int fd, char **ret)
 {
 	char		*s;
 	static char	reste[BUFFER_SIZE];
 	int			found;
 	int			read_return;
 
-	ft_init_gnl(&s, &ret, &read_return, reste);
-	if (!ret || !s)
+	ft_init_gnl(&s, ret, &read_return, reste);
+	if (!*ret || !s)
 		return (-1);
-	found = ft_is_newline_gnl(ret);
+	found = ft_is_newline_gnl(*ret);
 	if (!found)
 		read_return = read(fd, s, BUFFER_SIZE);
 	while (!found && read_return > 0)
 	{
 		s[read_return] = 0;
 		found = ft_is_newline_gnl(s);
-		ret = ft_kinda_strcat_gnl(s, ret);
+		*ret = ft_kinda_strcat_gnl(s, *ret);
 		if (!found)
 			read_return = read(fd, s, BUFFER_SIZE);
 	}
-	if (read_return <= 0 && !ft_strlen_gnl(ret))
+	if (read_return <= 0 && !ft_strlen_gnl(*ret))
 		return (ft_free_gnl(ret, s));
 	ft_get_reste_gnl(s, reste, read_return);
 	free(s);

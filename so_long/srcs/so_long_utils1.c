@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   so_long_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 01:45:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/25 04:18:52 by pdubois          ###   ########.fr       */
+/*   Created: 2022/02/25 04:08:27 by pdubois           #+#    #+#             */
+/*   Updated: 2022/02/25 04:15:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error(t_game *game, char *s)
+int	ft_find_char_in_strs(char **map, char target, char ret)
 {
-	if (game)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
 	{
-		if (game->map)
-			ft_free_strs(game->map);
-		if (game->plyr)
-			free(game->plyr);
-		free(game);
+		j = 0;
+		while (map[i][j])
+		{
+			if(map[i][j] == target)
+			{
+				if (ret == 'x')
+					return (j);
+				if (ret == 'y')
+					return (i);
+			}
+			j++;
+
+		}
+		i++;
+
 	}
-	if (s)	
-		printf("Error : %s\n", s);
-	else
-		perror("Error ");
-	exit(-1);
+	return (-1);
 }

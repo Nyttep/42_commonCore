@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:23:33 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/21 06:24:54 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/02/25 06:14:00 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,21 @@
 # define S 0x0073
 # define W 0x0077
 
+
 typedef struct s_player
 {
-	void	*up_img;
-	void	*down_img;
-	void	*left_img;
-	void	*right_img;
+	void	*up;
+	int		up_x;
+	int		up_y;
+	void	*down;
+	int		down_x;
+	int		down_y;
+	void	*left;
+	int		left_x;
+	int		left_y;
+	void	*right;
+	int		right_x;
+	int		right_y;
 	int		x;
 	int		y;
 }	t_player;
@@ -49,11 +58,11 @@ typedef struct	s_game
 	char		**map;
 	int			col;
 	int			row;
-	t_player	plyr;
+	t_player	*plyr;
 }	t_game;
 
 
-int		get_next_line(int fd, char *ret);
+int		get_next_line(int fd, char **ret);
 int		ft_is_newline_gnl(char	*s);
 int		ft_strlen_gnl(char	*s);
 char	*ft_kinda_strcat_gnl(char	*s, char	*init);
@@ -63,5 +72,7 @@ void	ft_init_gnl(char	**s, char	**ret, int	*read_return, char	*reste);
 void	ft_check(int argc, char **argv);
 void	ft_error(t_game *game, char *s);
 char	**ft_init_map(char *path);
+int		ft_find_char_in_strs(char **map, char target, char ret);
+void	ft_init(t_game **game, char **argv);
 
 #endif

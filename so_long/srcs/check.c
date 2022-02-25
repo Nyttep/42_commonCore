@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/21 06:24:37 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/02/25 01:14:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	ft_check_char(char **map)
 	int	j;
 	int	check[4];
 
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 		check[i] = 0;
 	i = 0;
 	while(map[i])
@@ -62,7 +62,7 @@ int	ft_check_char(char **map)
 	}
 	i = 0;
 	j = 0;
-	if (!ft_check_min_char(map, i, j, check))
+	if (ft_check_min_char(map, i, j, check) == -1)
 		return (-1);
 	return(1);
 }
@@ -77,10 +77,9 @@ int	ft_check_shape(char **map)
 	if (ft_strlen(map[0]) < 3)
 		return (-1);
 	while (map[++i])
-	{
-		if (ft_strlen(map[i]) != ft_strlen(map[i - 1]))
+		if (ft_strlen(map[i]) != ft_strlen(map[i - 1])
+			&& ft_strlen(map[i]) != 0)
 			return (-1);
-	}
 	return (1);
 }
 
@@ -113,11 +112,11 @@ int	ft_check_closed(char **map)
 
 int ft_check_map(char **map)
 {
-	if (!ft_check_char(map))
+	if (ft_check_char(map) == -1)
 		return (-1);
-	if (!ft_check_shape(map))
+	if (ft_check_shape(map) == -1)
 		return (-1);
-	if (!ft_check_closed(map))
+	if (ft_check_closed(map) == -1)
 		return (-1);
 	return(1);
 }
@@ -127,16 +126,16 @@ void	ft_check(int argc, char **argv)
 	int len_argv;
 	char **map;
 
-	len_argv = ft_strlen(argv[1]);
 	if (argc != 2)
 		ft_error(NULL, "too many or no arguments");
+	len_argv = ft_strlen(argv[1]);
 	if (argv[1][len_argv - 1] != 'r' || argv[1][len_argv - 2] != 'e' ||
 		argv[1][len_argv - 3] != 'b' || argv[1][len_argv - 4] != '.')
 		ft_error(NULL, "The file is not a \".ber\"");
 	map = ft_init_map(argv[1]);
 	if (map == (char**)-1)
 		ft_error(NULL, "initialization failed");
-	if (!ft_check_map(map))
+	if (ft_check_map(map) == -1)
 	{
 		ft_free_strs(map);
 		ft_error(NULL, "not a valid map");

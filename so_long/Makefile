@@ -20,7 +20,8 @@ SRCS_NAME = main.c \
 			get_next_line_utils.c \
 			error.c \
 			initialization.c \
-			check.c
+			check.c \
+			so_long_utils1.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = so_long.h
