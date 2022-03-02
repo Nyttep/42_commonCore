@@ -3,7 +3,7 @@ static char *freeimage[] = {
 /* width height num_colors chars_per_pixel */
 "80 91 1116 2",
 /* colors */
-"   c #ffffff",
+"   c #00ff00",
 " . c #242323",
 " X c #292828",
 " o c #080000",

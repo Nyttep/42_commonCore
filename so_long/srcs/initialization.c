@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 02:21:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/25 05:11:28 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/02 13:58:54 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,43 @@ char	**ft_init_map(char *path)
 	return (map);
 }
 
+void	*ft_cpy_img(t_game	**game, char *path)
+{
+	void	*ret;
+	char	*addr_ret;
+	int		*int_addr_ret;
+	void	*img;
+	char	*addr_img;
+	int		*int_addr_img;
+	int		info[7];
+
+	img = mlx_xpm_file_to_image((*game)->mlx, path, &((*game)->plyr->width),
+								&((*game)->plyr->height));
+	addr_img = mlx_get_data_addr(img, &info[0], &info[1], &info[2]);
+	int_addr_img = (int*)addr_img;
+	ret = mlx_new_image((*game)->mlx, (*game)->plyr->width,
+						 (*game)->plyr->height);
+	addr_ret = mlx_get_data_addr(ret, &info[3], &info[4], &info[5]);
+	int_addr_ret = (int*)addr_ret;
+	info[6] = 0;
+	while (info[6] <= (((*game)->plyr->width * (info[0] / 8) +
+			(*game)->plyr->height * info[1]) / 4))
+	{
+		if (int_addr_img[info[6]] != int_addr_img[0])
+			int_addr_ret[info[6]] = int_addr_img[info[6]];
+		info[6]++;
+	}
+	mlx_destroy_image((*game)->mlx, img);
+	return(ret);
+}
+
 void	ft_init(t_game **game, char **argv)
 {
 	(*game)->mlx = mlx_init();
 	if (!(*game)->mlx)
 		ft_error(*game, NULL);
-	// (*game)->win = mlx_new_window((*game)->mlx, 1920, 1080, "so_long");
-	// if (!(*game)->win)
-		// ft_error(*game, NULL);
+	// (*game)->height = 100;
+	// (*game)->width = 100;
 	(*game)->map = ft_init_map(argv[1]);
 	if ((*game)->map == (char**)-1)
 		ft_error(*game, NULL);
@@ -97,17 +126,17 @@ void	ft_init(t_game **game, char **argv)
 	(*game)->plyr = malloc(sizeof(t_player));
 	if (!(*game)->plyr)
 		ft_error(*game, NULL);
-	(*game)->plyr->u = mlx_xpm_file_to_image((*game)->mlx, "img/plyr_u.xpm", &((*game)->plyr->u_x), &((*game)->plyr->u_y));
-	if (!(*game)->plyr->u)
+	(*game)->plyr->up = ft_cpy_img(game, "img/plyr_u.xpm");
+	if (!(*game)->plyr->up)
 		ft_error(*game, NULL);
-	(*game)->plyr->d = mlx_xpm_file_to_image((*game)->mlx, "img/down_player.xpm", &((*game)->plyr->d_x), &((*game)->plyr->d_y));
-	if (!(*game)->plyr->d)
+	(*game)->plyr->down = ft_cpy_img(game, "img/plyr_d.xpm");
+	if (!(*game)->plyr->down)
 		ft_error(*game, NULL);
-	(*game)->plyr->l = mlx_xpm_file_to_image((*game)->mlx, "img/plyr_l.xpm", &((*game)->plyr->l_x), &((*game)->plyr->l_y));
-	if (!(*game)->plyr->l)
+	(*game)->plyr->left = ft_cpy_img(game, "img/plyr_l.xpm");
+	if (!(*game)->plyr->left)
 		ft_error(*game, NULL);
-	(*game)->plyr->r = mlx_xpm_file_to_image((*game)->mlx, "img/plyr_r.xpm", &((*game)->plyr->r_x), &((*game)->plyr->r_y));
-	if (!(*game)->plyr->r)
+	(*game)->plyr->right = ft_cpy_img(game, "img/plyr_r.xpm");
+	if (!(*game)->plyr->right)
 		ft_error(*game, NULL);
 	(*game)->plyr->x = ft_find_char_in_strs((*game)->map, 'P', 'x');
 	(*game)->plyr->y = ft_find_char_in_strs((*game)->map, 'P', 'y');

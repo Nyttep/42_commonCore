@@ -3,7 +3,7 @@ static char *freeimage[] = {
 /* width height num_colors chars_per_pixel */
 "80 93 1370 2",
 /* colors */
-"   c #ffffff",
+"   c #00ff00",
 " . c #2d2b2b",
 " X c #242323",
 " o c #241e1e",
@@ -1406,8 +1406,8 @@ static char *freeimage[] = {
 "O*XI % 1O=O-O;O:.O.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qO>O,O<O1O2O3O4O4O5O6O7O8O9O9O9O0X2OqOwOe.I.q.q.q.q.q.q.q.q.q.q.UXbOrOtOy JOu % $O*  ",
 " X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.ROdOf.yOgOhOjOjOkOlOzOx + + +Oc.VOvObOnOm.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
 " X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOCOZOAOSODOFOGOGOHOJOKXB + + +OL.;OPOIOUOY.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
-" X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOROEO5OWOQ    O!O~O^O/ + + + + +O(O)O_O`.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
-" X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOROEO5OWOQ    O!O~O^O/ + + + + +O(O)O_O`.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
+" X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOROEO5OWOQOQO!O!O~O^O/ + + + + +O(O)O_O`.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
+" X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOROEO5OWOQOQO!O!O~O^O/ + + + + +O(O)O_O`.q.q.q.q.q.q.q.q.q.q.UoCOMONOBOVOu + + X  ",
 " X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTORO'O]O[O{O}O}O|+ +. _ + + + + +O(O)O_O`.q.q.q.q.q.q.U.Yo!+X.L+o+O+++@+#X, + + X  ",
 " X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOR+$+%+&OJ+*+*+=+-+;Xj + + + + +O(O)O_O`.q.q.q.q.q.Y+:.0+o+>+,+<+1+2+3+4.; + + X  ",
 " X + +OiOpOaOs.9.+.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.qOTOR+5+6+7+8+9+9+0+q+w - + + + + +O(O)O_O`.q.q.q.q.q+:.}.e+e+r+t+y+u+i.) 1+p + + X  ",

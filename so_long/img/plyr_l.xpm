@@ -3,7 +3,7 @@ static char *freeimage[] = {
 /* width height num_colors chars_per_pixel */
 "80 93 1370 2",
 /* colors */
-"   c #ffffff",
+"   c #00ff00",
 " . c #242323",
 " X c #2d2b2b",
 " o c #0c0404",
@@ -1406,8 +1406,8 @@ static char *freeimage[] = {
 "O* $ #O= /O-O;O:Xc.P.8.8.8.8.8.8.8.8.8.8.KO>O,O<XwO1O2O2O2O3O4O5O6O7O7O8O9O0OqOwOe.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.@OrOtOyOu - #XVO*  ",
 " . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OdOfOgOh.dOj O O OOkOlOzOxOcOcOvOb.3OnOm.H.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
 " . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OCOZOAOS {OD O O OXjOFOGOHOJOJOKOLOPOIOUOY.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
-" . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OTOROEOW O O O O OOQO!O~O^    O/O(O6O)O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
-" . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OTOROEOW O O O O OOQO!O~O^    O/O(O6O)O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
+" . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OTOROEOW O O O O OOQO!O~O^O^O/O/O(O6O)O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
+" . O OO=OiOpOaOsoN.P.8.8.8.8.8.8.8.8.8.8OTOROEOW O O O O OOQO!O~O^O^O/O/O(O6O)O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
 " . O OX+O'O]O[O{O}.UO|oP.L.P.8.8.8.8.8.8OTOROEOW O O O O O F+ +.+X+o+o+O+++@+#O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
 " . O O {+$+%+&+*+=+-+;O}.9+:.L.8.8.8.8.8OTOROEOW O O O O OXB+>+,+<+1+1OG+2+3+4O_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",
 " . O O+5 -XX+6+7+8+9+0+q.6.]+:.8.8.8.8.8OTOROEOW O O O O O 1+w+e+r+t+t+y+u+i+pO_O`.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.#.0OMONOBOV O O .  ",

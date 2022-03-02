@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:23:33 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/25 06:14:00 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/02 11:22:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,11 @@
 typedef struct s_player
 {
 	void	*up;
-	int		up_x;
-	int		up_y;
 	void	*down;
-	int		down_x;
-	int		down_y;
 	void	*left;
-	int		left_x;
-	int		left_y;
 	void	*right;
-	int		right_x;
-	int		right_y;
+	int		height;
+	int		width;
 	int		x;
 	int		y;
 }	t_player;
@@ -58,6 +52,8 @@ typedef struct	s_game
 	char		**map;
 	int			col;
 	int			row;
+	// int			height;
+	// int			width;
 	t_player	*plyr;
 }	t_game;
 
