@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/02/25 01:14:10 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:52:59 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	ft_check_min_char(char **map, int i, int j,int *check)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'E')
-				check[0] = 1;
+				check[0]++;
 			else if (map[i][j] == 'C')
 				check[1] = 1;
 			else if (map[i][j] == 'P')
-				check[2] = 1;
+				check[2]++;
 			else if (map[i][j] == '1')
 				check[3] = 1;
 			j++;
@@ -33,7 +33,7 @@ int	ft_check_min_char(char **map, int i, int j,int *check)
 	}
 	i = -1;
 	while(++i < 4)
-		if(check[i] == 0)
+		if(check[i] != 1)
 			return (-1);
 	return(1);
 }
@@ -132,9 +132,12 @@ void	ft_check(int argc, char **argv)
 	if (argv[1][len_argv - 1] != 'r' || argv[1][len_argv - 2] != 'e' ||
 		argv[1][len_argv - 3] != 'b' || argv[1][len_argv - 4] != '.')
 		ft_error(NULL, "The file is not a \".ber\"");
-	map = ft_init_map(argv[1]);
+	map = malloc(sizeof(char*) * (2));
+	if (!map)
+		ft_error(NULL, NULL);
+	map = ft_init_map(argv[1], map);
 	if (map == (char**)-1)
-		ft_error(NULL, "initialization failed");
+		ft_error(NULL, NULL);
 	if (ft_check_map(map) == -1)
 	{
 		ft_free_strs(map);

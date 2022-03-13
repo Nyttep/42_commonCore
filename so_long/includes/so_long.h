@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:23:33 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/02 11:22:31 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/13 16:13:28 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,50 @@
 # define S 0x0073
 # define W 0x0077
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		height;
+	int		width;
+}	t_img;
 
 typedef struct s_player
 {
-	void	*up;
-	void	*down;
-	void	*left;
-	void	*right;
-	int		height;
-	int		width;
+	t_img	*u;
+	t_img	*d;
+	t_img	*l;
+	t_img	*r;
 	int		x;
 	int		y;
 }	t_player;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	char		**map;
 	int			col;
 	int			row;
-	// int			height;
-	// int			width;
+	int			move;
+	t_img		*coin;
+	t_img		*bot_left;
+	t_img		*bot_right;
+	t_img		*top_left;
+	t_img		*top_right;
+	t_img		*bot_wall;
+	t_img		*top_wall;
+	t_img		*right_wall;
+	t_img		*left_wall;
+	t_img		*floor;
+	t_img		*rock;
+	t_img		*opened_exit;
+	t_img		*closed_exit;
 	t_player	*plyr;
 }	t_game;
-
 
 int		get_next_line(int fd, char **ret);
 int		ft_is_newline_gnl(char	*s);
@@ -67,8 +86,10 @@ char	*ft_cpy_and_rst_reste_gnl(char	*ret, char	*reste);
 void	ft_init_gnl(char	**s, char	**ret, int	*read_return, char	*reste);
 void	ft_check(int argc, char **argv);
 void	ft_error(t_game *game, char *s);
-char	**ft_init_map(char *path);
+char	**ft_init_map(char *path, char **map);
 int		ft_find_char_in_strs(char **map, char target, char ret);
 void	ft_init(t_game **game, char **argv);
+int		ft_quit(t_game *game);
+void	ft_display_beginning(t_game *game);
 
 #endif
