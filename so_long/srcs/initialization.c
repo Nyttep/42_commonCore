@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 02:21:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/13 15:05:19 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:09:01 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ char	**ft_init_map(char *path, char **map)
 	int		i;
 
 	i = 1;
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		ft_error(NULL, NULL);
 	map[0] = NULL;
 	map[1] = NULL;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		ft_error(ft_free_strs(map), NULL);
 	state = get_next_line(fd, &map[0]);
 	while (state)
 	{
@@ -197,4 +197,5 @@ void	ft_init(t_game **game, char **argv)
 	ft_init_ressources(game);
 	(*game)->plyr->x = ft_find_char_in_strs((*game)->map, 'P', 'x');
 	(*game)->plyr->y = ft_find_char_in_strs((*game)->map, 'P', 'y');
+	(*game)->to_collect = ft_count_collectibles(*game);
 }

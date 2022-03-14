@@ -22,7 +22,8 @@ SRCS_NAME = main.c \
 			initialization.c \
 			check.c \
 			so_long_utils.c \
-			display_utils.c
+			display_utils.c \
+			key_events.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = so_long.h

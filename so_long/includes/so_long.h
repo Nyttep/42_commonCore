@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:23:33 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/13 16:13:28 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/14 14:45:58 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_game
 	int			col;
 	int			row;
 	int			move;
+	int			to_collect;
 	t_img		*coin;
 	t_img		*bot_left;
 	t_img		*bot_right;
@@ -91,5 +92,8 @@ int		ft_find_char_in_strs(char **map, char target, char ret);
 void	ft_init(t_game **game, char **argv);
 int		ft_quit(t_game *game);
 void	ft_display_beginning(t_game *game);
+int		ft_count_collectibles(t_game *game);
+int		ft_key_events(int keycode, t_game *game);
+void	ft_put_spec_image_to_window(t_game *game, t_img *img, int x, int y);
 
 #endif

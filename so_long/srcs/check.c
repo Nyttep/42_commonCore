@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/13 14:52:59 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:05:59 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,11 @@ void	ft_check(int argc, char **argv)
 		ft_error(NULL, "The file is not a \".ber\"");
 	map = malloc(sizeof(char*) * (2));
 	if (!map)
-		ft_error(NULL, NULL);
+		ft_error(ft_free_strs(map), NULL);
 	map = ft_init_map(argv[1], map);
 	if (map == (char**)-1)
-		ft_error(NULL, NULL);
+		ft_error(ft_free_strs(map), NULL);
 	if (ft_check_map(map) == -1)
-	{
-		ft_free_strs(map);
-		ft_error(NULL, "not a valid map");
-	}
+		ft_error(ft_free_strs(map), "not a valid map");
 	ft_free_strs(map);
 }

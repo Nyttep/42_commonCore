@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils1.c                                   :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 04:08:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/09 17:59:28 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/14 14:17:58 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,26 @@ int	ft_find_char_in_strs(char **map, char target, char ret)
 
 	}
 	return (-1);
+}
+
+int	ft_count_collectibles(t_game *game)
+{
+	int	i;
+	int	j;
+	int	ret;
+
+	i = 0;
+	ret = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'C')
+				ret++;
+			j++;
+		}
+		i++;
+	}
+	return (ret);
 }
