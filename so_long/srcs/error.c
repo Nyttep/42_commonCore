@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:45:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/14 17:12:51 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:27:34 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_free_ressources(t_game *game)
 {
 	if (game->coin)
 		ft_free_img(game, game->coin);
-	// if (game->floor)
-	ft_free_img(game, game->floor);
+	if (game->floor)
+		ft_free_img(game, game->floor);
 	if (game->rock)
 		ft_free_img(game, game->rock);
 	if (game->opened_exit)
