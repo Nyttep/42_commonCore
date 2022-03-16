@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:23:33 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/14 14:45:58 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:03:38 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include "libft.h"
+# include "ft_printf.h"
 
 # define BUFFER_SIZE 100
 # define ESC 0xff1b
@@ -95,5 +96,10 @@ void	ft_display_beginning(t_game *game);
 int		ft_count_collectibles(t_game *game);
 int		ft_key_events(int keycode, t_game *game);
 void	ft_put_spec_image_to_window(t_game *game, t_img *img, int x, int y);
+void	ft_init_img(t_game **game, t_img **img, char *path);
+void	ft_init_player(t_game **game);
+void	ft_destroy(t_game *game);
+void	ft_free_img(t_game *game, t_img *img);
+int		ft_check_closed(char **map);
 
 #endif

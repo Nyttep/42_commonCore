@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 04:08:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/14 14:17:58 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/15 15:35:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_find_char_in_strs(char **map, char target, char ret)
 		j = 0;
 		while (map[i][j])
 		{
-			if(map[i][j] == target)
+			if (map[i][j] == target)
 			{
 				if (ret == 'x')
 					return (j);
@@ -31,10 +31,8 @@ int	ft_find_char_in_strs(char **map, char target, char ret)
 					return (i);
 			}
 			j++;
-
 		}
 		i++;
-
 	}
 	return (-1);
 }

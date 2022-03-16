@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean_exit_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 06:58:07 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/15 14:13:17 by pdubois          ###   ########.fr       */
+/*   Created: 2022/03/15 14:04:22 by pdubois           #+#    #+#             */
+/*   Updated: 2022/03/15 15:35:29 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	ft_destroy(t_game *game)
 {
-	t_game	*game;
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
+	if (game->mlx)
+		free(game->mlx);
+}
 
-	ft_check(argc, argv);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		ft_error(game, NULL);
-	ft_init(&game, argv);
-	game->win = mlx_new_window(game->mlx, game->col * 100,
-			game->row * 100, "so_long");
-	ft_display_beginning(game);
-	mlx_hook(game->win, 17, 0L, ft_quit, game);
-	mlx_hook(game->win, 2, 1L << 0, ft_key_events, game);
-	mlx_loop(game->mlx);
+void	ft_free_img(t_game *game, t_img *img)
+{
+	if (img)
+	{
+		if (img->img)
+			mlx_destroy_image(game->mlx, img->img);
+		free(img);
+	}
 }

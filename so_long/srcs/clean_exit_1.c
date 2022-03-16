@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   clean_exit_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:45:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/14 17:27:34 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/15 15:35:28 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_destroy(t_game *game)
-{
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-		mlx_destroy_display(game->mlx);
-	if (game->mlx)
-		free(game->mlx);
-}
-
-void	ft_free_img(t_game *game, t_img *img)
-{
-	if (img)
-	{
-		if (img->img)
-			mlx_destroy_image(game->mlx, img->img);
-		free(img);
-	}
-}
 
 void	ft_free_player(t_game *game)
 {
@@ -97,8 +77,8 @@ int	ft_quit(t_game *game)
 
 void	ft_error(t_game *game, char *s)
 {
-	if (s)	
-		printf("Error : %s\n", s);
+	if (s)
+		ft_printf("Error : %s\n", s);
 	else
 		perror("Error ");
 	ft_quit(game);

@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 06:58:07 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/15 14:13:17 by pdubois          ###   ########.fr       */
+/*   Created: 2022/03/15 14:50:25 by pdubois           #+#    #+#             */
+/*   Updated: 2022/03/15 14:55:42 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+int	ft_check_closed(char **map)
 {
-	t_game	*game;
+	int	i;
+	int	max_x;
+	int	max_y;
 
-	ft_check(argc, argv);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		ft_error(game, NULL);
-	ft_init(&game, argv);
-	game->win = mlx_new_window(game->mlx, game->col * 100,
-			game->row * 100, "so_long");
-	ft_display_beginning(game);
-	mlx_hook(game->win, 17, 0L, ft_quit, game);
-	mlx_hook(game->win, 2, 1L << 0, ft_key_events, game);
-	mlx_loop(game->mlx);
+	max_x = ft_strlen(map[0]) - 1;
+	max_y = ft_strslen(map) - 1;
+	i = -1;
+	while (map[0][++i])
+		if (map[0][i] != '1')
+			return (-1);
+	i = -1;
+	while (map[++i])
+		if (map[i][0] != '1')
+			return (-1);
+	i = -1;
+	while (map[max_y][++i])
+		if (map[max_y][i] != '1')
+			return (-1);
+	i = -1;
+	while (map[++i])
+		if (map[i][max_x] != '1')
+			return (-1);
+	return (1);
 }

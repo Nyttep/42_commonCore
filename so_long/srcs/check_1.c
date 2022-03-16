@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/14 17:05:59 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/15 14:53:46 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_min_char(char **map, int i, int j,int *check)
+int	ft_check_min_char(char **map, int i, int j, int *check)
 {
 	while (map[i])
 	{
@@ -32,10 +32,10 @@ int	ft_check_min_char(char **map, int i, int j,int *check)
 		i++;
 	}
 	i = -1;
-	while(++i < 4)
-		if(check[i] != 1)
+	while (++i < 4)
+		if (check[i] != 1)
 			return (-1);
-	return(1);
+	return (1);
 }
 
 int	ft_check_char(char **map)
@@ -48,7 +48,7 @@ int	ft_check_char(char **map)
 	while (++i < 4)
 		check[i] = 0;
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
@@ -64,7 +64,7 @@ int	ft_check_char(char **map)
 	j = 0;
 	if (ft_check_min_char(map, i, j, check) == -1)
 		return (-1);
-	return(1);
+	return (1);
 }
 
 int	ft_check_shape(char **map)
@@ -83,34 +83,7 @@ int	ft_check_shape(char **map)
 	return (1);
 }
 
-int	ft_check_closed(char **map)
-{
-	int	i;
-	int	max_x;
-	int	max_y;
-
-	max_x = ft_strlen(map[0]) - 1;
-	max_y = ft_strslen(map) - 1;
-	i = -1;
-	while (map[0][++i])
-		if (map[0][i] != '1')
-			return (-1);
-	i = -1;
-	while (map[++i])
-		if (map[i][0] != '1')
-			return (-1);
-	i = -1;
-	while (map[max_y][++i])
-		if (map[max_y][i] != '1')
-			return (-1);
-	i = -1;
-	while (map[++i])
-		if(map[i][max_x] != '1')
-			return (-1);
-	return (1);
-}
-
-int ft_check_map(char **map)
+int	ft_check_map(char **map)
 {
 	if (ft_check_char(map) == -1)
 		return (-1);
@@ -118,13 +91,13 @@ int ft_check_map(char **map)
 		return (-1);
 	if (ft_check_closed(map) == -1)
 		return (-1);
-	return(1);
+	return (1);
 }
 
 void	ft_check(int argc, char **argv)
 {
-	int len_argv;
-	char **map;
+	int		len_argv;
+	char	**map;
 
 	if (argc != 2)
 		ft_error(NULL, "too many or no arguments");
@@ -132,11 +105,11 @@ void	ft_check(int argc, char **argv)
 	if (argv[1][len_argv - 1] != 'r' || argv[1][len_argv - 2] != 'e' ||
 		argv[1][len_argv - 3] != 'b' || argv[1][len_argv - 4] != '.')
 		ft_error(NULL, "The file is not a \".ber\"");
-	map = malloc(sizeof(char*) * (2));
+	map = malloc(sizeof(char *) * (2));
 	if (!map)
 		ft_error(ft_free_strs(map), NULL);
 	map = ft_init_map(argv[1], map);
-	if (map == (char**)-1)
+	if (map == (char **)-1)
 		ft_error(ft_free_strs(map), NULL);
 	if (ft_check_map(map) == -1)
 		ft_error(ft_free_strs(map), "not a valid map");
