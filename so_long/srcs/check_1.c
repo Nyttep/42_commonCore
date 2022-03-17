@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/15 14:53:46 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/17 18:16:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	ft_check(int argc, char **argv)
 		ft_error(ft_free_strs(map), NULL);
 	map = ft_init_map(argv[1], map);
 	if (map == (char **)-1)
-		ft_error(ft_free_strs(map), NULL);
+		ft_error(NULL, NULL);
 	if (ft_check_map(map) == -1)
 		ft_error(ft_free_strs(map), "not a valid map");
 	ft_free_strs(map);

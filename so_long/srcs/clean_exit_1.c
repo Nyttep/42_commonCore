@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:45:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/15 15:35:28 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/17 17:32:53 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	ft_quit(t_game *game)
 void	ft_error(t_game *game, char *s)
 {
 	if (s)
-		ft_printf("Error : %s\n", s);
+		ft_printf("Error\n%s\n", s);
 	else
-		perror("Error ");
+		perror("Error\n");
 	ft_quit(game);
 }

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:57:11 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/15 15:35:30 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/17 18:23:01 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_init_map(char *path, char **map)
 	{
 		map = ft_expand_strs(map);
 		if (map == (char **)-1)
-			return (close(fd), ft_free_strs(map), (char **) - 1);
+			return (close(fd), (char **) - 1);
 		state = get_next_line(fd, &map[i++]);
 	}
 	if (state == -1)

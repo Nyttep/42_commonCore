@@ -14,6 +14,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 void	ft_putchar(char c);
 int		ft_c(int c);
