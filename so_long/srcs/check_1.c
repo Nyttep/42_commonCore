@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 01:20:44 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/17 18:16:31 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:19:09 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	ft_check(int argc, char **argv)
 	len_argv = ft_strlen(argv[1]);
 	if (argv[1][len_argv - 1] != 'r' || argv[1][len_argv - 2] != 'e' ||
 		argv[1][len_argv - 3] != 'b' || argv[1][len_argv - 4] != '.')
+		ft_error(NULL, "The file is not a \".ber\"");
+	if (len_argv == 4)
 		ft_error(NULL, "The file is not a \".ber\"");
 	map = malloc(sizeof(char *) * (2));
 	if (!map)
