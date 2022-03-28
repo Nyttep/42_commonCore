@@ -48,12 +48,17 @@ int	ft_check_digit(char **s)
 		j = 0;
 		if (s[i][j] == '-' || s[i][j] == '+')
 			j++;
-		while (s[i][j])
+		if (s[i][j])
 		{
-			if (!ft_isdigit((int) s[i][j]))
-				return (0);
-			j++;
+			while (s[i][j])
+			{
+				if (!ft_isdigit((int) s[i][j]))
+					return (0);
+				j++;
+			}
 		}
+		else
+			return (0);
 		i++;
 	}
 	return (1);
