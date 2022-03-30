@@ -50,7 +50,10 @@ SRCS =	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_free_strs.c \
-		ft_strslen.c
+		ft_strslen.c \
+		ft_printf.c \
+		ft_printf_utils1.c \
+		ft_printf_utils2.c
 
 OBJS = $(SRCS:.c=.o)
 

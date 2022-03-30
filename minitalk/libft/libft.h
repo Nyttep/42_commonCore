@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
@@ -54,6 +55,15 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	*ft_free_strs(char **s);
 int		ft_strslen(char **s);
+void	ft_putchar(char c);
+int		ft_c(int c);
+int		ft_s(char *str);
+int		ft_putnbr(int nbr);
+int		ft_putnbr_u(unsigned int nbr);
+int		ft_putnbr_hexa_u(unsigned long int nbr);
+int		ft_putnbr_hexa_maj_u(unsigned int nbr);
+void	ft_find_format(const char *str, int i, int *j, va_list args);
+int		ft_printf(const char *str, ...);
 typedef struct s_list
 {
 	void			*content;
