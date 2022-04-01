@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 18:43:32 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/31 19:19:59 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:53:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void *ft_realloc(void *ptr, size_t size)
 	i = -1;
 	ret = malloc(size);
 	if (!ret)
-		return (-1);
+		return ((void *)-1);
 	ft_bzero(ret, size);
-	while ((char*)ptr + ++i && i < size)
-		ret[i] = (char*) ptr + i;
+	while ((char*)ptr + ++i && i < (int) size)
+		ret[i] = *(char*) ptr + i;
 	free(ptr);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:10:30 by pdubois           #+#    #+#             */
-/*   Updated: 2022/03/30 18:01:05 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:37:00 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLIENT_H
 
 #include <signal.h>
+#include <unistd.h>
 #include "libft.h"
 
 #endif
