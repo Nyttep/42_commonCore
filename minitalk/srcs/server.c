@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/04/01 19:15:54 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:23:57 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_handle_zero(char *ret, int *i, int pid)
 			ft_clean_exit(ret);
 	}
 	(void)pid;
-	// kill(pid, SIGUSR1);
+	kill(pid, SIGUSR1);
 	return (ret);
 }
 
@@ -51,7 +51,7 @@ char	*ft_handle_one(char *ret, int *i, int pid)
 			ft_clean_exit(ret);
 	}
 	(void)pid;
-	// kill(pid, SIGUSR1);
+	kill(pid, SIGUSR1);
 	return (ret);
 }
 
