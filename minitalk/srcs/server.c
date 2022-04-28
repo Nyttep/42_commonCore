@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/04/03 20:23:57 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/28 18:57:03 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void	ft_display_pid(void)
 {
-	ft_printf("%d", getpid());
+	ft_putnbr_fd(getpid(), 1);
 }
 
-void	ft_clean_exit(char *s)
+void	ft_exit_SIGINT(char *s)
 {
 	if (s)
 		free(s);
-	exit(-1);
+	exit(130);
+}
+
+void	ft_clean_exit(char *msg, char *s)
+{
+	if (s)
+		free(s);
+	ft_putstr_fd(msg, 2);
+	exit(1);
 }
 
 char	*ft_handle_zero(char *ret, int *i, int pid)
@@ -32,7 +40,7 @@ char	*ft_handle_zero(char *ret, int *i, int pid)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
-			ft_clean_exit(ret);
+			ft_clean_exit("malloc failed", ret);
 	}
 	(void)pid;
 	kill(pid, SIGUSR1);
@@ -48,7 +56,7 @@ char	*ft_handle_one(char *ret, int *i, int pid)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
-			ft_clean_exit(ret);
+			ft_clean_exit("malloc failed", ret);
 	}
 	(void)pid;
 	kill(pid, SIGUSR1);
@@ -57,14 +65,10 @@ char	*ft_handle_one(char *ret, int *i, int pid)
 
 char	*ft_new_client(int *i, char *ret, int *pid, siginfo_t *info)
 {
-	if (!ret)
-		ft_bzero(ret = malloc(2), 2);
-	else
-	{
+	if (ret)
 		free(ret);
-		ft_bzero(ret = malloc(2), 2);
-		*i = 0;
-	}
+	ft_bzero(ret = malloc(2), 2);
+	*i = 0;
 	*pid = info->si_pid;
 	return (ret);
 }
@@ -79,16 +83,16 @@ void	ft_handle_signal(int signum, siginfo_t *info, void *context)
 	if (pid != info->si_pid)
 		ret = ft_new_client(&i, ret, &pid, info);
 	if (!ret)
-		ft_clean_exit(ret);
+		ft_clean_exit("malloc failed", ret);
 	if (signum == SIGUSR1)
 		ret = ft_handle_zero(ret, &i, pid); 
 	if (signum == SIGUSR2)
 		ret = ft_handle_one(ret, &i, pid); 
 	if (signum == SIGINT)
-		ft_clean_exit(ret); 
+		ft_exit_SIGINT(ret); 
 	if (ret[i / 9] == 0 && i % 8 == 0)
 	{
-		write(1, ret, ft_strlen(ret));
+		ft_putstr_fd(ret, 1);
 		free(ret);
 		ret = NULL;
 		i = 0;

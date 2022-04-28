@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/04/04 02:33:31 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/28 18:57:04 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,31 @@
 
 int	g_sent = 0;
 
-void	ft_wrong_args()
+void	ft_time_out()
 {
-	ft_printf("client should be called like so :\n./client <server PID> <string>");
-	exit(-1);
+	ft_putstr_fd("Server did not respond in time", 2);
+	exit(1);
 }
 
-void	ft_check(int ac)
+void	ft_wrong_args(char **av)
+{
+	ft_putstr_fd(av[0] + 2, 2);
+	ft_putstr_fd(" should be called like so :\n", 2);
+	ft_putstr_fd(av[0], 2);
+	ft_putstr_fd(" <server PID> <string>\n", 2);
+	exit(1);
+}
+
+void	ft_check(int ac, char **av)
 {
 	if (ac != 3)
-		ft_wrong_args();
+		ft_wrong_args(av);
 }
 
 void	ft_wrong_pid()
 {
-	ft_printf("Wrong PID or server has been shut down");
-	exit(-1);
+	ft_putstr_fd("Wrong PID or server has been shut down", 2);
+	exit(1);
 }
 
 int		ft_figure_out_bin(char **av)
@@ -63,7 +72,9 @@ void	ft_init_com(int pid, char **av)
 
 void	ft_count_sent(int signum)
 {
+	(void)signum;
 	g_sent++;
+	ft_putnbr_fd(g_sent, 1);
 }
 
 void	ft_communication(int pid, char **av)
@@ -73,11 +84,12 @@ void	ft_communication(int pid, char **av)
 
 	len = ft_strlen(av[1]);
 	i = 1;
-	write(1, "eeeeeeee", 9);
+	signal(SIGUSR1, ft_count_sent);
 	while (i / 8 <= len)
 	{
 		sleep(1);
-		write(1, "eeeeeeee", 9);
+		if (g_sent != i)
+			ft_time_out();
 		if (ft_figure_out_bin(av) == 0)
 		{
 			if (kill(pid, SIGUSR1) == -1)
@@ -88,16 +100,14 @@ void	ft_communication(int pid, char **av)
 				ft_wrong_pid();
 		i++;
 	}
-	signal(SIGUSR1, ft_copunt_sent);
 }
 
 int	main(int ac, char **av)
 {
 	int	pid;
 
-	(void) ac;
 	pid = ft_atoi(av[1]);
-	ft_check(ac);
+	ft_check(ac, av);
 	ft_init_com(pid, av);
 	ft_communication(pid, av);
 	// kill(ft_atoi(av[1]), SIGUSR1);
