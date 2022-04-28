@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/04/28 18:57:04 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/04/28 19:21:47 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_figure_out_bin(char **av)
 	static int	comp = 0b10000000;
 	int			ret;
 
-	if ((av[1][i / 8] | comp) == (av[1][i / 8]))
+	if ((av[2][i / 8] | comp) == (av[2][i / 8]))
 		ret = 1;
 	else
 		ret = 0;
@@ -74,7 +74,6 @@ void	ft_count_sent(int signum)
 {
 	(void)signum;
 	g_sent++;
-	ft_putnbr_fd(g_sent, 1);
 }
 
 void	ft_communication(int pid, char **av)
@@ -82,7 +81,7 @@ void	ft_communication(int pid, char **av)
 	int	i;
 	int	len;
 
-	len = ft_strlen(av[1]);
+	len = ft_strlen(av[2]);
 	i = 1;
 	signal(SIGUSR1, ft_count_sent);
 	while (i / 8 <= len)
