@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/04/28 18:57:03 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/05/03 20:05:43 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_display_pid(void)
 {
 	ft_putnbr_fd(getpid(), 1);
+	ft_putchar_fd('\n', 1);
 }
 
 void	ft_exit_SIGINT(char *s)
@@ -58,7 +59,6 @@ char	*ft_handle_one(char *ret, int *i, int pid)
 		if (!ret)
 			ft_clean_exit("malloc failed", ret);
 	}
-	(void)pid;
 	kill(pid, SIGUSR1);
 	return (ret);
 }
