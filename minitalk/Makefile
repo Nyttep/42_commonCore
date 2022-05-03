@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 16:55:50 by pdubois           #+#    #+#              #
-#    Updated: 2022/03/30 18:01:06 by pdubois          ###   ########.fr        #
+#    Updated: 2022/05/03 21:08:59 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,16 @@ OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 all: $(NAME_SERVER) $(NAME_CLIENT)
 
 %.o : %.c
-			${CC} ${CFLAGS} -g -I ${INCS_PATH} -I libft -c $< -o $@
+			${CC} ${CFLAGS} -I ${INCS_PATH} -I libft -c $< -o $@
 
 ${LIBS}:
 			make -C libft
 
 ${NAME_SERVER}:	${OBJS_SERVER} ${INCS} ${LIBS}
-			${CC} -g -o ${NAME_SERVER} ${OBJS_SERVER} ${LIBS}
+			${CC} -o ${NAME_SERVER} ${OBJS_SERVER} ${LIBS}
 
 ${NAME_CLIENT}:	${OBJS_CLIENT} ${INCS} ${LIBS}
-			${CC} -g -o ${NAME_CLIENT} ${OBJS_CLIENT} ${LIBS}
+			${CC} -o ${NAME_CLIENT} ${OBJS_CLIENT} ${LIBS}
 
 clean:
 			${RM} ${OBJS_CLIENT} ${OBJS_SERVER}; make -C libft clean;
