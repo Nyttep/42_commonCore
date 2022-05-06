@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/03 21:07:55 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/05/06 22:40:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ft_communication(int pid, char **av)
 	len = ft_strlen(av[2]);
 	i = 1;
 	signal(SIGUSR1, ft_count_sent);
+	ft_init_com(pid, av);
 	while (i / 8 <= len)
 	{
 		usleep(5000);
@@ -107,7 +108,7 @@ int	main(int ac, char **av)
 
 	pid = ft_atoi(av[1]);
 	ft_check(ac, av);
-	ft_init_com(pid, av);
 	ft_communication(pid, av);
-	// kill(ft_atoi(av[1]), SIGUSR1);
 }
+
+/* GERER L'INT OVERFLOW (<PID> + (2147483648 * 2))*/
