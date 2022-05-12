@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/06 22:40:44 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/05/12 19:07:13 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_check(int ac, char **av)
 {
 	if (ac != 3)
 		ft_wrong_args(av);
+	if (av[1] < 1)
+		//
 }
 
 void	ft_wrong_pid()
