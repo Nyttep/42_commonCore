@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/06 22:36:37 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/05/12 18:56:48 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,30 @@ void	ft_clean_exit(char *msg, char *s)
 	exit(1);
 }
 
-char	*ft_handle_zero(char *ret, int *i/*, int pid*/)
+char	*ft_handle_zero(char *ret, int *i)
 {
 	ret[(*i) / 8] = ret[(*i) / 8] << 1;
 	(*i)++;
 	if ((*i) % 8 == 0 && ret[(*i) / 9] != 0)
 	{
-		ret = ft_realloc(ret, ft_strlen(ret) + 2); //realloc double free ??
+		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
 			ft_clean_exit("malloc failed", ret);
 	}
-	// kill(pid, SIGUSR1);
 	return (ret);
 }
 
-char	*ft_handle_one(char *ret, int *i/*, int pid*/)
+char	*ft_handle_one(char *ret, int *i)
 {
 	ret[(*i) / 8] = ret[(*i) / 8] << 1;
 	ret[(*i) / 8] = ret[(*i) / 8] + 0b00000001;
 	(*i)++;
 	if ((*i) % 8 == 0 && ret[((*i) - 1) / 8] != 0)
 	{
-		ret = ft_realloc(ret, ft_strlen(ret) + 2); //realloc double free ??
+		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
 			ft_clean_exit("malloc failed", ret);
 	}
-	// kill(pid, SIGUSR1);
 	return (ret);
 }
 
