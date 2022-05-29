@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/12 19:07:13 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/05/29 18:42:37 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,59 @@ void	ft_wrong_args(char **av)
 	exit(1);
 }
 
+void	ft_pid_lower_than_one()
+{
+	ft_putstr_fd("wrong PID", 2);
+	exit(1);
+}
+
+
+void	ft_pid_bigger_than_maxint()
+{
+	ft_putstr_fd("PID bigger souldn't be bigger or lower than max int", 2);
+	exit(1);
+}
+
+long long int	ft_long_atoi(const char *str)
+{
+	int				i;
+	long long int	neg;
+	long long int	res;
+
+	i = 0;
+	neg = 1;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		res = (str[i] - 48) + (res * 10);
+		i++;
+	}
+	return (res * neg);
+}
+
 void	ft_check(int ac, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (ac != 3)
 		ft_wrong_args(av);
-	if (av[1] < 1)
-		//
+	while (ft_isdigit(av[1][i]) && av[1][i])
+		i++;
+	if (av[1][i] != 0)
+		ft_wrong_args(av);
+	if (ft_long_atoi(av[1]) > 2147483647 || ft_strlen(av[1]) > 12)
+		ft_pid_bigger_than_maxint();
+	else if (ft_atoi(av[1]) < 1)
+		ft_pid_lower_than_one();
 }
 
 void	ft_wrong_pid()
