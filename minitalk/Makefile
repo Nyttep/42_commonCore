@@ -6,12 +6,12 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 16:55:50 by pdubois           #+#    #+#              #
-#    Updated: 2022/05/06 22:40:58 by pdubois          ###   ########.fr        #
+#    Updated: 2022/06/14 19:37:32 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME_SERVER = server
 NAME_CLIENT = client

@@ -6,13 +6,19 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/29 18:42:37 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/06/14 19:41:41 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
 int	g_sent = 0;
+
+int	ft_error(char *msg)
+{
+	ft_putstr_fd(msg, 2);
+	exit(1);
+}
 
 void	ft_time_out()
 {
@@ -38,7 +44,7 @@ void	ft_pid_lower_than_one()
 
 void	ft_pid_bigger_than_maxint()
 {
-	ft_putstr_fd("PID bigger souldn't be bigger or lower than max int", 2);
+	ft_putstr_fd("PID souldn't be bigger or lower than max int", 2);
 	exit(1);
 }
 
@@ -119,9 +125,11 @@ void	ft_init_com(int pid, char **av)
 			ft_wrong_pid();
 }
 
-void	ft_count_sent(int signum)
+void	ft_count_sent(int signum, siginfo_t *info, void *context)
 {
 	(void)signum;
+	(void)info;
+	(void)context;
 	g_sent++;
 }
 
@@ -132,7 +140,6 @@ void	ft_communication(int pid, char **av)
 
 	len = ft_strlen(av[2]);
 	i = 1;
-	signal(SIGUSR1, ft_count_sent);
 	ft_init_com(pid, av);
 	while (i / 8 <= len)
 	{
@@ -154,10 +161,14 @@ void	ft_communication(int pid, char **av)
 int	main(int ac, char **av)
 {
 	int	pid;
+	struct sigaction	sa;
 
-	pid = ft_atoi(av[1]);
+	ft_bzero((void*)&sa, sizeof(struct sigaction));
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = ft_count_sent;
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		ft_error("Error : Signal handling failed");
 	ft_check(ac, av);
+	pid = ft_atoi(av[1]);
 	ft_communication(pid, av);
 }
-
-/* GERER L'INT OVERFLOW (<PID> + (2147483648 * 2))*/

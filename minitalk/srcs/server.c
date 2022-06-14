@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/05/12 18:56:48 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/06/14 19:49:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,16 @@ void	ft_exit_SIGINT(char *s)
 {
 	if (s)
 		free(s);
+	ft_putstr_fd("GOT CTRL-CED", 1);
 	exit(130);
+}
+
+void	ft_exit_SIGQUIT(char *s)
+{
+	if (s)
+		free(s);
+	ft_putstr_fd("GOT CTRL-\\ED", 1);
+	exit(131);
 }
 
 void	ft_clean_exit(char *msg, char *s)
@@ -41,7 +50,7 @@ char	*ft_handle_zero(char *ret, int *i)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
-			ft_clean_exit("malloc failed", ret);
+			ft_clean_exit("Error : Malloc failed", ret);
 	}
 	return (ret);
 }
@@ -55,7 +64,7 @@ char	*ft_handle_one(char *ret, int *i)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
-			ft_clean_exit("malloc failed", ret);
+			ft_clean_exit("Error : Malloc failed", ret);
 	}
 	return (ret);
 }
@@ -80,13 +89,15 @@ void	ft_handle_signal(int signum, siginfo_t *info, void *context)
 	if (pid != info->si_pid)
 		ret = ft_new_client(&i, ret, &pid, info);
 	if (!ret)
-		ft_clean_exit("ERROR : \nMalloc failed", ret);
+		ft_clean_exit("Error : Malloc failed", ret);
 	if (signum == SIGUSR1)
 		ret = ft_handle_zero(ret, &i/*, pid*/); 
 	else if (signum == SIGUSR2)
 		ret = ft_handle_one(ret, &i/*, pid*/); 
 	else if (signum == SIGINT)
 		ft_exit_SIGINT(ret); 
+	else if (signum == SIGQUIT)
+		ft_exit_SIGQUIT(ret); 
 	kill(pid, SIGUSR1);
 	if (ret[(i - 1) / 8] == 0 && i % 8 == 0)
 	{
@@ -110,6 +121,8 @@ int	main(void)
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 		return (-1);
 	if (sigaction(SIGINT, &sa, NULL) == -1)
+		return (-1);
+	if (sigaction(SIGQUIT, &sa, NULL) == -1)
 		return (-1);
 	while (1)
 		pause();
