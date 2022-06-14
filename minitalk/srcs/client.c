@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/06/14 19:41:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/06/14 22:14:56 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,12 @@ void	ft_communication(int pid, char **av)
 	ft_init_com(pid, av);
 	while (i / 8 <= len)
 	{
-		usleep(5000);
+		ft_putnbr_fd(i, 1);
+		ft_putstr_fd("\n", 1);
+		// usleep(500000);
+		pause();
+		ft_putnbr_fd(i, 1);
+		ft_putstr_fd("\n", 1);
 		if (g_sent != i)
 			ft_time_out();
 		if (ft_figure_out_bin(av) == 0)
