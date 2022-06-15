@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:59:20 by pdubois           #+#    #+#             */
-/*   Updated: 2022/06/14 22:14:56 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/06/15 22:38:04 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,6 @@ int		ft_figure_out_bin(char **av)
 	return (ret);
 }
 
-void	ft_init_com(int pid, char **av)
-{
-	if (ft_figure_out_bin(av) == 0)
-	{
-		if (kill(pid, SIGUSR1) == -1)
-			ft_wrong_pid();
-	}
-	else
-		if (kill(pid, SIGUSR2) == -1)
-			ft_wrong_pid();
-}
-
 void	ft_count_sent(int signum, siginfo_t *info, void *context)
 {
 	(void)signum;
@@ -139,16 +127,9 @@ void	ft_communication(int pid, char **av)
 	int	len;
 
 	len = ft_strlen(av[2]);
-	i = 1;
-	ft_init_com(pid, av);
+	i = 0;
 	while (i / 8 <= len)
 	{
-		ft_putnbr_fd(i, 1);
-		ft_putstr_fd("\n", 1);
-		// usleep(500000);
-		pause();
-		ft_putnbr_fd(i, 1);
-		ft_putstr_fd("\n", 1);
 		if (g_sent != i)
 			ft_time_out();
 		if (ft_figure_out_bin(av) == 0)
@@ -159,6 +140,7 @@ void	ft_communication(int pid, char **av)
 		else
 			if (kill(pid, SIGUSR2) == -1)
 				ft_wrong_pid();
+		sleep(1);
 		i++;
 	}
 }
