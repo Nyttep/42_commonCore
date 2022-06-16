@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:11:28 by pdubois           #+#    #+#             */
-/*   Updated: 2022/06/16 19:28:12 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/06/16 20:00:42 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static char	*ft_handle_zero(char *ret, int *i)
 {
+	if (!ret)
+		return (NULL);
 	ret[(*i) / 8] = ret[(*i) / 8] << 1;
 	(*i)++;
-	if ((*i) % 8 == 0 && ret[(*i) / 9] != 0)
+	if (ret && (*i) % 8 == 0 && ret[(*i) / 9] != 0)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
@@ -27,10 +29,12 @@ static char	*ft_handle_zero(char *ret, int *i)
 
 static char	*ft_handle_one(char *ret, int *i)
 {
+	if (!ret)
+		return (NULL);
 	ret[(*i) / 8] = ret[(*i) / 8] << 1;
 	ret[(*i) / 8] = ret[(*i) / 8] + 0b00000001;
 	(*i)++;
-	if ((*i) % 8 == 0 && ret[((*i) - 1) / 8] != 0)
+	if (ret && (*i) % 8 == 0 && ret[((*i) - 1) / 8] != 0)
 	{
 		ret = ft_realloc(ret, ft_strlen(ret) + 2);
 		if (!ret)
@@ -69,7 +73,7 @@ static void	ft_handle_signal(int signum, siginfo_t *info, void *context)
 	else if (signum == SIGUSR2)
 		ret = ft_handle_one(ret, &i);
 	kill(pid, SIGUSR1);
-	if (ret[(i - 1) / 8] == 0 && i % 8 == 0)
+	if (ret && ret[(i - 1) / 8] == 0 && i % 8 == 0)
 	{
 		ft_putstr_fd(ret, 1);
 		free(ret);
