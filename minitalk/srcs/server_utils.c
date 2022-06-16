@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 17:08:05 by pdubois           #+#    #+#             */
-/*   Updated: 2022/06/16 19:27:23 by pdubois          ###   ########.fr       */
+/*   Created: 2022/06/16 19:12:45 by pdubois           #+#    #+#             */
+/*   Updated: 2022/06/16 19:27:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "server.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include "libft.h"
+void	ft_display_pid(void)
+{
+	ft_putnbr_fd(getpid(), 1);
+	ft_putchar_fd('\n', 1);
+}
 
-void	ft_display_pid(void);
-void	ft_exit_sigint(char *s);
-void	ft_exit_sigquit(char *s);
-void	ft_clean_exit(char *msg, char *s);
+void	ft_exit_sigint(char *s)
+{
+	if (s)
+		free(s);
+	ft_putstr_fd("GOT CTRL-CED", 1);
+	exit(130);
+}
 
-#endif
+void	ft_exit_sigquit(char *s)
+{
+	if (s)
+		free(s);
+	ft_putstr_fd("GOT CTRL-\\ED", 1);
+	exit(131);
+}
+
+void	ft_clean_exit(char *msg, char *s)
+{
+	if (s)
+		free(s);
+	ft_putstr_fd(msg, 2);
+	exit(1);
+}

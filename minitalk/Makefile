@@ -6,17 +6,21 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 16:55:50 by pdubois           #+#    #+#              #
-#    Updated: 2022/06/14 19:37:32 by pdubois          ###   ########.fr        #
+#    Updated: 2022/06/16 19:39:45 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-NAME_SERVER = server
-NAME_CLIENT = client
-SRCS_NAME_CLIENT = client.c
-SRCS_NAME_SERVER = server.c
+NAME_SERVER = 	server
+NAME_CLIENT = 	client
+SRCS_NAME_CLIENT = 	client.c \
+					client_check.c \
+					client_errors1.c \
+					client_errors2.c
+SRCS_NAME_SERVER = 	server.c \
+					server_utils.c
 SRCS_PATH = srcs
 SRCS_SERVER = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME_SERVER))
 SRCS_CLIENT = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME_CLIENT))
