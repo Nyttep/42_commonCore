@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   handle_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 19:01:48 by pdubois           #+#    #+#             */
-/*   Updated: 2022/07/31 19:07:01 by pdubois          ###   ########.fr       */
+/*   Created: 2022/07/31 19:59:46 by pdubois           #+#    #+#             */
+/*   Updated: 2022/07/31 20:07:56 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/time.h>
+#include "philo.h"
 
-typedef struct s_info
+void	*ft_handle_philo(void *bag)
 {
-	int	name;
-	int	tt_die;
-	int	tt_eat;
-	int	tt_sleep;
-	int	max_eat;
-	int	last_meal;
-	int	dead;
-
-}	t_info
+	(void)bag;
+	return (NULL);
+}
