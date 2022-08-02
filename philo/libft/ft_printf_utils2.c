@@ -30,7 +30,7 @@ int	ft_putnbr_printf(int nbr)
 	}
 	else if (nbr <= 9)
 	{
-		ft_putchar(nbr + '0');
+		ft_putchar_fd(nbr + '0', 1);
 		return (1);
 	}
 	else
@@ -48,7 +48,7 @@ int	ft_putnbr_u_printf(unsigned int nbr)
 	i = 0;
 	if (nbr <= 9)
 	{
-		ft_putchar(nbr + '0');
+		ft_putchar_fd(nbr + '0', 1);
 		return (1);
 	}
 	else
@@ -68,7 +68,7 @@ int	ft_putnbr_hexa_maj_u_printf(unsigned int nbr)
 	base = "0123456789ABCDEF";
 	if (nbr <= 15)
 	{
-		ft_putchar(base[nbr]);
+		ft_putchar_fd(base[nbr], 1);
 		return (1);
 	}
 	else

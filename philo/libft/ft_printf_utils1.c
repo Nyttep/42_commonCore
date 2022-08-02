@@ -14,7 +14,7 @@
 
 int	ft_c(int c)
 {
-	ft_putchar(c);
+	ft_putchar_fd(c, 1);
 	return (1);
 }
 
@@ -41,7 +41,7 @@ int	ft_putnbr_hexa_u_printf(unsigned long int nbr)
 	base = "0123456789abcdef";
 	if (nbr <= 15)
 	{
-		ft_putchar(base[nbr]);
+		ft_putchar_fd(base[nbr], 1);
 		return (1);
 	}
 	else

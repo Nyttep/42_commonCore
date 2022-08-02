@@ -16,6 +16,8 @@ CFLAGS = -pthread -Wall -Wextra -Werror
 NAME = philo
 SRCS_NAME = main.c \
 			handle_philo.c \
+			free_utils.c \
+			check_args.c \
 
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))

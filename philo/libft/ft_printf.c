@@ -33,7 +33,7 @@ void	ft_find_format(const char *str, int i, int *j, va_list args)
 		*j += ft_putnbr_hexa_maj_u_printf(va_arg(args, unsigned int));
 	else if (str[i] == '%')
 	{
-		ft_putchar('%');
+		ft_putchar_fd('%', 1);
 		(*j)++;
 	}
 	return ;
