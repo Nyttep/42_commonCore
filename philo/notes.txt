@@ -1,0 +1,2 @@
+creer et utiliser mutex pr starting time
+do all the starving stuffs + the checking bfore taking mic
