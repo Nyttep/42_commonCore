@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:28:55 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/05 21:46:26 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/09 06:40:34 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,21 @@ int	ft_init_mutex(t_info **bag, char **av)
 		return (ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
 	if (pthread_mutex_init((*bag)->is_somebody_dead_m, NULL) != 0)
 		return (free((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Mutex initialisation failed\n", 2), FAILED);
+	(*bag)->starting_time_m = malloc(sizeof(pthread_mutex_t));
+	if ((*bag)->starting_time_m == NULL)
+		return (ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
+	if (pthread_mutex_init((*bag)->starting_time_m, NULL) != 0)
+		return (free((*bag)->starting_time_m), ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Mutex initialisation failed\n", 2), FAILED);
 	(*bag)->forks = malloc(sizeof(pthread_mutex_t) * (ft_atoi(av[1])));
 	if ((*bag)->forks == NULL)
-		return (ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
+		return (ft_free_mutex((*bag)->starting_time_m), ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
 	while (i < ft_atoi(av[1]))
 	{
 		if (pthread_mutex_init(&((*bag)->forks[i++]), NULL) != 0)
 		{
 			while (--i >= 0)
-				pthread_mutex_destroy(&((*bag)->forks[i]));
-			return (ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), free((*bag)->forks), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
+				ft_free_mutex(&((*bag)->forks[i]));
+			return (ft_free_mutex((*bag)->starting_time_m), ft_free_mutex((*bag)->is_somebody_dead_m), ft_free_mutex((*bag)->mic_m), ft_free_mutex((*bag)->name_m), free((*bag)->forks), ft_putstr_fd("Philo: Malloc failed\n", 2), FAILED);
 		}
 	}
 	return (SUCCESS);
@@ -76,6 +81,11 @@ static int	ft_init(pthread_t **philos, t_info **bag,
 		return (FAILED);
 	if (ft_init_mutex(bag, av) == FAILED)
 		return (free(*bag), FAILED);
+	if (pthread_mutex_lock((*bag)->starting_time_m) != 0)
+		return (ft_putstr_fd("Philo: pthread_mutex_lock failed", 2), FAILED);
+	(*bag)->starting_time = ft_get_current_time();
+	if (pthread_mutex_unlock((*bag)->starting_time_m) != 0)
+		return (ft_putstr_fd("Philo: pthread_mutex_unlock failed", 2), FAILED);
 	*philos = malloc(sizeof(pthread_t) * (ft_atoi(av[1])));
 	if (*philos == NULL)
 		return (free((*bag)->forks), free(*bag),
@@ -89,7 +99,6 @@ static int	ft_init(pthread_t **philos, t_info **bag,
 				ft_putstr_fd("Philo: failed to create a thread\n", 2), FAILED);
 		i++;
 	}
-	(*bag)->starting_time = ft_get_current_time();
 	return (SUCCESS);
 }
 

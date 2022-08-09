@@ -1,2 +1,6 @@
-creer et utiliser mutex pr starting time
-do all the starving stuffs + the checking bfore taking mic
+fix lock order error helgrind
+
+fix le decalage qui se cree qui est mtn HUGE
+je peux delete le mutex de starting_time ?
+
+bien gerer les erreurs de mutexs
