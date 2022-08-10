@@ -1,6 +1,3 @@
-fix lock order error helgrind
+encore fix le decalage qui se cree ?
 
-fix le decalage qui se cree qui est mtn HUGE
-je peux delete le mutex de starting_time ?
-
-bien gerer les erreurs de mutexs
+ou bien tt check et push comme ca 
