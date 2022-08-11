@@ -22,6 +22,7 @@ SRCS_NAME = main.c \
 			time_utils.c \
 			death_related.c \
 			actions.c \
+			actions_utils.c \
 			turns.c \
 			init_mutex.c \
 

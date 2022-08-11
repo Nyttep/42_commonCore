@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 05:05:35 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/10 05:07:01 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/11 02:39:46 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	ft_my_turn_to_eat_odd(int name, int odd_waiting)
 	}
 	else
 	{
-		diff *= -1;
-		if (diff % 2 == ODD)
+		if (diff % 2 == -ODD)
 			return (0);
 		else
 			return (1);

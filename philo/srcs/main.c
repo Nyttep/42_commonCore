@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:28:55 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/10 05:31:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/11 01:17:05 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	main(int ac, char **av)
 	int				i;
 	int				nbr_philo;
 
-	nbr_philo = ft_atoi(av[1]);
 	if (ft_check_args(ac, av))
 		return (FAILED);
+	nbr_philo = ft_atoi(av[1]);
 	if (ft_init(&philos, &bag, av, nbr_philo))
 		return (1);
 	i = 0;

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   actions_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 21:26:37 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/11 06:19:37 by pdubois          ###   ########.fr       */
+/*   Created: 2022/08/11 01:37:53 by pdubois           #+#    #+#             */
+/*   Updated: 2022/08/11 05:12:47 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_get_current_time(void)
+int	ft_take_forks_last_philo(t_info *bag, int name, int *last_meal)
 {
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((int)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
-}
-
-int	my_usleep(t_info *bag, unsigned long int sleep_time, int name,
-			int *last_meal)
-{
-	int	ret1;
-
-	ret1 = ft_will_die_during_usleep(bag, sleep_time / 1000, name, *last_meal);
-	if (ret1 == TRUE)
-		return (SUCCESS);
-	else if (ret1 == FAILED_V2)
+	(void)last_meal;
+	if (pthread_mutex_lock(&(bag->forks[name - 1])) != 0)
+		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
+	if (ft_print_msg(bag, name, "has taken a fork"))
 		return (FAILED);
-	if (usleep(sleep_time) != 0)
+	if (pthread_mutex_lock(&(bag->forks[name])) != 0)
+		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
+	if (ft_print_msg(bag, name, "has taken a fork"))
 		return (FAILED);
 	return (SUCCESS);
 }

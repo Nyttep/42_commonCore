@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 04:46:13 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/10 04:56:08 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/11 06:19:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	ft_will_die_during_usleep(t_info *bag, int sleep_time, int name,
 {
 	int	time_since_last_meal;
 
-	time_since_last_meal = ft_get_current_time() - last_meal;
+	if (last_meal == -1)
+		last_meal = 0;
+	time_since_last_meal = (ft_get_current_time() - bag->starting_time);
+	time_since_last_meal -= last_meal;
 	if (bag->tt_die <= (time_since_last_meal + sleep_time))
 	{
 		usleep((bag->tt_die - time_since_last_meal) * 1000);
@@ -44,25 +47,20 @@ int	ft_will_die_during_usleep(t_info *bag, int sleep_time, int name,
 	return (FALSE);
 }
 
-int	ft_check_if_starved(t_info *bag, int name, int *last_meal)
-{
-	int	current_time;
-
-	current_time = ft_get_current_time();
-	if (*last_meal == 0)
-		*last_meal = current_time;
-	else if (current_time - *last_meal >= bag->tt_die)
-	{
-		if (ft_philo_died(bag, name))
-			return (FAILED);
-	}
-	return (SUCCESS);
-}
-
 static int	ft_announce_death(t_info *bag, int name)
 {
 	if (pthread_mutex_lock(bag->is_somebody_dead_m) != 0)
 		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
+	if (bag->is_somebody_dead == TRUE)
+	{
+		if (pthread_mutex_unlock(bag->mic_m) != 0)
+			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2),
+				FAILED);
+		if (pthread_mutex_unlock(bag->is_somebody_dead_m) != 0)
+			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2),
+				FAILED);
+		return (SUCCESS);
+	}
 	bag->is_somebody_dead = TRUE;
 	ft_putnbr_fd(ft_get_current_time() - bag->starting_time, 1);
 	ft_putstr_fd(" ", 1);
@@ -76,24 +74,8 @@ static int	ft_announce_death(t_info *bag, int name)
 
 int	ft_philo_died(t_info *bag, int name)
 {
-	int	ret;
-
-	ret = ft_is_somebody_dead(bag);
-	if (ret == TRUE)
-		return (SUCCESS);
-	else if (ret == FAILED_V2)
-		return (FAILED);
 	if (pthread_mutex_lock(bag->mic_m) != 0)
 		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
-	ret = ft_is_somebody_dead(bag);
-	if (ret == TRUE)
-	{
-		if (pthread_mutex_unlock(bag->mic_m) != 0)
-			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED);
-		return (SUCCESS);
-	}
-	else if (ret == FAILED_V2)
-		return (FAILED);
 	if (ft_announce_death(bag, name))
 		return (FAILED);
 	if (pthread_mutex_unlock(bag->mic_m) != 0)
