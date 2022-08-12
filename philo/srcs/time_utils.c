@@ -6,22 +6,22 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 21:26:37 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/11 06:19:37 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/12 18:39:08 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_get_current_time(void)
+long int	ft_get_current_time(void)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return ((int)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
+	return ((unsigned long int)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
 }
 
 int	my_usleep(t_info *bag, unsigned long int sleep_time, int name,
-			int *last_meal)
+			long int *last_meal)
 {
 	int	ret1;
 

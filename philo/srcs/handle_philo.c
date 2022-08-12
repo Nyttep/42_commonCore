@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 19:59:46 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/11 06:13:56 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/12 18:38:45 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_finish_and_tell_everyone(t_info *bag, int name)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED);
 		return (SUCCESS);
 	}
-	printf("%d %d is eating\n", (ft_get_current_time() - bag->starting_time),
+	printf("%ld %d is eating\n", (ft_get_current_time() - bag->starting_time),
 		name);
 	bag->is_somebody_dead = TRUE;
 	if (pthread_mutex_unlock(bag->is_somebody_dead_m) != 0)
@@ -38,7 +38,7 @@ int	ft_finish_and_tell_everyone(t_info *bag, int name)
 	return (TRUE);
 }
 
-int	ft_max_meal_reached(t_info *bag, int name, int i, int *last_meal)
+int	ft_max_meal_reached(t_info *bag, int name, int i, long int *last_meal)
 {
 	if (i == bag->max_meal)
 	{
@@ -62,7 +62,7 @@ int	ft_max_meal_reached(t_info *bag, int name, int i, int *last_meal)
 	return (FALSE);
 }
 
-int	ft_eating_routine(t_info *bag, int name, int i, int *last_meal)
+int	ft_eating_routine(t_info *bag, int name, int i, long int *last_meal)
 {
 	if (bag->max_meal != NO_LIMIT
 		&& ft_max_meal_reached(bag, name, i, last_meal) == TRUE)
@@ -76,8 +76,8 @@ int	ft_eating_routine(t_info *bag, int name, int i, int *last_meal)
 
 int	ft_philo_life(t_info *bag, int name, int turn, int odd_waiting)
 {
-	int	i;
-	int	last_meal;
+	int			i;
+	long int	last_meal;
 
 	last_meal = -1;
 	i = 0;
@@ -103,10 +103,8 @@ void	*ft_handle_philo(void *bag)
 {
 	int	name;
 	int	turn;
-	int	i;
 	int	odd_waiting;
 
-	i = 0;
 	turn = 1;
 	name = ft_get_name((t_info *)bag);
 	if (name == FAILED_V2)

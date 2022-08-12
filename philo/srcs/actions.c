@@ -6,13 +6,13 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 04:58:49 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/11 05:42:21 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/12 18:30:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_take_forks(t_info *bag, int name, int *last_meal)
+int	ft_take_forks(t_info *bag, int name, long int *last_meal)
 {
 	if (name != bag->nbr_philo)
 		return (ft_take_forks_last_philo(bag, name, last_meal));
@@ -49,7 +49,7 @@ int	ft_put_back_forks(t_info *bag, int name)
 	return (SUCCESS);
 }
 
-int	ft_eat(t_info *bag, int name, int *last_meal)
+int	ft_eat(t_info *bag, int name, long int *last_meal)
 {
 	if (ft_take_forks(bag, name, last_meal))
 		return (FAILED);
@@ -63,7 +63,7 @@ int	ft_eat(t_info *bag, int name, int *last_meal)
 	return (SUCCESS);
 }
 
-int	ft_think(t_info *bag, int name, int *last_meal, int odd_waiting)
+int	ft_think(t_info *bag, int name, long int *last_meal, int odd_waiting)
 {
 	if (ft_print_msg(bag, name, "is thinking"))
 		return (FAILED);
@@ -78,7 +78,7 @@ int	ft_think(t_info *bag, int name, int *last_meal, int odd_waiting)
 	return (SUCCESS);
 }
 
-int	ft_sleep(t_info *bag, int name, int *last_meal)
+int	ft_sleep(t_info *bag, int name, long int *last_meal)
 {
 	if (ft_print_msg(bag, name, "is sleeping"))
 		return (FAILED);
