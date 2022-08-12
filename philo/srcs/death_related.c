@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 04:46:13 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/12 18:30:27 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/12 22:36:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ static int	ft_announce_death(t_info *bag, int name)
 		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
 	if (bag->is_somebody_dead == TRUE)
 	{
-		if (pthread_mutex_unlock(bag->mic_m) != 0)
-			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2),
-				FAILED);
 		if (pthread_mutex_unlock(bag->is_somebody_dead_m) != 0)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2),
 				FAILED);

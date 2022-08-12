@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 05:07:39 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/11 06:02:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/12 21:47:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,7 @@ int	ft_print_msg(t_info *bag, int name, char *msg)
 				FAILED);
 		return (SUCCESS);
 	}
-	ft_putnbr_fd(ft_get_current_time() - bag->starting_time, 1);
-	ft_putstr_fd(" ", 1);
-	ft_putnbr_fd(name, 1);
-	ft_putstr_fd(" ", 1);
-	ft_putstr_fd(msg, 1);
-	ft_putstr_fd("\n", 1);
+	printf("%ld %d %s\n", ft_get_current_time() - bag->starting_time, name, msg);
 	if (pthread_mutex_unlock(bag->is_somebody_dead_m) != 0)
 		return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
 	if (pthread_mutex_unlock(bag->mic_m) != 0)
