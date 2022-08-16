@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 19:59:46 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/12 18:38:45 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/16 04:21:44 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int	ft_finish_and_tell_everyone(t_info *bag, int name)
 
 int	ft_max_meal_reached(t_info *bag, int name, int i, long int *last_meal)
 {
+	int	took_fork[2];
+
+	took_fork[0] = 0;
+	took_fork[1] = 0;
 	if (i == bag->max_meal)
 	{
 		if (pthread_mutex_lock(bag->max_reached_m) != 0)
@@ -49,10 +53,10 @@ int	ft_max_meal_reached(t_info *bag, int name, int i, long int *last_meal)
 		{
 			if (pthread_mutex_unlock(bag->max_reached_m) != 0)
 				return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED);
-			if (ft_take_forks(bag, name, last_meal))
+			if (ft_take_forks(bag, name, last_meal, took_fork))
 				return (FAILED);
 			ft_finish_and_tell_everyone(bag, name);
-			if (ft_put_back_forks(bag, name))
+			if (ft_put_back_forks(bag, name, took_fork))
 				return (FAILED);
 			return (TRUE);
 		}

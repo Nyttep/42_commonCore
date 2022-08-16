@@ -6,44 +6,48 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 04:58:49 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/12 21:33:20 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/16 04:55:27 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_take_forks(t_info *bag, int name, long int *last_meal)
+int	ft_take_forks(t_info *bag, int name, long int *last_meal, int *took_fork)
 {
 	if (name != bag->nbr_philo)
-		return (ft_take_forks_last_philo(bag, name, last_meal));
+		return (ft_take_forks_not_last_philo(bag, name, last_meal, took_fork));
 	else
 	{
 		if (pthread_mutex_lock(&(bag->forks[0])) != 0)
 			return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
+		took_fork[0] = 1;
 		if (ft_print_msg(bag, name, "has taken a fork"))
 			return (FAILED);
+		if (ft_will_die_waiting_fork(bag, name, *last_meal))
+			return (SUCCESS);
 		if (pthread_mutex_lock(&(bag->forks[name - 1])) != 0)
 			return (ft_putstr_fd("Philo: mutex_lock failed\n", 2), FAILED);
+		took_fork[1] = 1;
 		if (ft_print_msg(bag, name, "has taken a fork"))
 			return (FAILED);
 		return (SUCCESS);
 	}
 }
 
-int	ft_put_back_forks(t_info *bag, int name)
+int	ft_put_back_forks(t_info *bag, int name, int *took_fork)
 {
 	if (name != bag->nbr_philo)
 	{
-		if (pthread_mutex_unlock(&(bag->forks[name])) != 0)
+		if (took_fork[1] && pthread_mutex_unlock(&(bag->forks[name])) != 0)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED_V2);
-		if (pthread_mutex_unlock(&(bag->forks[name - 1])) != 0)
+		if (took_fork[0] && pthread_mutex_unlock(&(bag->forks[name - 1])) != 0)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED_V2);
 	}
 	else
 	{
-		if (pthread_mutex_unlock(&(bag->forks[name - 1])) != 0)
+		if (took_fork[1] && pthread_mutex_unlock(&(bag->forks[name - 1])) != 0)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED_V2);
-		if (pthread_mutex_unlock(&(bag->forks[0])) != 0)
+		if (took_fork[0] && pthread_mutex_unlock(&(bag->forks[0])) != 0)
 			return (ft_putstr_fd("Philo: mutex_unlock failed\n", 2), FAILED_V2);
 	}
 	return (SUCCESS);
@@ -51,14 +55,18 @@ int	ft_put_back_forks(t_info *bag, int name)
 
 int	ft_eat(t_info *bag, int name, long int *last_meal)
 {
-	if (ft_take_forks(bag, name, last_meal))
+	int	took_fork[2];
+
+	took_fork[0] = 0;
+	took_fork[1] = 0;
+	if (ft_take_forks(bag, name, last_meal, took_fork))
 		return (FAILED);
 	if (ft_print_msg(bag, name, "is eating"))
 		return (FAILED);
 	*last_meal = ft_get_current_time() - bag->starting_time;
 	if (my_usleep(bag, bag->tt_eat * 1000, name, last_meal))
 		return (FAILED);
-	if (ft_put_back_forks(bag, name))
+	if (ft_put_back_forks(bag, name, took_fork))
 		return (FAILED);
 	return (SUCCESS);
 }

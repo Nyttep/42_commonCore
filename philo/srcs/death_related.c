@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 04:46:13 by pdubois           #+#    #+#             */
-/*   Updated: 2022/08/12 22:36:44 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/08/16 05:24:48 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ int	ft_will_die_during_usleep(t_info *bag, int sleep_time, int name,
 		last_meal = 0;
 	time_since_last_meal = (ft_get_current_time() - bag->starting_time);
 	time_since_last_meal -= last_meal;
+	if (sleep_time < 0)
+		return (FALSE);
 	if ((long int)bag->tt_die <= (time_since_last_meal + sleep_time))
 	{
-		usleep((bag->tt_die - time_since_last_meal) * 1000);
+		if ((bag->tt_die - time_since_last_meal) > 0)
+			usleep((bag->tt_die - time_since_last_meal) * 1000);
 		if (ft_philo_died(bag, name))
 			return (FAILED_V2);
 		return (TRUE);
