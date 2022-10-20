@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 05:20:12 by pdubois           #+#    #+#             */
-/*   Updated: 2022/09/17 06:25:20 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:22:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ int	main()
 	std::string		UserInput;
 
 	std::cout << "Welcome to your Phonebook !\n";
-	while (1)
+	while (1 && !std::cin.eof())
 	{
 		std::cout << "Would you like to ADD, SEARCH or EXIT ?" << std::endl;
 		std::getline(std::cin, UserInput);
+		if (std::cin.eof())
+			return (0);
 		if (error() == 1)
 			return (errno);
 		if (UserInput == "EXIT")

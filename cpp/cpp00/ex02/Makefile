@@ -5,23 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/10/20 17:50:45 by pdubois          ###   ########.fr        #
+#    Created: 2022/10/20 14:56:23 by pdubois           #+#    #+#              #
+#    Updated: 2022/10/20 17:51:50 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = phonebook
+NAME = account
 
 RM = rm -f
 
-SRCS =	phonebook.cpp \
-		Contact.cpp \
-		phonebook_functions.cpp
+SRCS =	Account.cpp \
+		tests.cpp
 
-INCS = phonebook.hpp
+INCS = Account.hpp
 
 OBJS = ${SRCS:.cpp=.o}
 

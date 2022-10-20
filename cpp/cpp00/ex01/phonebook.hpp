@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 05:20:13 by pdubois           #+#    #+#             */
-/*   Updated: 2022/09/22 15:28:47 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:51:00 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,20 @@ int	error();
 class	Contact
 {
 	public :
+		std::string	getFirstName(void) const;
+		void		setFirstName(std::string newName);
+		std::string	getLastName(void) const;
+		void		setLastName(std::string newName);
+		std::string	getNickName(void) const;
+		void		setNickName(std::string newName);
+		std::string	getPhoneNumber(void) const;
+		void		setPhoneNumber(std::string newNumber);
+		std::string	getDarkestSecret(void) const;
+		void		setDarkestSecret(std::string newSecret);
+	private :
 		std::string	FirstName;
 		std::string	LastName;
-		std::string	Nickname;
+		std::string	NickName;
 		std::string	PhoneNumber;
 		std::string	DarkestSecret;
 };
