@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/09/24 16:09:11 by pdubois          ###   ########.fr        #
+#    Updated: 2022/10/20 18:06:21 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all: ${NAME}
 
-%.o : %.cpp
+%.o : %.cpp ${INCS}
 			${CC} ${CFLAGS} -I ./ -c $< -o $@
 
 ${NAME}:	${OBJS} ${INCS}
