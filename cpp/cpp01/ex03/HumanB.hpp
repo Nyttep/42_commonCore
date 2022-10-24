@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:59:51 by pdubois           #+#    #+#             */
-/*   Updated: 2022/09/27 17:24:43 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:55:38 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	HumanB
 		std::string	name;
 	public :
 		HumanB(std::string myName);
+		~HumanB(void);
 		void	attack(void);
 		void	setWeapon(Weapon newWeapon);
 };

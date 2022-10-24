@@ -6,19 +6,21 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:59:54 by pdubois           #+#    #+#             */
-/*   Updated: 2022/09/27 17:26:14 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:55:15 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string newType)
+Weapon::Weapon(std::string newType) : type(newType)
 {
-	this->type = newType;
-	return ;
 }
 
-const std::string&	Weapon::getType(void)
+Weapon::~Weapon(void)
+{
+}
+
+const std::string&	Weapon::getType(void) const
 {
 	const std::string&	ret = this->type;
 	return (ret);
@@ -27,5 +29,4 @@ const std::string&	Weapon::getType(void)
 void	Weapon::setType(std::string newType)
 {
 	this->type = newType;
-	return ;
 }

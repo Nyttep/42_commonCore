@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:59:56 by pdubois           #+#    #+#             */
-/*   Updated: 2022/09/27 17:25:35 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:52:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ class	Weapon
 		std::string	type;
 	public :
 		Weapon(std::string newType);
-		const std::string&	getType(void);
-		void	setType(std::string newType);
+		~Weapon(void);
+		const std::string&	getType(void) const;
+		void			setType(std::string newType);
 };
 
 #endif
