@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:59:48 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/24 18:55:30 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:13:57 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	HumanA
 		Weapon&		myWeapon;
 		std::string	name;
 	public :
-		HumanA(std::string myName, Weapon newWeapon);
+		HumanA(std::string myName, Weapon &newWeapon);
 		~HumanA(void);
 		void	attack(void);
 };
