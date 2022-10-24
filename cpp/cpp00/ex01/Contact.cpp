@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:34:32 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/20 17:48:12 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:54:40 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,13 @@ std::string	Contact::getDarkestSecret(void) const
 void	Contact::setDarkestSecret(std::string newSecret)
 {
 	this->DarkestSecret = newSecret;
+}
+
+void	Contact::resetContact(void)
+{
+	this->FirstName = "";
+	this->LastName = "";
+	this->NickName = "";
+	this->PhoneNumber = "";
+	this->DarkestSecret = "";
 }

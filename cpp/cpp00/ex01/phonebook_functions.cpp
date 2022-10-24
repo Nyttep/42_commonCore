@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:26:34 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/20 17:48:48 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:59:20 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int	PhoneBook::add()
 
 	if (to_add == -1)
 		to_add++;
-	i = to_add;
+	i = to_add % 8;
+	MyContacts[i].resetContact();
 	while (MyContacts[i].getFirstName() == "" && !std::cin.eof())
 	{
 		std::cout << "Enter the first name of the contact you would like to add :" << std::endl;
 		std::getline(std::cin, UserInput);
-		MyContacts[i].setFirstName (UserInput);
+		MyContacts[i].setFirstName(UserInput);
 	}
 	while (MyContacts[i].getLastName() == "" && !std::cin.eof())
 	{
@@ -57,9 +58,8 @@ int	PhoneBook::add()
 	}
 	if (error() == 1 || std::cin.eof())
 		return (1);
+	to_add++;
 	std::cout << "Contact successfully added" << std::endl;
-	if (++to_add == 8)
-		to_add = 0;
 	return (0);
 }
 
@@ -73,7 +73,10 @@ std::string	ft_strtrunc(std::string str)
 
 void	PhoneBook::ft_display_menu()
 {
-	for (int i = 0; i < to_add; i++)
+	int	to_display = to_add;
+	if (this->to_add > 8)
+		to_display = 8;
+	for (int i = 0; i < to_display; i++)
 	{
 		std::cout.width(10);
 		std::cout<< std::right <<  i << "|";
@@ -108,7 +111,7 @@ int	PhoneBook::search()
 	}
 	std::cout << "Here are your saved contacts :\n";
 	ft_display_menu();
-	while (index < 0 || index > 7 || index >= to_add || UserInput.length() != 1)
+	while (index < 0 || index > 7 || (index >= to_add && to_add <= 7) || UserInput.length() != 1)
 	{
 		index = -1;
 		std::cout << "Please enter the index of the contact you want to see :" << std::endl;

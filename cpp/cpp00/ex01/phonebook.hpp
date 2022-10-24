@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 05:20:13 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/20 17:51:00 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:53:30 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	Contact
 		void		setPhoneNumber(std::string newNumber);
 		std::string	getDarkestSecret(void) const;
 		void		setDarkestSecret(std::string newSecret);
+		void		resetContact(void);
 	private :
 		std::string	FirstName;
 		std::string	LastName;
