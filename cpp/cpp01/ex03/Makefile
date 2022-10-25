@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/10/21 14:10:27 by pdubois          ###   ########.fr        #
+#    Updated: 2022/10/25 16:49:47 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,25 @@ NAME = violence
 
 RM = rm -f
 
-SRCS =	main.cpp \
+SRCS_NAME =	main.cpp \
 		Weapon.cpp \
 		HumanA.cpp \
 		HumanB.cpp
+SRCS_PATH =	srcs
+SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS =	Weapon.hpp \
-		HumanA.hpp \
-		HumanB.hpp
+INCS_NAME =	Weapon.hpp \
+			HumanA.hpp \
+			HumanB.hpp
+INCS_PATH = includes
+INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
 OBJS = ${SRCS:.cpp=.o}
 
 all: ${NAME}
 
 %.o : %.cpp ${INCS}
-			${CC} ${CFLAGS} -I ./ -c $< -o $@
+			${CC} ${CFLAGS} -I ${INCS_PATH} -c $< -o $@
 
 ${NAME}:	${OBJS} ${INCS}
 			${CC} -o ${NAME} ${OBJS}

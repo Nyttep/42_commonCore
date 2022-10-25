@@ -6,32 +6,39 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/10/25 18:23:11 by pdubois          ###   ########.fr        #
+#    Updated: 2022/10/25 18:36:59 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-NAME = mySed
+NAME = Harl
 
 RM = rm -f
 
-SRCS =	main.cpp \
+SRCS_NAME =	main.cpp \
+			Harl.cpp 
+SRCS_PATH =	srcs
+SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
+
+INCS_NAME =	Harl.hpp 
+INCS_PATH = includes
+INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
 OBJS = ${SRCS:.cpp=.o}
 
 all: ${NAME}
 
-%.o : %.cpp
-			${CC} ${CFLAGS} -I ./ -c $< -o $@
+%.o : %.cpp ${INCS}
+			${CC} ${CFLAGS} -I ${INCS_PATH} -c $< -o $@
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${INCS}
 			${CC} -o ${NAME} ${OBJS}
-			@mkdir .objdir; mv *.o .objdir
+			@mkdir .objdir 2> /dev/null; mv ${SRCS_PATH}/*.o .objdir
 
 clean:
-			${RM} -rf .objdir
+			${RM} ${OBJS}
 
 fclean:		clean
 			${RM} ${NAME}

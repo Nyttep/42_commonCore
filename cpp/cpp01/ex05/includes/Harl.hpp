@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 15:59:56 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/24 18:52:10 by pdubois          ###   ########.fr       */
+/*   Created: 2022/10/25 16:32:54 by pdubois           #+#    #+#             */
+/*   Updated: 2022/10/25 18:30:25 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
 
-class	Weapon
+class Harl
 {
-	private :
-		std::string	type;
-	public :
-		Weapon(std::string newType);
-		~Weapon(void);
-		const std::string&	getType(void) const;
-		void			setType(std::string newType);
+	private:
+		void	_debug(void);
+		void	_info(void);
+		void	_warning(void);
+		void	_error(void);
+	public:
+		void	complain(std::string level);
+		Harl(void);
+		~Harl(void);
 };
+
+typedef void	(Harl::*FunctionPointer)(void);
 
 #endif
