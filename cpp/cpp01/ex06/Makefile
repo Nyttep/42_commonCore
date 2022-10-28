@@ -6,14 +6,14 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/10/27 17:13:47 by pdubois          ###   ########.fr        #
+#    Updated: 2022/10/27 17:12:56 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-NAME = Harl
+NAME = HarlFilter
 
 RM = rm -rf
 

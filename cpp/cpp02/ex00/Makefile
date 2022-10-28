@@ -6,23 +6,23 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/10/27 17:13:47 by pdubois          ###   ########.fr        #
+#    Updated: 2022/10/28 18:10:09 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-NAME = Harl
+NAME = a.out
 
 RM = rm -rf
 
 SRCS_NAME =	main.cpp \
-			Harl.cpp 
+			Fixed.cpp 
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	Harl.hpp 
+INCS_NAME =	Fixed.hpp 
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 

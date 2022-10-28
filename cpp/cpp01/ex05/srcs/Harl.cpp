@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:32:52 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/25 18:35:15 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/27 16:18:27 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	Harl::_debug(void)
 
 void	Harl::_info(void)
 {
-	std::cout <<  "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger ! If you did, I wouldn’t be asking for more !" << std::endl;
+	std::cout <<  "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger ! If you did, I wouldn’t be asking for more !" << std::endl;
 }
 
 void	Harl::_warning(void)
 {
-	std::cout <<  "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout <<  "I think I deserve to have some extra bacon for free.\nI’ve been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void	Harl::_error(void)
@@ -43,11 +43,14 @@ void	Harl::_error(void)
 void	Harl::complain(std::string level)
 {
 	FunctionPointer	functionArray[] = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
-	std::string	levels[] = {"debug", "info", "warning", "error"};
+	std::string	levels[] = {"DEBUG", "DEBUG", "WARNING", "ERROR", ""};
 
-	for (int i =0; i < 4;i++)
+	for (int i = 0; levels[i] != ""; i++)
 	{
 		if (levels[i] == level)
-			(this->*(functionArray)[i])();
+		{
+			(this->*functionArray[i])();
+			break ;
+		}
 	}
 }

@@ -5,16 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:48:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/27 16:00:37 by pdubois          ###   ########.fr       */
+/*   Created: 2022/10/28 16:26:27 by pdubois           #+#    #+#             */
+/*   Updated: 2022/10/28 20:40:43 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Fixed.hpp"
 
 int	main(void)
 {
-	Harl	myHarl;
+	Fixed	a;
+	Fixed	b( a );
+	Fixed	c;
 
-	myHarl.complain("info");
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

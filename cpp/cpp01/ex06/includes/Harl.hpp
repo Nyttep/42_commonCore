@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:48:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/27 16:00:37 by pdubois          ###   ########.fr       */
+/*   Created: 2022/10/25 16:32:54 by pdubois           #+#    #+#             */
+/*   Updated: 2022/10/27 16:57:14 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int	main(void)
+#include <iostream>
+
+class Harl
 {
-	Harl	myHarl;
+	private:
+		void	_debug(void);
+		void	_info(void);
+		void	_warning(void);
+		void	_error(void);
+		void	_other(void);
+	public:
+		void	complain(std::string level);
+		Harl(void);
+		~Harl(void);
+};
 
-	myHarl.complain("info");
-}
+typedef void	(Harl::*FunctionPointer)(void);
+
+#endif

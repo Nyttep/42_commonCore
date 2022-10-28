@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:48:27 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/27 16:00:37 by pdubois          ###   ########.fr       */
+/*   Created: 2022/10/28 16:30:25 by pdubois           #+#    #+#             */
+/*   Updated: 2022/10/28 20:44:43 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int	main(void)
+# include <iostream>
+
+class	Fixed
 {
-	Harl	myHarl;
+	private:
+		int	_value;
+		static const int	_binary_point = 8;
+	public:
+		Fixed(void);
+		Fixed(const Fixed& to_copy);
+		~Fixed(void);
+		int	getRawBits(void) const;
+		void	setRawBits(int const raw);
+		Fixed&	operator=(Fixed to_copy);
+		
+};
 
-	myHarl.complain("info");
-}
+#endif
