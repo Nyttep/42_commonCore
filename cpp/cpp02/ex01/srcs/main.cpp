@@ -6,43 +6,29 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:02:43 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/31 16:04:56 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/31 18:59:11 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed(void) : _value(0)
+int	main(void)
 {
-	std::cout << "Default constructor called" << std::endl;
-}
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-Fixed::Fixed(const Fixed& to_copy)
-{
-	std::cout << "Copy constructor called" << std::endl;
-	// *this = to_copy;
-	this->_value = to_copy.getRawBits();
-}
+	a = Fixed( 1234.4321f );
 
-Fixed::~Fixed(void)
-{
-	std::cout << "Destructor called" << std::endl;
-}
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-Fixed&	Fixed::operator=(const Fixed& to_copy)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	this->_value = to_copy.getRawBits();
-	return (*this);
-}
-
-int	Fixed::getRawBits(void) const
-{
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_value);
-}
-
-void	Fixed::setRawBits(int const raw)
-{
-	_value = raw;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:02:57 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/31 16:14:25 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/31 17:37:29 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ class	Fixed
 		Fixed(const float new_copy);
 		~Fixed(void);
 		Fixed&	operator=(const Fixed& to_copy);
-		std::ostream&	operator<<(std::ostream& o, const Fixed& to_copy);
 		int	getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int	toInt(void) const;
 };
+
+std::ostream&	operator<<(std::ostream& o, const Fixed& to_copy);
 
 #endif
