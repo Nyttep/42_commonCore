@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:32:52 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/27 16:18:27 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/31 17:22:09 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	Harl::_error(void)
 void	Harl::complain(std::string level)
 {
 	FunctionPointer	functionArray[] = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
-	std::string	levels[] = {"DEBUG", "DEBUG", "WARNING", "ERROR", ""};
+	std::string	levels[] = {"INFO", "DEBUG", "WARNING", "ERROR", ""};
 
 	for (int i = 0; levels[i] != ""; i++)
 	{

@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:21:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/10/25 16:18:34 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/10/31 17:29:05 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 
 int	ft_check_args(int argc, char** argv)
 {
-	(void)argv;
+	std::string	tmp = argv[2];
 	if (argc != 4)
 	{
 		std::cerr << "Program must be called like this :\n ./mySed <filename> <string1> <string2>\n";
+		return (1);
+	}
+	if (tmp == "")
+	{
+		std::cerr << "<string1> must contain at least 1 char\n";
 		return (1);
 	}
 	return (0);
@@ -40,13 +45,14 @@ int	ft_read_inputFile(std::ifstream &iFile, std::string &buffer)
 
 std::string	ft_search_replace(std::string buffer, std::string s1, std::string s2)
 {
-	size_t	pos;
+	size_t	pos = 0;
 
-	while (buffer.find(s1) != std::string::npos)
+	while (buffer.find(s1, pos) != std::string::npos)
 	{
-		pos = buffer.find(s1);
+		pos = buffer.find(s1, pos);
 		buffer.erase(pos, s1.length());
 		buffer.insert(pos, s2);
+		pos += s2.length();
 	}
 	return (buffer);
 }
