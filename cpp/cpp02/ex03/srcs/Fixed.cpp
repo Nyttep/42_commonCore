@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:02:48 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/08 00:55:43 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/07 23:10:41 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,6 @@ Fixed	Fixed::operator/(const Fixed& denom) const
 {
 	Fixed	ret;
 
-	if (denom._value == 0)
-	{
-		std::cerr << "Division by 0 is impossible\n";
-		ret._value = this->_value;
-		return (ret);
-	}
 	ret._value = ((long int)this->_value * (1 << 8)) / denom._value;
 	return (ret);
 }
