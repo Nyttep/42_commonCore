@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 01:49:52 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 16:52:04 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/15 16:36:05 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/15 17:37:03 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class	FragTrap : virtual public ClapTrap
 {
-	ClapTrap	Player1("Player1");
-	ClapTrap	guest;
-	ClapTrap	Player2(Player1);
-	
-	Player1.attack(guest.getName());
-	guest.takeDamage(Player1.getAD());
-	guest.beRepaired(Player2.getAD());
-	return (1);
-}
+	public :
+		FragTrap(void);
+		FragTrap(const std::string& newName);
+		FragTrap(const FragTrap& to_copy);
+		~FragTrap(void);
+		FragTrap&	operator=(const FragTrap& rhs);
+		void	highFivesGuys(void);
+};
+
+
+#endif

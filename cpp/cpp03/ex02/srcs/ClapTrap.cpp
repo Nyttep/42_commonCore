@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 01:49:50 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 17:17:27 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:17:48 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 //--------------- Constructors & Destructors --------------
 ClapTrap::ClapTrap(void) : _Name("not named"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string newName) : _Name(newName), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
-	std::cout << "String parameter constructor called" << std::endl;
+	std::cout << "ClapTrap String parameter constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& to_copy) : _Name(to_copy.getName()), _HitPoints(to_copy.getHP()), _EnergyPoints(to_copy.getEP()), _AttackDamage(to_copy.getAD())
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 //---------------- Getters & Setters -------------------
@@ -74,7 +74,6 @@ void	ClapTrap::setName(const std::string newName)
 	this->_Name = newName;
 }
 
-
 //----------- Operators overload -----------------
 ClapTrap&	ClapTrap::operator=(const ClapTrap& to_copy)
 {
@@ -82,7 +81,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& to_copy)
 	this->_EnergyPoints = to_copy.getEP();
 	this->_AttackDamage = to_copy.getAD();
 	this->_Name = to_copy.getName();
-	std::cout << "Copy operator called" << std::endl;
+	std::cout << "ClapTrap Copy operator called" << std::endl;
 	return(*this);
 }
 

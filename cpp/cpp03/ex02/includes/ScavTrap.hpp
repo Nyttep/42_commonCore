@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 01:49:52 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 16:52:04 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/15 13:44:03 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/15 16:02:08 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class	ScavTrap : public ClapTrap
 {
-	ClapTrap	Player1("Player1");
-	ClapTrap	guest;
-	ClapTrap	Player2(Player1);
-	
-	Player1.attack(guest.getName());
-	guest.takeDamage(Player1.getAD());
-	guest.beRepaired(Player2.getAD());
-	return (1);
-}
+	public :
+		ScavTrap(void);
+		ScavTrap(const std::string& newName);
+		ScavTrap(const ScavTrap& to_copy);
+		~ScavTrap(void);
+		ScavTrap&	operator=(const ScavTrap& rhs);
+		void	attack(const std::string& target);
+		void	guardGate(void);
+};
+
+#endif

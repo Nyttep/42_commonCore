@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 01:49:54 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 16:49:00 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:07:58 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class	ClapTrap
 {
-	private:
+	protected:
 		std::string	_Name;
 		int	_HitPoints;
 		int	_EnergyPoints;
