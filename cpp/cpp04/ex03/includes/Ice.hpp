@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 14:13:45 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 14:26:15 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/17 14:00:31 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/17 16:55:33 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 # include <iostream>
-# include "Animal.hpp"
+# include <string>
+# include <new>
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class	Cat : public Animal
+class	Ice : public AMateria
 {
 	public :
-		Cat();
-		Cat(const Cat& to_copy);
-		~Cat();
-		Cat&	operator=(const Cat& to_copy);
-		void	makeSound() const;
+		Ice();
+		Ice(const Ice& to_copy);
+		~Ice();
+		Ice&	operator=(const Ice& rhs);
+		virtual AMateria*	clone() const;
+		virtual void	use(ICharacter& target);
 };
 
 #endif

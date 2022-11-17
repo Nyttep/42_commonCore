@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:14:43 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 17:07:58 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 19:02:48 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Dog::~Dog()
 Dog&	Dog::operator=(const Dog& to_copy)
 {
 	this->_type = to_copy.getType();
+	this->_myBrain = to_copy.getBrain();
 	return (*this);
 }
 

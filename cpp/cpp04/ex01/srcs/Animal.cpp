@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:35:03 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 15:01:32 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 12:02:49 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,16 @@ void	Animal::setType(const std::string& newType)
 // ------------ Other Functions -----------------
 void	Animal::makeSound() const
 {
+}
+
+Brain*	Animal::getBrain() const
+{
+	Brain*	tmp = NULL;
+
+	return (tmp);
+}
+
+void	Animal::setBrain(Brain* newBrain)
+{
+	(void)newBrain;
 }

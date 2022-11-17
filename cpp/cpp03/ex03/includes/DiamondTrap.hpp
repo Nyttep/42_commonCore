@@ -6,13 +6,15 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:34:11 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 18:22:53 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:56:45 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
+# include <iostream>
+# include <string>
 # include "ClapTrap.hpp"
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"

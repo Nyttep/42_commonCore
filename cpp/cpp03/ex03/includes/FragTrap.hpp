@@ -6,13 +6,15 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:36:05 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/15 17:37:03 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:57:34 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
+# include <iostream>
+# include <string>
 # include "ClapTrap.hpp"
 
 class	FragTrap : virtual public ClapTrap

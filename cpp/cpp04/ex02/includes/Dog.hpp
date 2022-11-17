@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 13:35:06 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 15:07:59 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/16 14:13:46 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/17 14:59:56 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+
+#ifndef DOG_HPP
+# define DOG_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-class	Animal
+class	Dog : public Animal
 {
-	protected :
-		std::string	_type;
+	private :
+		Brain*	_myBrain;
 	public :
-		Animal();
-		Animal(const Animal& to_copy);
-		virtual ~Animal();
-		Animal&	operator=(const Animal& to_copy);
-		std::string	getType() const;
-		void	setType(const std::string& newType);
+		Dog();
+		Dog(const Dog& to_copy);
+		~Dog();
+		Dog&	operator=(const Dog& to_copy);
+		virtual Brain*	getBrain() const;
+		virtual void	setBrain(Brain* newBrain);
 		virtual void	makeSound() const;
 };
 

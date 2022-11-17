@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:14:43 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 15:03:55 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 19:02:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,42 @@
 // --------------- Constructors & Destructors --------------
 Dog::Dog()
 {
-	setType("Dog");
 	std::cout << "Dog default constructor called" << std::endl;
+	setType("Dog");
+	_myBrain = new Brain();
 }
 
 Dog::Dog(const Dog& to_copy) : Animal()
 {
-	setType(to_copy.getType());
 	std::cout << "Dog copy constructor called" << std::endl;
+	setType(to_copy.getType());
+	_myBrain = to_copy.getBrain();
 }
 
 Dog::~Dog()
 {
 	std::cout << "Dog default destructor called" << std::endl;
+	delete _myBrain;
 }
 
 // -------------- Operators overload --------------------
 Dog&	Dog::operator=(const Dog& to_copy)
 {
 	this->_type = to_copy.getType();
+	this->_myBrain = to_copy.getBrain();
 	return (*this);
+}
+
+//-------------- Setters & Getters --------------------
+Brain*	Dog::getBrain() const
+{
+	return (_myBrain);
+}
+
+void	Dog::setBrain(Brain* newBrain)
+{
+	delete _myBrain;
+	_myBrain = newBrain;
 }
 
 // ------------- Other Functions -------------------------

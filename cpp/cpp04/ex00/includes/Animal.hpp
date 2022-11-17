@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:35:06 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 15:07:59 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:58:33 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ANIMAL_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
 
 class	Animal
 {

@@ -15,6 +15,8 @@
 # define CAT_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
 # include "Animal.hpp"
 
 class	Cat : public Animal

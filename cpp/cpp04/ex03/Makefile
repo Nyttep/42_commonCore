@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/16 15:18:08 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/17 17:46:04 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,18 @@ NAME = a.out
 RM = rm -rf
 
 SRCS_NAME =	main.cpp \
-			Animal.cpp \
-			Cat.cpp \
-			Dog.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp
+			AMateria.cpp \
+			Ice.cpp \
+			Cure.cpp \
+			Character.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	Animal.hpp \
-			Cat.hpp \
-			Dog.hpp \
-			WrongAnimal.hpp \
-			WrongCat.hpp
-INCS_PATH = includes
+INCS_NAME =	AMateria.hpp \
+			Ice.hpp \
+			Cure.hpp \
+			ICharacter.hpp \
+			Character.hpp
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
 OBJS = ${SRCS:.cpp=.o}

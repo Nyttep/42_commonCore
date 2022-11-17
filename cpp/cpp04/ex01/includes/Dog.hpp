@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:13:46 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 17:01:57 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:59:33 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define DOG_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
 # include "Animal.hpp"
 # include "Brain.hpp"
 
@@ -27,9 +29,9 @@ class	Dog : public Animal
 		Dog(const Dog& to_copy);
 		~Dog();
 		Dog&	operator=(const Dog& to_copy);
-		Brain*	getBrain() const;
-		void	setBrain(Brain* newBrain);
-		void	makeSound() const;
+		virtual Brain*	getBrain() const;
+		virtual void	setBrain(Brain* newBrain);
+		virtual void	makeSound() const;
 };
 
 #endif

@@ -6,11 +6,11 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/17 14:40:45 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/16 16:06:46 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = a.out
@@ -18,15 +18,21 @@ NAME = a.out
 RM = rm -rf
 
 SRCS_NAME =	main.cpp \
-			ClapTrap.cpp \
-			ScavTrap.cpp \
-			FragTrap.cpp
+			Animal.cpp \
+			Cat.cpp \
+			Dog.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp \
+			Brain.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	ClapTrap.hpp \
-			ScavTrap.hpp \
-			FragTrap.hpp
+INCS_NAME =	Animal.hpp \
+			Cat.hpp \
+			Dog.hpp \
+			WrongAnimal.hpp \
+			WrongCat.hpp \
+			Brain.hpp
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 

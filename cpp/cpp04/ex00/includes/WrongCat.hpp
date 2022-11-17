@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:13:45 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 15:16:22 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:59:12 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define WRONGCAT_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
 # include "WrongAnimal.hpp"
 
 class	WrongCat : public WrongAnimal

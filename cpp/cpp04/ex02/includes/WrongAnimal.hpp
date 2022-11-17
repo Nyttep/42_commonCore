@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:57:39 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/17 14:59:26 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/16 13:35:06 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/17 14:59:59 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <iostream>
 # include <string>
 # include <new>
 
-class	Brain
+class	WrongAnimal
 {
-	private :
-		std::string	_ideas[100];
+	protected :
+		std::string	_type;
 	public :
-		Brain();
-		Brain(const Brain& to_copy);
-		~Brain();
-		Brain&	operator=(const Brain& to_copy);
-		std::string	getIdea(int i) const;
-		void	setIdea(std::string newIdea, int i);
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal& to_copy);
+		~WrongAnimal();
+		WrongAnimal&	operator=(const WrongAnimal& to_copy);
+		std::string	getType() const;
+		void	setType(const std::string& newType);
+		void	makeSound() const;
 };
 
 #endif

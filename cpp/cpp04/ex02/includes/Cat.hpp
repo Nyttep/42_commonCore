@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 14:13:46 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/16 14:26:31 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/16 14:13:45 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/17 14:59:53 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include <iostream>
+# include <string>
+# include <new>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class	Dog : public Animal
+class	Cat : public Animal
 {
+	private :
+		Brain*	_myBrain;
 	public :
-		Dog();
-		Dog(const Dog& to_copy);
-		~Dog();
-		Dog&	operator=(const Dog& to_copy);
-		void	makeSound() const;
+		Cat();
+		Cat(const Cat& to_copy);
+		~Cat();
+		Cat&	operator=(const Cat& to_copy);
+		virtual Brain*	getBrain() const;
+		virtual void	setBrain(Brain* newBrain);
+		virtual void	makeSound() const;
 };
 
 #endif
