@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:16:50 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/17 16:51:57 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:08:30 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Ice::Ice() : AMateria("ice")
 	std::cout << "Ice default Constructor Called" << std::endl;
 }
 
-Ice::Ice(const Ice& to_copy) : AMateria("ice")
+Ice::Ice(const Ice& to_copy) : AMateria(to_copy.getType())
 {
 	std::cout << "Ice copy Constructor Called" << std::endl;
 }
@@ -31,6 +31,7 @@ Ice::~Ice()
 //------------------ Operators Overload --------------------
 Ice&	Ice::operator=(const Ice& rhs)
 {
+	(void)rhs;
 	return (*this);
 }
 

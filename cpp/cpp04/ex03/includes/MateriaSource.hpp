@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 14:00:31 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/18 17:50:51 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/18 16:49:13 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/18 17:51:30 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 # include <iostream>
 # include <string>
 # include <new>
+# include "IMateriaSource.hpp"
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
 
-class	Ice : public AMateria
+class	MateriaSource : public IMateriaSource
 {
+	private :
+		AMateria**	_inventory;
 	public :
-		Ice();
-		Ice(const Ice& to_copy);
-		~Ice();
-		Ice&	operator=(const Ice& rhs);
-		virtual AMateria*	clone() const;
-		virtual void	use(ICharacter& target);
+		MateriaSource();
+		MateriaSource(const MateriaSource& toCopy);
+		~MateriaSource();
+		MateriaSource&	operator=(const MateriaSource& rhs);
+		AMateria*	getMateria(int idx) const;
+		virtual void	learnMateria(AMateria* toLearn);
+		virtual AMateria*	createMateria(const std::string& type);
 };
 
 #endif

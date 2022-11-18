@@ -6,16 +6,16 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:46:01 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/17 18:58:47 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:59:12 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMETERIA_HPP
+#ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
 # include <iostream>
 # include <string>
-#include "ICharacter.hpp"
+# include "ICharacter.hpp"
 
 class AMateria
 {

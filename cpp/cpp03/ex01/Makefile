@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/15 15:27:56 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/18 16:23:12 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,9 @@ all: ${NAME}
 
 ${NAME}:	${OBJS} ${INCS}
 			${CC} -o ${NAME} ${OBJS}
-			@mkdir ${OBJS_DIR} 2> /dev/null; mv ${SRCS_PATH}/*.o .objdir
 
 clean:
-			${RM} ${OBJS_DIR}
+			${RM} ${OBJS}
 
 fclean:		clean
 			${RM} ${NAME}

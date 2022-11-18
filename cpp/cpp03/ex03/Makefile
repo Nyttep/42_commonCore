@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/15 18:22:39 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/18 16:23:40 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
 OBJS = ${SRCS:.cpp=.o}
-OBJS_DIR = .objdir
 
 all: ${NAME}
 
@@ -42,10 +41,9 @@ all: ${NAME}
 
 ${NAME}:	${OBJS} ${INCS}
 			${CC} -o ${NAME} ${OBJS}
-			@mkdir ${OBJS_DIR} 2> /dev/null; mv ${SRCS_PATH}/*.o .objdir
 
 clean:
-			${RM} ${OBJS_DIR}
+			${RM} ${OBJS}
 
 fclean:		clean
 			${RM} ${NAME}

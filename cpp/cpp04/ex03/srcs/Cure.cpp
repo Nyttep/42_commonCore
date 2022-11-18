@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:52:40 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/17 16:53:48 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:07:34 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cure::Cure() : AMateria("cure")
 	std::cout << "Cure default Constructor Called" << std::endl;
 }
 
-Cure::Cure(const Cure& to_copy) : AMateria("cure")
+Cure::Cure(const Cure& to_copy) : AMateria(to_copy.getType())
 {
 	std::cout << "Cure copy Constructor Called" << std::endl;
 }
@@ -31,6 +31,7 @@ Cure::~Cure()
 //------------------ Operators Overload --------------------
 Cure&	Cure::operator=(const Cure& rhs)
 {
+	(void)rhs;
 	return (*this);
 }
 

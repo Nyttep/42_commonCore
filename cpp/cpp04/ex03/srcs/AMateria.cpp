@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:56:22 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/17 15:19:07 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:06:20 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ AMateria::~AMateria()
 //------------------ Operators Overload --------------------
 AMateria&	AMateria::operator=(const AMateria& rhs)
 {
+	(void)rhs;
 	return (*this);
 }
 
@@ -48,5 +49,6 @@ const std::string&	AMateria::getType() const
 //----------------- Others Functions -----------------------
 void	AMateria::use(ICharacter& target)
 {
-	
+	(void)target;
+	std::cout << "This Materia can not be used" << std::endl;
 }
