@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:41:01 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/22 17:55:51 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/22 17:50:30 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/22 18:05:11 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
-# include <string>
-# include <stdexcept>
-# include <iostream>
-
-class	Bureaucrat
+class	Form
 {
 	private :
 		const std::string	_name;
-		int	_grade;
+		bool	_signed;
+		int	_gradeToSign;
+		int	_gradeToExec;
 	public :
-		Bureaucrat();
-		Bureaucrat(const Bureaucrat& toCopy);
-		Bureaucrat(const std::string newName, int newGrade);
-		~Bureaucrat();
-		Bureaucrat& operator=(const Bureaucrat& rhs);
+		Form();
+		Form(const Form& toCopy);
+		Form(std::string newName, bool newSigned, int NewGradeToSign, int newGradeToExec);
+		~Form();
+		Form&	operator=(const Form& toCopy);
 		class	GradeTooHighException : public std::exception
 		{
 			public :
@@ -38,14 +36,7 @@ class	Bureaucrat
 			public :
 				virtual const char*	what() const throw();
 		};
-		const std::string	getName() const;
-		int	getGrade() const;
-		void	setGrade(int newGrade);
-		void	incrGrade();
-		void	decrGrade();
 		
-};
-
-std::ostream&	operator<<(std::ostream& o, const Bureaucrat& toDisplay);
+}
 
 #endif
