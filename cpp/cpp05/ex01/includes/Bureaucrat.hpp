@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:41:01 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/22 18:05:23 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/23 17:45:50 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string>
 # include <stdexcept>
 # include <iostream>
+# include "Form.hpp"
+
+class	Form;
 
 class	Bureaucrat
 {
@@ -43,7 +46,7 @@ class	Bureaucrat
 		void	setGrade(int newGrade);
 		void	incrGrade();
 		void	decrGrade();
-		
+		void	signForm(Form& toSign) const;
 };
 
 std::ostream&	operator<<(std::ostream& o, const Bureaucrat& toDisplay);

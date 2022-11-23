@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:53:15 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/22 18:05:36 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/23 17:43:47 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ std::ostream&	operator<<(std::ostream& o, const Bureaucrat& toDisplay)
 //------------------------------ Exceptions -------------------------------
 const char*	Bureaucrat::GradeTooHighException::what()const throw()
 {
-	return ("Grade is too high !");
+	return ("Grade is too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what()const throw()
 {
-	return ("Grade is too low !");
+	return ("Grade is too low");
 }
 
 //-------------------------- Setters & Getters ----------------------------
@@ -99,4 +99,17 @@ void	Bureaucrat::decrGrade()
 		throw Bureaucrat::GradeTooLowException();
 	else
 		_grade++;
+}
+
+void	Bureaucrat::signForm(Form& toSign) const
+{
+	try
+	{
+		toSign.beSigned(*this);
+		std::cout << _name << " signed " << toSign.getName() << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << _name << " couldn't sign " << toSign.getName() << " because " << e.what() << std::endl;
+	}
 }
