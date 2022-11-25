@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:49:56 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/18 18:15:24 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:40:25 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Character::~Character()
  //------------------- Operators Overload ---------------------------
 Character&	Character::operator=(const Character& rhs)
 {
-	for (int i = 0; (i <= 3); i++)
+	for (int i = 0; (i <= 3) && rhs._inventory[i]; i++)
 	{
 		if (_inventory[i])
 			delete _inventory[i];
@@ -99,5 +99,10 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	_inventory[idx]->use(target);
+	if (idx > 3 || idx < 0)
+		std::cout << "the index is invalid" << std::endl;
+	else if (_inventory[idx] == NULL)
+		std::cout << "there is no materia to use at this index" << std::endl;
+	else
+		_inventory[idx]->use(target);
 }

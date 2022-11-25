@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:50:30 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/25 16:02:44 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:58:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class	Bureaucrat;
 
-class	Form
+class	AForm
 {
 	private :
 		const std::string	_name;
@@ -28,11 +28,11 @@ class	Form
 		int	_gradeToSign;
 		int	_gradeToExec;
 	public :
-		Form();
-		Form(const Form& toCopy);
-		Form(std::string newName, int NewGradeToSign, int newGradeToExec);
-		~Form();
-		Form&	operator=(const Form& toCopy);
+		AForm();
+		AForm(const AForm& toCopy);
+		AForm(std::string newName, int NewGradeToSign, int newGradeToExec);
+		virtual ~AForm();
+		AForm&	operator=(const AForm& toCopy);
 		class	GradeTooHighException : public std::exception
 		{
 			public :
@@ -52,9 +52,10 @@ class	Form
 		bool	getSigned() const;
 		int	getGradeToSign() const;
 		int	getGradeToExec() const;
-		void	beSigned(const Bureaucrat& signer);
+		void	checkGradeExec(const Bureaucrat& executor) const;
+		virtual void	beSigned(const Bureaucrat& signer) = 0;
 };
 
-std::ostream&	operator<<(std::ostream& o, const Form& toDisplay);
+std::ostream&	operator<<(std::ostream& o, const AForm& toDisplay);
 
 #endif
