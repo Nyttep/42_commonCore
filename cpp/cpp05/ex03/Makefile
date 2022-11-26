@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/26 16:40:24 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/26 17:23:58 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS_NAME =	main.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
-			PresidentialPardonForm.cpp
+			PresidentialPardonForm.cpp \
+			Intern.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
@@ -30,7 +31,8 @@ INCS_NAME =	Bureaucrat.hpp \
 			AForm.hpp \
 			ShrubberyCreationForm.hpp \
 			RobotomyRequestForm.hpp \
-			PresidentialPardonForm.hpp
+			PresidentialPardonForm.hpp \
+			Intern.hpp
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 

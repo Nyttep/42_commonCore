@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:37:48 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/26 17:11:12 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/26 17:53:57 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main()
 {
 	Bureaucrat	A("Karen", 150);
 	Bureaucrat	B("Paul", 1);
-	AForm*	F = new ShrubberyCreationForm("garden");
+	Intern	someRandomIntern;
+	AForm*	F = someRandomIntern.makeForm("shrubbery creation", "garden");
 
 	try
 	{
@@ -45,10 +47,10 @@ int	main()
 	A.executeForm(*F);
 	B.executeForm(*F);
 	delete F;
-	F = new RobotomyRequestForm("Dr.Gero");
+	F = someRandomIntern.makeForm("robotomy request", "Dr.Gero");
 	B.executeForm(*F);
 	delete F;
-	F = new PresidentialPardonForm("Marvin");
+	F = someRandomIntern.makeForm("presidential pardon", "Marvin");
 	B.executeForm(*F);
 	delete F;
 	return (0);
