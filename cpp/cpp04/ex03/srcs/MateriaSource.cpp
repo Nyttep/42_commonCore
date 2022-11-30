@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:53:57 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/18 18:15:45 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/11/30 16:29:54 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ MateriaSource::MateriaSource(const MateriaSource& toCopy)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "Character default Destructor Called" << std::endl;
+	std::cout << "MateriaSource default Destructor Called" << std::endl;
 	for (int i = 0; (i <= 3) && _inventory[i]; i++)
 		delete _inventory[i];
 	delete [] _inventory;

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   myFunctions.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:41:19 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:31:16 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/30 16:34:25 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/30 16:48:03 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#include "myFunctions.hpp"
 
-# include <string>
-# include <cctype>
-# include <iostream>
-# include <cstdlib>
-# include <limits>
 
-int	checkArgs(int argc, char** argv);
+uintptr_t	serialize(Data* ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-#endif
+Data*	deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data*>(raw));
+}

@@ -6,25 +6,31 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/11/30 14:31:55 by pdubois          ###   ########.fr        #
+#    Updated: 2022/11/30 19:00:22 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-NAME = convert
+NAME = a.out
 
 RM = rm -rf
 
 SRCS_NAME =	main.cpp \
-			checkArgs.cpp \
-			Converter.cpp
+			Base.cpp \
+			myFunctions.cpp \
+			A.cpp \
+			B.cpp \
+			C.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	convert.hpp \
-			Converter.hpp
+INCS_NAME =	Base.hpp \
+			myFunctions.hpp \
+			A.hpp \
+			B.hpp \
+			C.hpp
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 

@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   Converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:41:19 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:31:16 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/30 10:38:17 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/30 14:48:32 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#ifndef CONVERTER_HPP
+# define CONVERTER_HPP
 
+# include <iostream>
 # include <string>
 # include <cctype>
-# include <iostream>
-# include <cstdlib>
-# include <limits>
 
-int	checkArgs(int argc, char** argv);
+class	Converter
+{
+	private :
+		static const std::string	_types[10];
+		std::string	_trueType;
+	public :
+		Converter();
+		Converter(std::string newTrueType);
+		Converter(const Converter& toCopy);
+		~Converter();
+		Converter&	operator=(const Converter& toCopy);
+		std::string	getType() const;
+		void	setType(std::string newType);
+		std::string	findType(std::string newtype) const;
+};
 
 #endif

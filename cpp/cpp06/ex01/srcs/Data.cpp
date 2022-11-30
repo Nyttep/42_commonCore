@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:41:19 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:31:16 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/30 16:29:01 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/30 16:49:36 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#include "Data.hpp"
 
-# include <string>
-# include <cctype>
-# include <iostream>
-# include <cstdlib>
-# include <limits>
+Data::Data()
+{
+	std::cout << "Data default constructor called" << std::endl;
+}
 
-int	checkArgs(int argc, char** argv);
+Data::Data(const Data& toCopy)
+{
+	*this = toCopy;
+	std::cout << "Data copy constructor called" << std::endl;
+}
 
-#endif
+Data::~Data()
+{
+	std::cout << "Data default destructor called" << std::endl;
+}
+
+Data&	Data::operator=(const Data& rhs)
+{
+	this->c = rhs.c;
+	return (*this);
+}

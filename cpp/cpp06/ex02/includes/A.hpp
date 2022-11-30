@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:41:19 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:31:16 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/30 18:37:11 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/30 18:38:31 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#ifndef A_HPP
+# define A_HPP
 
-# include <string>
-# include <cctype>
 # include <iostream>
-# include <cstdlib>
-# include <limits>
+# include "Base.hpp"
 
-int	checkArgs(int argc, char** argv);
+class	A : public Base
+{
+	public :
+		virtual ~A();
+};
 
 #endif

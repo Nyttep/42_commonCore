@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   myFunctions.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:41:19 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:31:16 by pdubois          ###   ########.fr       */
+/*   Created: 2022/11/30 18:40:21 by pdubois           #+#    #+#             */
+/*   Updated: 2022/11/30 18:43:47 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#ifndef MYFUNCTIONS_HPP
+# define MYFUNCTIONS_HPP
 
-# include <string>
-# include <cctype>
 # include <iostream>
+# include <ctime>
 # include <cstdlib>
-# include <limits>
+# include "Base.hpp"
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
 
-int	checkArgs(int argc, char** argv);
+Base*	generate();
+void	identify(Base* p);
+void	identify(Base& p);
 
 #endif
