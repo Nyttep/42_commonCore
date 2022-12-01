@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/12/01 15:07:10 by pdubois          ###   ########.fr        #
+#    Updated: 2022/12/01 16:03:27 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ NAME = a.out
 
 RM = rm -rf
 
-SRCS_NAME =	main.cpp \
-			Array.cpp
+SRCS_NAME =	main.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
