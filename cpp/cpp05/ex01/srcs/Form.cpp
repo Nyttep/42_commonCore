@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:29:03 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/25 15:35:45 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/03 16:00:00 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,22 @@ Form::Form() : _name("not named"), _signed(0), _gradeToSign(150), _gradeToExec(1
 	std::cout << "Form default Constructor called" << std::endl;
 }
 
-Form::Form(const Form& toCopy) : _name(toCopy._name)
+Form::Form(const Form& toCopy) : _name(toCopy._name), _gradeToSign(toCopy.getGradeToSign()), _gradeToExec(toCopy.getGradeToExec())
 {
 	*this = toCopy;
 	std::cout << "Form copy Constructor called" << std::endl;
 }
 
-Form::Form(std::string newName, int NewGradeToSign, int newGradeToExec) : _name(newName), _signed(0)
+Form::Form(std::string newName, int NewGradeToSign, int newGradeToExec) : _name(newName), _signed(0), _gradeToSign(NewGradeToSign), _gradeToExec(newGradeToExec)
 {
 	if (NewGradeToSign < 1)
 		throw Form::GradeTooHighException();
 	else if (NewGradeToSign > 150)
 		throw Form::GradeTooLowException();
-	else
-		_gradeToSign = NewGradeToSign;
 	if (newGradeToExec < 1)
 		throw Form::GradeTooHighException();
 	else if (newGradeToExec > 150)
 		throw Form::GradeTooLowException();
-	else
-		_gradeToExec = newGradeToExec;
 	std::cout << "Form args Constructor called" << std::endl;
 }
 
@@ -50,8 +46,6 @@ Form::~Form()
 Form& Form::operator=(const Form& toCopy)
 {
 	this->_signed = toCopy._signed;
-	this->_gradeToSign = toCopy._gradeToSign;
-	this->_gradeToExec = toCopy._gradeToExec;
 	return (*this);
 }
 

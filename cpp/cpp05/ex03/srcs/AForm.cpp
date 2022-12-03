@@ -18,26 +18,22 @@ AForm::AForm() : _name("not named"), _signed(0), _gradeToSign(150), _gradeToExec
 	std::cout << "AForm default Constructor called" << std::endl;
 }
 
-AForm::AForm(const AForm& toCopy) : _name(toCopy._name)
+AForm::AForm(const AForm& toCopy) : _name(toCopy._name), _gradeToSign(toCopy.getGradeToSign()),  _gradeToExec(toCopy.getGradeToExec())
 {
 	*this = toCopy;
 	std::cout << "AForm copy Constructor called" << std::endl;
 }
 
-AForm::AForm(std::string newName, int NewGradeToSign, int newGradeToExec) : _name(newName), _signed(0)
+AForm::AForm(std::string newName, int NewGradeToSign, int newGradeToExec) : _name(newName), _signed(0), _gradeToSign(NewGradeToSign), _gradeToExec(newGradeToExec)
 {
 	if (NewGradeToSign < 1)
 		throw AForm::GradeTooHighException();
 	else if (NewGradeToSign > 150)
 		throw AForm::GradeTooLowException();
-	else
-		_gradeToSign = NewGradeToSign;
 	if (newGradeToExec < 1)
 		throw AForm::GradeTooHighException();
 	else if (newGradeToExec > 150)
 		throw AForm::GradeTooLowException();
-	else
-		_gradeToExec = newGradeToExec;
 	std::cout << "AForm args Constructor called" << std::endl;
 }
 
@@ -50,8 +46,6 @@ AForm::~AForm()
 AForm& AForm::operator=(const AForm& toCopy)
 {
 	this->_signed = toCopy._signed;
-	this->_gradeToSign = toCopy._gradeToSign;
-	this->_gradeToExec = toCopy._gradeToExec;
 	return (*this);
 }
 

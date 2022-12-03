@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:50:30 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/25 16:02:44 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/03 15:53:01 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class	Form
 	private :
 		const std::string	_name;
 		bool	_signed;
-		int	_gradeToSign;
-		int	_gradeToExec;
+		const int	_gradeToSign;
+		const int	_gradeToExec;
 	public :
 		Form();
 		Form(const Form& toCopy);
