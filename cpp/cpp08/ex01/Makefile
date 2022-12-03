@@ -6,7 +6,7 @@
 #    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/15 04:26:20 by pdubois           #+#    #+#              #
-#    Updated: 2022/12/03 13:40:34 by pdubois          ###   ########.fr        #
+#    Updated: 2022/12/03 16:59:38 by pdubois          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,12 @@ NAME = a.out
 
 RM = rm -rf
 
-SRCS_NAME =	main.cpp
+SRCS_NAME =	main.cpp \
+			Span.cpp
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	easyfind.hpp
+INCS_NAME =	Span.hpp
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
