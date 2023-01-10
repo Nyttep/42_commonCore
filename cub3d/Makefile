@@ -26,23 +26,23 @@ SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = cub3D.h
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
-LIBS = libft/libft.a \
-		minilibx/libmlx_Linux.a
+LIBS = libft/libft.a
+MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 %.o : %.c
-			${CC} ${CFLAGS} -g -I ${INCS_PATH} -I libft -I minilibx -c $< -o $@
+			${CC} ${CFLAGS} -g -I ${INCS_PATH} -I libft -I mlx_linux -c $< -o $@
 
 ${LIBS}:
-			make -C libft; make -C minilibx
+			make -C libft
 
 ${NAME}:	${OBJS} ${INCS} ${LIBS}
 			${CC} -g -o ${NAME} ${OBJS} ${LIBS} ${MLXFLAGS}
 clean:
-			${RM} ${OBJS}; make -C libft fclean; make -C minilibx fclean
+			${RM} ${OBJS}; make -C libft fclean;
 
 fclean:		clean
 			${RM} ${NAME}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:21 by paul              #+#    #+#             */
-/*   Updated: 2022/12/27 18:50:13 by paul             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:39:11 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-ft_quit(t_game *game)
+void	ft_quit(t_game *game)
 {
 	(void)game;
 	exit(-1);

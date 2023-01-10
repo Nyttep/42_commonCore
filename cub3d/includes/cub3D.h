@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:34:28 by paul              #+#    #+#             */
-/*   Updated: 2022/12/27 18:51:48 by paul             ###   ########.fr       */
+/*   Updated: 2023/01/10 19:16:49 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,41 @@
 # include "mlx.h"
 # include "libft.h"
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		endian;
+	int		size_line;
+} t_img;
+
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	char	**map;
+	int[3]	floor;
+	int[3]	ceiling;
+	t_img	*north;
+	t_img	*south;
+	t_img	*west;
+	t_img	*east;
 }	t_game;
+
+int		get_next_line(int fd, char **ret);
+int		ft_is_newline_gnl(char *s);
+int		ft_strlen_gnl(char *s);
+char	*ft_kinda_strcat_gnl(char *s, char *init);
+void	ft_get_reste_gnl(char *s, char *reste, int read_return);
+char	*ft_cpy_and_rst_reste_gnl(char *ret, char *reste);
+void	ft_init_gnl(char **s, char **ret, int *read_return, char *reste);
+void	ft_check(int ac, char **av);
+void	ft_quit(t_game *game);
+void	ft_error(t_game *game, char *s);
+char	*ft_skip_spaces(char **s);
+bool	ft_unfinished(int[6] state);
 
 #endif

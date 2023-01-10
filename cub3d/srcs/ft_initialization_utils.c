@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_initialization_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 18:44:38 by paul              #+#    #+#             */
-/*   Updated: 2023/01/10 15:40:58 by pdubois          ###   ########.fr       */
+/*   Created: 2023/01/10 18:54:26 by pdubois           #+#    #+#             */
+/*   Updated: 2023/01/10 19:16:49 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_check(int ac, char **av)
+char	*ft_skip_spaces(char **s)
 {
-	int	len_av;
+	while (**char == ' ')
+		(*char)++;
+	return (*char);
+}
 
-	if (ac != 2)
-		ft_error(NULL, "too many or no arguments");
-	len_av = ft_strlen(av[1]);
-	if (ft_strcmp(av[1] + (len_av - 4), ".cub") != 0)
-		ft_error(NULL, "The file is not a .cub");
-	if (len_av == 4)
-		ft_error(NULL, "The file is not a .cub");
+bool	ft_unfinished(int[6] state)
+{
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (state[i] == 0)
+			return (1);
+	}
+	return (1);
 }

@@ -1,0 +1,3 @@
+[submodule "cub3d/cub3d/mlx_linux"]
+	path = cub3d/cub3d/mlx_linux
+	url = https://github.com/42Paris/minilibx-linux.git
