@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:09:12 by pdubois           #+#    #+#             */
-/*   Updated: 2023/01/10 19:15:01 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:05:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ void	ft_init_map(char **av, t_game *game)
 
 }
 
-void	ft_init_ressources(char **av, t_game *game)
+void	ft_init_img(t_game *game, char *path, char *type)
+{
+	
+}
+
+void	ft_init_ressources(char **av, t_game *game, int fd)
 {
 	char	set[6] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 	char	*buff;
@@ -30,9 +35,12 @@ void	ft_init_ressources(char **av, t_game *game)
 	{
 		while (i < 6 && buff[0] != '\n')
 		{
-			if (!ft_strncmp(ft_skip_spaces(&buff), set[i], ft_strlen(set[i])))
+			if (!ft_strncmp(ft_skip_spaces(buff), set[i], ft_strlen(set[i])))
 			{
-				ft_init_img(game, buff, set[i]);
+				if (i < 4)
+					ft_init_walls(game, ft_format_path(buff), set[i]); //A FAIRE
+				else
+					ft_init_FC(game, ft_format_path(buff), set[i]); //A FAIRE
 				state[i] = 1;
 				break ;
 			}
@@ -59,7 +67,7 @@ void	ft_init(t_game *game, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		ft_error(game, NULL);
-	ft_init_ressources(av[1], game);
+	ft_init_ressources(av[1], game, fd);
 	ft_init_map(av[1], game);
 	close(fd);
 }

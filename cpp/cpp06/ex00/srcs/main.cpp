@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:48:14 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 16:21:35 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:51:04 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ int	main(int argc, char** argv)
 	std::string arg = argv[1];
 	Converter	conv(arg);
 
+	std::cout << std::fixed << std::setprecision(1);
+	if (conv.getType() != "char" && conv.getType() != "int")
+	{
+		bool	coma = false;
+		int	prec = 0;
+		for (int i = 0; arg[i]; i++)
+		{
+			if (arg[i] == '.')
+				coma = true;
+			if (coma && isdigit(arg[i]))
+				prec++;
+		}
+		std::cout << std::fixed << std::setprecision(prec);
+	}
 	if (conv.getType() == "char")
 	{
 		char c = static_cast<char>(arg[0]);

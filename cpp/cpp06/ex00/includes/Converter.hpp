@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 10:38:17 by pdubois           #+#    #+#             */
-/*   Updated: 2022/11/30 14:48:32 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:42:51 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 # include <cctype>
 

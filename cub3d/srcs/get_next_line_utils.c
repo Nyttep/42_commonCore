@@ -9,7 +9,7 @@
 /*   Updated: 2022/02/21 01:34:23 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "cub3D.h"
 
 int	ft_is_newline_gnl(char	*s)
 {

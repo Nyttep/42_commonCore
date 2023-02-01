@@ -9,7 +9,7 @@
 /*   Updated: 2022/02/21 01:34:10 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "cub3D.h"
 
 char	*ft_free(char *ret, char *s)
 {

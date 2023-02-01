@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:34:28 by paul              #+#    #+#             */
-/*   Updated: 2023/01/10 19:16:49 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/01 17:55:25 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	char	**map;
-	int[3]	floor;
-	int[3]	ceiling;
+	int		floor[3];
+	int		ceiling[3];
 	t_img	*north;
 	t_img	*south;
 	t_img	*west;
 	t_img	*east;
 }	t_game;
 
-int		get_next_line(int fd, char **ret);
+int		get_next_line(int fd);
 int		ft_is_newline_gnl(char *s);
 int		ft_strlen_gnl(char *s);
 char	*ft_kinda_strcat_gnl(char *s, char *init);
@@ -55,7 +55,7 @@ void	ft_init_gnl(char **s, char **ret, int *read_return, char *reste);
 void	ft_check(int ac, char **av);
 void	ft_quit(t_game *game);
 void	ft_error(t_game *game, char *s);
-char	*ft_skip_spaces(char **s);
-bool	ft_unfinished(int[6] state);
+char	*ft_skip_spaces(char *s);
+bool	ft_unfinished(int state[6]);
 
 #endif

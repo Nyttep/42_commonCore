@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:29:08 by pdubois           #+#    #+#             */
-/*   Updated: 2022/12/05 19:05:21 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:02:52y pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main()
 
 		mstack.push(5);
 		mstack.push(17);
+		const MutantStack<int> tst_const = mstack;
+		std::cout << tst_const[1] << std::endl;
 		std::cout << mstack.top() << std::endl;
 		mstack.pop();
 		std::cout << mstack.size() << std::endl;
@@ -34,8 +36,8 @@ int main()
 		--it;
 		while (it != ite)
 		{
-		std::cout << *it << std::endl;
-		++it;
+			std::cout << *it << std::endl;
+			++it;
 		}
 		std::stack<int> s(mstack);
 	}
@@ -57,8 +59,8 @@ int main()
 	--itv;
 	while (itv != itev)
 	{
-	std::cout << *itv << std::endl;
-	++itv;
+		std::cout << *itv << std::endl;
+		++itv;
 	}
 
 	return 0;

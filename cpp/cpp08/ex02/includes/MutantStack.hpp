@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:49:04 by pdubois           #+#    #+#             */
-/*   Updated: 2022/12/05 19:01:03 by pdubois          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:17:51 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,47 +49,55 @@ class	MutantStack : public std::stack<T>
 			return (*this);
 		}
 		
-		T&	operator[](const MutantStack& idx)
-		{
-			T&	ret = 0;
-			std::vector<T*>	tmp;
+		// T&	operator[](int idx)
+		// {
+		// 	std::vector<T*>	tmp;
 			
-			for (int i = std::stack<T>::size() - 1 - idx; i >= 0; i--)
-			{
-				tmp.push_back(&(std::stack<T>::top()));
-				std::stack<T>::pop();
-			}
-			ret = std::stack<T>::top();
-			while (tmp.size != 0)
-			{
-				std::stack<T>::push(*(tmp.back()));
-				tmp.pop_back();
-			}
-			if (std::stack<T>::empty())
-				throw std::runtime_error("the stack is empty");
-			return (ret);
-		}
+		// 	for (int i = std::stack<T>::size() - 1 - idx; i > 0; i--)
+		// 	{
+		// 		tmp.push_back(&(std::stack<T>::top()));
+		// 		std::stack<T>::pop();
+		// 	}
+		// 	T&	ret = std::stack<T>::top();
+		// 	while (tmp.size() != 0)
+		// 	{
+		// 		std::stack<T>::push(*(tmp.back()));
+		// 		tmp.pop_back();
+		// 	}
+		// 	if (std::stack<T>::empty())
+		// 		throw std::runtime_error("the stack is empty");
+		// 	return (ret);
+		// }
 		
-		T	operator[](const MutantStack& idx) const
-		{
-			T	ret;
-			std::vector<T>	tmp;
+		// T	operator[](int idx) const
+		// {
+		// 	std::vector<T>	tmp;
 			
-			for (int i = std::stack<T>::size() - 1 - idx; i >= 0; i--)
-			{
-				tmp.push_back(std::stack<T>::top());
-				std::stack<T>::pop();
-			}
-			ret = std::stack<T>::top();
-			while (tmp.size != 0)
-			{
-				std::stack<T>::push(tmp.back());
-				tmp.pop_back();
-			}
-			if (std::stack<T>::empty())
-				throw std::runtime_error("the stack is empty");
-			return (ret);
-		}
+		// 	for (int i = std::stack<T>::size() - 1 - idx; i >= 0; i--)
+		// 	{
+		// 		tmp.push_back(std::stack<T>::top());
+		// 		std::stack<T>::pop();
+		// 	}
+		// 	T&	ret = std::stack<T>::top();
+		// 	while (tmp.size() != 0)
+		// 	{
+		// 		std::stack<T>::push(tmp.back());
+		// 		tmp.pop_back();
+		// 	}
+		// 	if (std::stack<T>::empty())
+		// 		throw std::runtime_error("the stack is empty");
+		// 	return (ret);
+		// }
+
+		T&	operator[](const int idx)
+		{
+			return (*(this->begin() + idx));
+		}	
+
+		T	operator[](const int idx) const
+		{
+			return (*(this->begin() + idx));
+		}	
 
 		iterator begin()
 		{
