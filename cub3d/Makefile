@@ -20,14 +20,17 @@ SRCS_NAME = main.c \
 			get_next_line_utils.c \
 			check.c \
 			error.c \
-			clean_exit.c
+			clean_exit.c \
+			initialization.c \
+			initialization_utils.c
 SRCS_PATH = srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 INCS_NAME = cub3D.h
 INCS_PATH = includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
-LIBS = libft/libft.a
-MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+LIBS = libft/libft.a \
+		mlx_linux/libmlx_Linux.a
+MLX = -lXext -lX11
 RM = rm -rf
 OBJS = $(SRCS:.c=.o)
 
@@ -37,7 +40,7 @@ all: $(NAME)
 			${CC} ${CFLAGS} -g -I ${INCS_PATH} -I libft -I mlx_linux -c $< -o $@
 
 ${LIBS}:
-			make -C libft
+			make -C libft; make -C mlx_linux
 
 ${NAME}:	${OBJS} ${INCS} ${LIBS}
 			${CC} -g -o ${NAME} ${OBJS} ${LIBS} ${MLXFLAGS}

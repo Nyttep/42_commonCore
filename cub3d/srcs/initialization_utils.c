@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initialization_utils.c                          :+:      :+:    :+:   */
+/*   initialization_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:54:26 by pdubois           #+#    #+#             */
-/*   Updated: 2023/02/01 17:55:20 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:44:41 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*ft_skip_spaces(char *s)
 {
-	while (*char == ' ')
-		char++;
-	return (char);
+	while (*s == ' ' && *s)
+		s++;
+	return (s);
 }
 
-bool	ft_unfinished(int state[6])
+bool	ft_unfinished(bool state[6])
 {
 	int	i;
 
@@ -28,8 +28,9 @@ bool	ft_unfinished(int state[6])
 	{
 		if (state[i] == 0)
 			return (1);
+		i++;
 	}
-	return (1);
+	return (0);
 }
 
 char	*ft_format_path(char *buff)
@@ -39,9 +40,10 @@ char	*ft_format_path(char *buff)
 	i = 0;
 	while (ft_isalpha(buff[i]))
 		i++;
-	buff = ft_skip_spaces(buff);
-	i = 0;
-	while (buff[i] != ' ')
-		i++;
-	return ((buff + i));
+	buff = ft_skip_spaces(buff + i);
+	// i = 0;
+	// while (buff[i] != ' ' && buff[i])
+	// 	i++;
+	buff[ft_strlen(buff) - 1] = 0;
+	return ((buff));
 }

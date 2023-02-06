@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
+NO ./blue.xpm
 
-SO ./path_to_the_south_texture
+SO ./blue.xpm
 
-WE ./path_to_the_west_texture
+WE ./blue.xpm
 
-EA ./path_to_the_east_texture
+EA ./blue.xpm
 
 C 220,100,0
 

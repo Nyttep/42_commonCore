@@ -6,13 +6,14 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:34:28 by paul              #+#    #+#             */
-/*   Updated: 2023/02/01 17:55:25 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:20:50 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	CUB3D_H
 # define CUB3D_H
 
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -20,6 +21,8 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include "libft.h"
+
+# define BUFFER_SIZE 100
 
 typedef struct s_img
 {
@@ -45,17 +48,23 @@ typedef struct s_game
 	t_img	*east;
 }	t_game;
 
-int		get_next_line(int fd);
+char	*get_next_line(int fd);
 int		ft_is_newline_gnl(char *s);
 int		ft_strlen_gnl(char *s);
 char	*ft_kinda_strcat_gnl(char *s, char *init);
 void	ft_get_reste_gnl(char *s, char *reste, int read_return);
 char	*ft_cpy_and_rst_reste_gnl(char *ret, char *reste);
 void	ft_init_gnl(char **s, char **ret, int *read_return, char *reste);
-void	ft_check(int ac, char **av);
+
 void	ft_quit(t_game *game);
 void	ft_error(t_game *game, char *s);
+
+void	ft_check(int ac, char **av);
+int		ft_check_rgb(char *str);
+
+void	ft_init(t_game *game, char **av);
 char	*ft_skip_spaces(char *s);
-bool	ft_unfinished(int state[6]);
+bool	ft_unfinished(bool state[6]);
+char	*ft_format_path(char *buff);
 
 #endif
