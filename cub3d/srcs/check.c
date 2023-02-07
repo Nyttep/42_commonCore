@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:44:38 by paul              #+#    #+#             */
-/*   Updated: 2023/02/06 13:50:07 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/07 14:44:15 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ void	ft_check(int ac, char **av)
 		ft_error(NULL, "The file is not a .cub");
 }
 
+int	ft_check_rbgformat_afterdigits(char *str, int i, int k)
+{
+	if (str[i] != ',' || k == 3)
+	{
+		if (k == 3 && str[i] == ' ')
+			if (*ft_skip_spaces(str + i) == '\0')
+				return (0);
+		if (k == 3 && str[i] == '\0')
+			return (0);
+		return (1);
+	}
+	return (0);
+}
+
 int	ft_check_rgbformat(char *str, int i)
 {
 	int	j;
@@ -34,23 +48,19 @@ int	ft_check_rgbformat(char *str, int i)
 	while (str[i])
 	{
 		j = 0;
+		if (str[i] == '+' || str[i] == '-')
+			if (!(str[i + 1] >= '0' && str[i + 1] <= '9'))
+				return (1);
 		while (ft_isdigit(str[i]))
 		{
 			j++;
 			i++;
 		}
-		if (j > 3 || j == 0)
+		if (j == 0)
 			return (1);
 		k++;
-		if (str[i] != ',')
-		{
-			if (k == 3 && str[i] == ' ')
-				if (*ft_skip_spaces(str + i) == '\0')
-					return (0);
-			if (k == 3 && str[i] == '\0')
-				return (0);
+		if (ft_check_rbgformat_afterdigits(str, i, k))
 			return (1);
-		}
 		i++;
 	}
 	if (k != 3)
@@ -61,7 +71,7 @@ int	ft_check_rgbformat(char *str, int i)
 int	ft_check_rgb(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (ft_check_rgbformat(str, i))
 		return (1);

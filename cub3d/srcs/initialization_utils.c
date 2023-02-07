@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:54:26 by pdubois           #+#    #+#             */
-/*   Updated: 2023/02/06 13:44:41 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:44:37 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_skip_spaces(char *s)
 	return (s);
 }
 
-bool	ft_unfinished(bool state[6])
+bool	ft_is_unfinished(bool state[6])
 {
 	int	i;
 
@@ -41,9 +41,9 @@ char	*ft_format_path(char *buff)
 	while (ft_isalpha(buff[i]))
 		i++;
 	buff = ft_skip_spaces(buff + i);
-	// i = 0;
-	// while (buff[i] != ' ' && buff[i])
-	// 	i++;
+	/*i = 0;
+	while (buff[i] != ' ' && buff[i])
+	i++;*/
 	buff[ft_strlen(buff) - 1] = 0;
 	return ((buff));
 }
