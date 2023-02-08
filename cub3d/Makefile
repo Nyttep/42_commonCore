@@ -22,6 +22,7 @@ SRCS_NAME = main.c \
 			error.c \
 			clean_exit.c \
 			initialization.c \
+			initialization_ressources.c \
 			initialization_utils.c \
 			norminette_is_stupid.c
 SRCS_PATH = srcs

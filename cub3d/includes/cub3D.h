@@ -6,7 +6,7 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:34:28 by paul              #+#    #+#             */
-/*   Updated: 2023/02/07 15:44:45 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:35:08 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_check(int ac, char **av);
 int		ft_check_rgb(char *str);
 
 void	ft_init(t_game *game, char **av);
+void	ft_init_ressources(t_game *game, int fd);
 char	*ft_skip_spaces(char *s);
 bool	ft_is_unfinished(bool state[6]);
 char	*ft_format_path(char *buff);
