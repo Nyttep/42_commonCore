@@ -6,13 +6,13 @@
 /*   By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:44:38 by paul              #+#    #+#             */
-/*   Updated: 2023/02/07 14:44:15 by pdubois          ###   ########.fr       */
+/*   Updated: 2023/03/31 11:36:29 by pdubois          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_check(int ac, char **av)
+void	ft_check_basic(int ac, char **av)
 {
 	int	len_av;
 
@@ -85,4 +85,36 @@ int	ft_check_rgb(char *str)
 		i++;
 	}
 	return (0);
+}
+
+int	ft_check_map(t_game *game)
+{
+	int		i;
+	int		j;
+	char	c;
+	
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			c = game->map[i][j];
+			if (!ft_is_valid_char_map(c))
+				ft_error(game, "The map is not valid");
+			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			{
+				if (game->map[i][j - 1] == ' ')
+					ft_error(game, "The map is not valid");
+				if (game->map[i][j + 1] == ' ')
+					ft_error(game, "The map is not valid");
+				if (game->map[i - 1][j] == ' ')
+					ft_error(game, "The map is not valid");
+				if (game->map[i + 1][j] == ' ')
+					ft_error(game, "The map is not valid");
+			}
+			j++;
+		}
+		i++;
+	}
 }
