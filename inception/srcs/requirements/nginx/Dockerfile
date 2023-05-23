@@ -1,9 +1,9 @@
-FROM	alpine:3.17
+FROM	debian:buster
 
-RUN	apk update && \
-	apk upgrade && \
-	apk add nginx && \
-	apk add openssl
+RUN	apt-get update -y && \
+	apt-get upgrade -y && \
+	apt-get install nginx -y && \
+	apt-get install openssl -y
 
 RUN	mkdir -p /etc/nginx/tsl && \
 	mkdir -p /var/run/nginx
