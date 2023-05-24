@@ -14,3 +14,6 @@ RUN	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 	mv wp-cli.phar /usr/local/bin/wp
 
 COPY ./conf/php.ini /etc/php/7.3/cli/php.ini
+COPY ./tools/wp_script.sh ./script.sh
+
+#ENTRYPOINT ["bash", "./script.sh"]
