@@ -52,13 +52,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/nyttep/volumes/wordpress'
+      device: '/home/paul/volumes/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/nyttep/volumes/mariadb'
+      device: '/home/paul/volumes/mariadb'
 networks:
   inception:
     driver: bridge
