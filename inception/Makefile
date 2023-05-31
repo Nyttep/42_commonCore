@@ -1,21 +1,23 @@
-YML_PATH = ./srcs/docker-compose.yml
+CMD_PATH = ./srcs/docker-compose.yml
+MARIADB_VLM = /home/pdubois/data/mariadb
+WORDPRESS_VLM = /home/pdubois/data/wordpress
 
-all:
-	@docker-compose -f $(YML_PATH) up -d
+all :
+	sudo mkdir -p $(MARIADB_VLM)
+	sudo mkdir -p $(WORDPRESS_VLM)
+	sudo chmod 777 $(MARIADB_VLM)
+	sudo chmod 777 $(WORDPRESS_VLM)
+	sudo docker-compose -f $(CMD_PATH) up -d --build
 
-down: 
-	@docker-compose -f $(YML_PATH) down
+re : clean all
 
-re:
-	@docker-compose -f $(YML_PATH) up --build --force-recreate -d
+stop:
+	sudo docker-compose -f $(CMD_PATH) stop
 
-clean:
-	@docker stop $$(docker ps -qa);\
-    docker rm $$(docker ps -qa);\
-    docker rmi -f $$(docker images -qa);\
-    docker volume rm $$(docker volume ls -q);\
-	rm -rf /home/genouf/data/mariadb/*;\
-	rm -rf /home/genouf/data/wordpress/*;\
-    docker network rm srcs_docker_network;\
+clean : stop
+	sudo docker-compose -f $(CMD_PATH) down -v
 
-.PHONY: all down re clean
+fclean : clean
+	sudo rm -rf $(MARIADB_VLM)
+	sudo rm -rf $(WORDPRESS_VLM)
+	sudo docker system prune -af
