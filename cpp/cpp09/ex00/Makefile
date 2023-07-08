@@ -1,0 +1,35 @@
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+
+NAME = btc
+
+RM = rm -rf
+
+SRCS_NAME =	main.cpp \
+			BitcoinExchange.cpp
+SRCS_PATH =	srcs
+SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
+
+INCS_NAME =	BitcoinExchnage.hpp
+INCS_PATH =	includes
+INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
+
+OBJS = ${SRCS:.cpp=.o}
+
+all: ${NAME}
+
+%.o : %.cpp ${INCS}
+	${CC} ${CFLAGS} -I ${INCS_PATH} -c $< -o $@
+
+${NAME}: ${OBJS} ${INCS}
+	${CC} -o ${NAME} ${OBJS}
+
+clean:
+	${RM} ${OBJS}
+
+fclean: clean
+	${RM} ${NAME}
+
+re: fclean all
+
+.PHONY : all clean fclean re
