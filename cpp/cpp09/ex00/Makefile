@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pdubois <pdubois@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/09 17:03:15 by pdubois           #+#    #+#              #
+#    Updated: 2023/07/09 17:03:19 by pdubois          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
@@ -10,7 +22,7 @@ SRCS_NAME =	main.cpp \
 SRCS_PATH =	srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
-INCS_NAME =	BitcoinExchnage.hpp
+INCS_NAME =	BitcoinExchange.hpp
 INCS_PATH =	includes
 INCS = $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 
