@@ -25,7 +25,7 @@ class	BitcoinExchange
 		std::map<std::string, float>	_amount;
 	public :
 		BitcoinExchange();
-		BitcoinExchange(std::map<std::string, float> newDB);
+		BitcoinExchange(std::map<std::string, float> newRate, std::map<std::string, float> newAmount);
 		BitcoinExchange(const BitcoinExchange& toCopy);
 		~BitcoinExchange();
 		BitcoinExchange& operator=(const BitcoinExchange& toCopy);
