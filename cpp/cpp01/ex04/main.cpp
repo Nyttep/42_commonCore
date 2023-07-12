@@ -37,7 +37,7 @@ int	ft_read_inputFile(std::ifstream &iFile, std::string &buffer)
 	length = iFile.tellg();
 	iFile.seekg(0, iFile.beg);
 	if (length == -1)
-	return (1);
+		return (1);
 	buffer.resize(length);
 	iFile.read(&buffer[0], length);
 	return (0);

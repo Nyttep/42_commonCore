@@ -22,14 +22,13 @@ class	BitcoinExchange
 {
 	private :
 		std::map<std::string, float>	_rate;
-		std::map<std::string, float>	_amount;
 	public :
 		BitcoinExchange();
-		BitcoinExchange(std::map<std::string, float> newRate, std::map<std::string, float> newAmount);
+		BitcoinExchange(std::map<std::string, float> newRate);
 		BitcoinExchange(const BitcoinExchange& toCopy);
 		~BitcoinExchange();
 		BitcoinExchange& operator=(const BitcoinExchange& toCopy);
-		void	init(int fdRate, int fdAmount);
+		int	init(std::string fName);
 
 }
 
