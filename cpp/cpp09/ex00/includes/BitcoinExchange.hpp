@@ -13,6 +13,7 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <stdlib.h>
 # include <iostream>
 # include <fstream>
 # include <string>
@@ -28,8 +29,9 @@ class	BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& toCopy);
 		~BitcoinExchange();
 		BitcoinExchange& operator=(const BitcoinExchange& toCopy);
-		int	init(std::string fName);
+		int	init();
+		int	eval(std::string DBAmount);
 
-}
+};
 
 #endif 
