@@ -8,14 +8,14 @@ int	checkDB(std::string fName)
 	iFile.open(fName.c_str());
 	if (!iFile.is_open())
 	{
-		std::cerr << "The file can't be opened because it doesn't exist or you don't have permissions\n";
+		std::cerr << "Error: The file can't be opened because it doesn't exist or you don't have permissions\n";
 		return (1);
 	}
 	iFile.seekg(0, iFile.end);
 	length = iFile.tellg();
 	if (length <= 0)
 	{
-		std::cerr << "The file is empty\n";
+		std::cerr << "Error: The file is empty\n";
 		return (1);
 	}
 	iFile.seekg(0, iFile.beg);
@@ -27,7 +27,7 @@ int	checkArgs(int argc, char**argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Program must be called like this :\n./btc <filename>";
+		std::cerr << "Error: Program must be called like this :\n./btc <filename>";
 		return (1);
 	}
 	std::string	fName = argv[1];
@@ -47,4 +47,5 @@ int	main(int argc, char** argv)
 	std::string			DBAmount = argv[1];
 	if (DBRate.eval(DBAmount))
 		return (1);
+	return (0);
 }

@@ -23,6 +23,12 @@ class	BitcoinExchange
 {
 	private :
 		std::map<std::string, float>	_rate;
+		std::string	_getRate(std::string date);
+		std::string	_getDate(std::string buffer);
+		std::string	_getValue(std::string buffer);
+		int	_isValidDate(std::string buffer);
+		int	_isValidValue(std::string buffer);
+		int	_isValidInput(std::string buffer);
 	public :
 		BitcoinExchange();
 		BitcoinExchange(std::map<std::string, float> newRate);
