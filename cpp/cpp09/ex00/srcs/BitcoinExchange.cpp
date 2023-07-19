@@ -51,29 +51,97 @@ int	BitcoinExchange::init()
 	return (0);
 }
 
-int	BitcoinExchange::_isValidDate(std::string buffer)
+int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 {
-	std::string				tmp;
-	std::string::iterator	it = buffer.begin();
+	std::string				nbr;
+	int						year;
+	int						month;
+	int						day;
 
-	it = skipSpaces(it);	
+	while (*it == ' ')
+		it++;
+	year = atoi(&*it);
+	if (year < 2009 || year > 2023)
+	{
+		std::cerr << "Error: invalid year => " << &*it << "\n";
+		return (0);
+	}
+	it += 4;
+	if (*it != '-')
+	{
+		std::cerr << "Error: bad input => " << &*it << "\n";
+		return (0);
+	}
+	it++;
+	month = atoi(&*it);
+	if (month < 1 || month > 12)
+	{
+		std::cerr << "Error: invalid month => " << &*it << "\n";
+		return (0);
+	}
+	it += 2;
+	if (*it != '-')
+	{
+		std::cerr << "Error: bad input => " << &*it << "\n";
+		return (0);
+	}
+	it++;
+	day = atoi(&*it);
+	if (month = 2) //february
+	{
+		if (year % 4 == 0) //leap years
+		{
+			if (day < 1 || day > 29)
+			{
+				std::cerr << "Error: invalid day => " << &*it << "\n";
+				return (0);
+			}
+		}
+		else
+		{
+			if (day < 1 || day > 28)
+			{
+				std::cerr << "Error: invalid day => " << &*it << "\n";
+				return (0);
+			}
+		}
+
+	}
+	else if (month % 2 == 0)
+	{
+		if (day < 1 || day > 30)
+		{
+			std::cerr << "Error: invalid day => " << &*it << "\n";
+			return (0);
+		}
+	}
+	else
+	{
+		if (day < 1 || day > 31)
+		{
+			std::cerr << "Error: invalid day => " << &*it << "\n";
+			return (0);
+		}
+	}
+	return (1);
 }
 
-int	BitchoinExchange::_isValidInput(std::string buffer)
+int	BitcoinExchange::_isValidInput(std::string buffer)
 {
 	for (std::string::iterator it = buffer.begin(); it != buffer.end(); it++)
 	{
-		if (!(std::isdigit(*it) || *it == ' ' || *it == '-' || *it == '|' || *it == '.'))
+		if (!(std::isdigit(*it) || std::isspace(*it) || *it == '-' || *it == '|' || *it == '.'))
 		{
 			std::cerr << "Error: bad input => " << buffer << "\n";
 			return (0);
 		}
 	}
-	if (!_isValidDate(buffer))
+	std::string::iterator	it = buffer.begin();
+	if (!_isValidDate(it))
 		return (0);
 	//CHECK IN-BETWEEN
-	if (!_isValidInput(buffer))
-		return (0);
+	//if (!_isValidValue(buffer))
+	//	return (0);
 	//check after
 	return (1);
 }
@@ -82,25 +150,28 @@ int	BitcoinExchange::eval(std::string DBAmount)
 {
 	std::ifstream	iFile;
 
-	iFile.open(DBAmount.c_str);
+	iFile.open(DBAmount.c_str());
 	if(!iFile.is_open())
 	{
 		std::cerr << "Error: The file can't be opened because it doesn't exist or you don't have permissions\n";
 		return (1);
 	}
 	std::string	buffer;
-	std::string	date;
-	std::string	value;
-	float		rate;
+	//std::string	date;
+	//std::string	value;
+	//float		rate;
 	while (std::getline(iFile, buffer))
 	{
-		if (_isValidInput(buffer))
+		/*if (_isValidInput(buffer))
 		{
 			date = _getDate(buffer);
 			value = _getValue(buffer);
 			rate = _getRate(date);
 			std::cout << date << " => " << value << " = " << rate * value;
 		}
-		std::cout << std::endl;
+		std::cout << std::endl;*/
+		if (_isValidInput(buffer))
+			std::cout << buffer << "  VALID" << std::endl;
 	}
+	return (0);
 }

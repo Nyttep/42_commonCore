@@ -38,7 +38,7 @@ int	checkArgs(int argc, char**argv)
 
 int	main(int argc, char** argv)
 {
-	BitcoinExchange&	DBRate;
+	BitcoinExchange	DBRate;
 
 	if (checkArgs(argc, argv))
 		return (1);
