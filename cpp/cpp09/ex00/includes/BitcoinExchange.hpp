@@ -27,7 +27,7 @@ class	BitcoinExchange
 		std::string	_getDate(std::string buffer);
 		std::string	_getValue(std::string buffer);
 		int	_isValidDate(std::string::iterator &it);
-		//int	_isValidValue(std::string buffer);
+		int	_isValidValue(std::string::iterator &it);
 		int	_isValidInput(std::string buffer);
 	public :
 		BitcoinExchange();

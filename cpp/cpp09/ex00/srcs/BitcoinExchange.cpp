@@ -87,7 +87,7 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 	}
 	it++;
 	day = atoi(&*it);
-	if (month = 2) //february
+	if (month == 2) //february
 	{
 		if (year % 4 == 0) //leap years
 		{
@@ -105,7 +105,6 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 				return (0);
 			}
 		}
-
 	}
 	else if (month % 2 == 0)
 	{
@@ -123,6 +122,33 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 			return (0);
 		}
 	}
+	it += 2;
+	return (1);
+}
+
+int	BitcoinExchange::_isValidValue(std::string::iterator &it)
+{
+	float	value;
+
+	while (*it == ' ')
+		it++;
+	value = atof(&*it);
+	if (value < 0)
+	{
+		std::cerr << "Error: not a positive number\n"; 
+		return (0);
+	}
+	if (value > 1000)
+	{
+		std::cerr << "Error: too large a number\n"; 
+		return (0);
+	}
+	while (std::isdigit(*it))
+		it++;
+	if (*it == '.')
+		it++;
+	while (std::isdigit(*it))
+		it++;
 	return (1);
 }
 
@@ -139,10 +165,23 @@ int	BitcoinExchange::_isValidInput(std::string buffer)
 	std::string::iterator	it = buffer.begin();
 	if (!_isValidDate(it))
 		return (0);
-	//CHECK IN-BETWEEN
-	//if (!_isValidValue(buffer))
-	//	return (0);
-	//check after
+	while (*it == ' ')
+		it++;
+	if (*it != '|')
+	{
+		std::cerr << "Error: bad input => " << buffer << "\n";
+		return (0);
+	}
+	it++;
+	if (!_isValidValue(it))
+		return (0);
+	while (*it == ' ')
+		it++;
+	if (it != buffer.end())
+	{
+		std::cerr << "Error : bad input => " << buffer << "\n";
+		return (0);
+	}
 	return (1);
 }
 
