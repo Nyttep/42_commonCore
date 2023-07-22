@@ -24,6 +24,20 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& toCopy)
 	return (*this);
 }
 
+// ------------- Setters & Getters ---------------------
+
+std::string	BitcoinExchange::_getDate(std::string buffer)
+{
+	std::string	date;
+	int			i;
+	
+	std::cout << "buffer = " << buffer << std::endl;
+	while (buffer[i] == ' ')
+		i++;
+	date = buffer.substr(i, 10);
+	return (date);
+}
+
 //------------------------- Other Functions -----------------------------
 
 int	BitcoinExchange::init()
@@ -196,21 +210,20 @@ int	BitcoinExchange::eval(std::string DBAmount)
 		return (1);
 	}
 	std::string	buffer;
-	//std::string	date;
+	std::string	date;
 	//std::string	value;
 	//float		rate;
 	while (std::getline(iFile, buffer))
 	{
-		/*if (_isValidInput(buffer))
+		if (_isValidInput(buffer))
 		{
 			date = _getDate(buffer);
-			value = _getValue(buffer);
-			rate = _getRate(date);
-			std::cout << date << " => " << value << " = " << rate * value;
+			std::cout << "|" << date << "|";
+			//value = _getValue(buffer);
+			//rate = _getRate(date);
+			//std::cout << date << " => " << value << " = " << rate * value;
+			std::cout << std::endl;
 		}
-		std::cout << std::endl;*/
-		if (_isValidInput(buffer))
-			std::cout << buffer << "  VALID" << std::endl;
 	}
 	return (0);
 }
