@@ -22,10 +22,10 @@
 class	BitcoinExchange
 {
 	private :
-		std::map<std::string, float>	_rate;
-		std::string	_getRate(std::string date);
+		std::map<std::string, float>	_DBrate;
+		float	_getRate(std::string date);
 		std::string	_getDate(std::string buffer);
-		std::string	_getValue(std::string buffer);
+		float	_getValue(std::string buffer);
 		int	_isValidDate(std::string::iterator &it);
 		int	_isValidValue(std::string::iterator &it);
 		int	_isValidInput(std::string buffer);

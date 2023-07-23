@@ -5,7 +5,7 @@
 BitcoinExchange::BitcoinExchange()
 {}
 
-BitcoinExchange::BitcoinExchange(std::map<std::string, float> newRate) : _rate(newRate)
+BitcoinExchange::BitcoinExchange(std::map<std::string, float> newRate) : _DBrate(newRate)
 {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& toCopy)
@@ -20,7 +20,7 @@ BitcoinExchange::~BitcoinExchange()
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& toCopy)
 {
-	_rate = toCopy._rate;
+	_DBrate = toCopy._DBrate;
 	return (*this);
 }
 
@@ -29,13 +29,41 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& toCopy)
 std::string	BitcoinExchange::_getDate(std::string buffer)
 {
 	std::string	date;
-	int			i;
+	int			i = 0;
 	
-	std::cout << "buffer = " << buffer << std::endl;
 	while (buffer[i] == ' ')
 		i++;
 	date = buffer.substr(i, 10);
 	return (date);
+}
+
+float	BitcoinExchange::_getValue(std::string buffer)
+{
+	float	value;
+	int	i = buffer.size() - 1;
+
+	while (buffer[i] == ' ')
+		i--;
+	while (buffer[i] == '.' || std::isdigit(buffer[i]))
+		i--;
+	value = atof(&(buffer[i]));
+	return (value);
+}
+
+float	BitcoinExchange::_getRate(std::string date)
+{
+	float	rate;
+	int		found;
+
+	found = _DBrate.count(date);
+	if (found == 1)
+	{
+		rate = _DBrate[date];
+		return (rate);
+	}
+	std::cout << "rate not found" << std::endl;
+	rate = 0;
+	return (rate);
 }
 
 //------------------------- Other Functions -----------------------------
@@ -59,7 +87,7 @@ int	BitcoinExchange::init()
 	{
 		key = buffer.substr(0, 10);
 		value = atof(buffer.substr(11, buffer.size() - 1).c_str());
-		_rate.insert(std::pair<std::string, float>(key, value));
+		_DBrate.insert(std::pair<std::string, float>(key, value));
 	}
 	iFile.close();
 	return (0);
@@ -211,17 +239,16 @@ int	BitcoinExchange::eval(std::string DBAmount)
 	}
 	std::string	buffer;
 	std::string	date;
-	//std::string	value;
-	//float		rate;
+	float	value;
+	float		rate;
 	while (std::getline(iFile, buffer))
 	{
 		if (_isValidInput(buffer))
 		{
 			date = _getDate(buffer);
-			std::cout << "|" << date << "|";
-			//value = _getValue(buffer);
-			//rate = _getRate(date);
-			//std::cout << date << " => " << value << " = " << rate * value;
+			value = _getValue(buffer);
+			rate = _getRate(date);
+			std::cout << date << " => " << value << " = " << rate * value;
 			std::cout << std::endl;
 		}
 	}
