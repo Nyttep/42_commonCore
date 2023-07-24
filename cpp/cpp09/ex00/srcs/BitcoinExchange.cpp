@@ -61,8 +61,8 @@ float	BitcoinExchange::_getRate(std::string date)
 		rate = _DBrate[date];
 		return (rate);
 	}
-	std::cout << "rate not found" << std::endl;
-	rate = 0;
+	date = _findLowerDate(date);
+	rate = _DBrate[date];
 	return (rate);
 }
 
@@ -93,7 +93,7 @@ int	BitcoinExchange::init()
 	return (0);
 }
 
-int	BitcoinExchange::_isValidDate(std::string::iterator &it)
+int	BitcoinExchange::_isValidDate(std::string::iterator &it, std::string buffer)
 {
 	std::string				nbr;
 	int						year;
@@ -105,26 +105,26 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 	year = atoi(&*it);
 	if (year < 2009 || year > 2023)
 	{
-		std::cerr << "Error: invalid year => " << &*it << "\n";
+		std::cerr << "Error: invalid year => " << buffer << "\n";
 		return (0);
 	}
 	it += 4;
 	if (*it != '-')
 	{
-		std::cerr << "Error: bad input => " << &*it << "\n";
+		std::cerr << "Error: bad input => " << buffer << "\n";
 		return (0);
 	}
 	it++;
 	month = atoi(&*it);
 	if (month < 1 || month > 12)
 	{
-		std::cerr << "Error: invalid month => " << &*it << "\n";
+		std::cerr << "Error: invalid month => " << buffer << "\n";
 		return (0);
 	}
 	it += 2;
 	if (*it != '-')
 	{
-		std::cerr << "Error: bad input => " << &*it << "\n";
+		std::cerr << "Error: bad input => " << buffer << "\n";
 		return (0);
 	}
 	it++;
@@ -135,7 +135,7 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 		{
 			if (day < 1 || day > 29)
 			{
-				std::cerr << "Error: invalid day => " << &*it << "\n";
+				std::cerr << "Error: invalid day => " << buffer << "\n";
 				return (0);
 			}
 		}
@@ -143,7 +143,7 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 		{
 			if (day < 1 || day > 28)
 			{
-				std::cerr << "Error: invalid day => " << &*it << "\n";
+				std::cerr << "Error: invalid day => " << buffer << "\n";
 				return (0);
 			}
 		}
@@ -152,7 +152,7 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 	{
 		if (day < 1 || day > 30)
 		{
-			std::cerr << "Error: invalid day => " << &*it << "\n";
+			std::cerr << "Error: invalid day => " << buffer << "\n";
 			return (0);
 		}
 	}
@@ -160,15 +160,20 @@ int	BitcoinExchange::_isValidDate(std::string::iterator &it)
 	{
 		if (day < 1 || day > 31)
 		{
-			std::cerr << "Error: invalid day => " << &*it << "\n";
+			std::cerr << "Error: invalid day => " << buffer << "\n";
 			return (0);
 		}
+	}
+	if (year == 2009 && month == 1 && day == 1)
+	{
+		std::cerr << "Error: no valid rate in database for this date => " << buffer << "\n";
+		return (0);
 	}
 	it += 2;
 	return (1);
 }
 
-int	BitcoinExchange::_isValidValue(std::string::iterator &it)
+int	BitcoinExchange::_isValidValue(std::string::iterator &it, std::string buffer)
 {
 	float	value;
 
@@ -177,12 +182,12 @@ int	BitcoinExchange::_isValidValue(std::string::iterator &it)
 	value = atof(&*it);
 	if (value < 0)
 	{
-		std::cerr << "Error: not a positive number\n"; 
+		std::cerr << "Error: not a positive number => " << buffer << "\n"; 
 		return (0);
 	}
 	if (value > 1000)
 	{
-		std::cerr << "Error: too large a number\n"; 
+		std::cerr << "Error: too large a number => " << buffer << "\n"; 
 		return (0);
 	}
 	while (std::isdigit(*it))
@@ -205,7 +210,7 @@ int	BitcoinExchange::_isValidInput(std::string buffer)
 		}
 	}
 	std::string::iterator	it = buffer.begin();
-	if (!_isValidDate(it))
+	if (!_isValidDate(it, buffer))
 		return (0);
 	while (*it == ' ')
 		it++;
@@ -215,7 +220,7 @@ int	BitcoinExchange::_isValidInput(std::string buffer)
 		return (0);
 	}
 	it++;
-	if (!_isValidValue(it))
+	if (!_isValidValue(it, buffer))
 		return (0);
 	while (*it == ' ')
 		it++;
@@ -253,4 +258,63 @@ int	BitcoinExchange::eval(std::string DBAmount)
 		}
 	}
 	return (0);
+}
+
+std::string	BitcoinExchange::_findLowerDate(std::string date)
+{
+	std::ostringstream		ss;
+	int						year;
+	int						month;
+	int						day;
+
+	ss << std::setfill('0');
+	while (_DBrate.count(date) == 0)
+	{
+		year = atof(&(date[0]));
+		month = atof(&(date[5]));
+		day = atof(&(date[8]));
+		if (day == 1)
+		{
+			if (month == 3)
+			{
+				date[8] = '2';
+				if (year % 4 == 0)
+					date[9] = '9';
+				else
+					date[9] = '8';
+			}
+			else if (month == 1)
+			{
+				ss << std::setw(2) << year - 2001;
+				date[2] = ss.str()[0];
+				date[3] = ss.str()[1];
+				date[5] = '1';
+				date[6] = '2';
+				date[8] = '3';
+				date[9] = '1';
+				ss.str("");
+				ss.clear();
+			}
+			else if ((month % 2 == 0 && month < 7) || (month % 2 == 1 && month > 8))
+			{
+				date[8] = '3';
+				date[9] = '0';
+			}
+			else
+			{
+				date[8] = '3';
+				date[9] = '1';
+			}
+		}
+		else
+		{
+			ss << std::setw(2) << (day - 1);
+			//std::cout << "LOOP ss : " << ss.str() << std::endl;
+			date[8] = ss.str()[0];
+			date[9] = ss.str()[1];
+			ss.str("");
+			ss.clear();
+		}
+	}
+	return (date);
 }

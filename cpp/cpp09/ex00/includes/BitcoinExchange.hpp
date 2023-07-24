@@ -18,6 +18,8 @@
 # include <fstream>
 # include <string>
 # include <map>
+# include <sstream>
+# include <iomanip>
 
 class	BitcoinExchange
 {
@@ -26,9 +28,10 @@ class	BitcoinExchange
 		float	_getRate(std::string date);
 		std::string	_getDate(std::string buffer);
 		float	_getValue(std::string buffer);
-		int	_isValidDate(std::string::iterator &it);
-		int	_isValidValue(std::string::iterator &it);
+		int	_isValidDate(std::string::iterator &it, std::string buffer);
+		int	_isValidValue(std::string::iterator &it, std::string buffer);
 		int	_isValidInput(std::string buffer);
+		std::string	_findLowerDate(std::string date);
 	public :
 		BitcoinExchange();
 		BitcoinExchange(std::map<std::string, float> newRate);
