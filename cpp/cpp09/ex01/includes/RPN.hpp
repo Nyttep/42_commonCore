@@ -13,24 +13,39 @@
 #ifndef RPN_HPP
 # define RPN_HPP
 
-# include <map>
+# include <stack>
 # include <string>
+# include <stdlib.h>
+# include <stdexcept>
+# include <iostream>
 
 class RPN
 {
 private:
 	std::stack<int>	_operands;
-	char			_operators[4];
-	int				_add(int lhs, int rhs);
-	int				_substract(int lhs, int rhs);
-	int				_divide(int lhs, int rhs);
-	int				_multiply(int lhs, int rhs);
+	std::string		_operators;
+	long int		_add(const int lhs, const int rhs) const;
+	long int		_substract(const int lhs, int const rhs) const;
+	long int		_multiply(const int lhs, const int rhs) const;
+	long int		_divide(const int lhs, const int rhs) const;
+	int 			_operation(const int lhs, const int rhs, const char op) const;
+	int				_isOperator(const char c) const;
+	class	OverflowException : public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
+	class	DivideByZeroException : public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
 public:
 	RPN();
 	RPN(const RPN& toCopy);
 	~RPN();
 	RPN& operator=(const RPN& toCopy);
-	calculate(int lhs, int rhs, char op);
+	int	calculate(const std::string expression, int& result);
 };
 
 

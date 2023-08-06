@@ -321,7 +321,6 @@ std::string	BitcoinExchange::_findLowerDate(std::string date)
 		else
 		{
 			ss << std::setw(2) << (day - 1);
-			//std::cout << "LOOP ss : " << ss.str() << std::endl;
 			date[8] = ss.str()[0];
 			date[9] = ss.str()[1];
 			ss.str("");
