@@ -258,6 +258,7 @@ int	BitcoinExchange::eval(std::string DBAmount)
 	std::string	date;
 	float	value;
 	float		rate;
+	std::getline(iFile, buffer);
 	while (std::getline(iFile, buffer))
 	{
 		if (_isValidInput(buffer))
