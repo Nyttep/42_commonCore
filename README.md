@@ -60,5 +60,5 @@ A two person group project to create a 3D game resembling Wolfenstein3D using th
 ### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
 A project to set up a small infrastructure composed of different services using Docker.
 
-### [ft_irc](ft_irc/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
-An IRC (Internet Relay Chat) server implementation in C++ that complies with the (RFC 1459 standard)[https://datatracker.ietf.org/doc/html/rfc1459]. The project involves handling multiple clients, managing channels, and implementing various IRC commands.
+### [ft_irc](https://github.com/Nyttep/cub3D/tree/2079aa9a7cc89a620ccdd39da177ced4b569f82c) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
+An IRC (Internet Relay Chat) server implementation in C++ that complies with the [RFC 1459 standard](https://datatracker.ietf.org/doc/html/rfc1459). The project involves handling multiple clients, managing channels, and implementing various IRC commands.
