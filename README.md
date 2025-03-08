@@ -15,6 +15,7 @@ This repository contains all the projects completed as part of the 42 Common Cor
   - [CPP Modules](#cpp-modules)
   - [Cub3D](#cub3d)
   - [Inception](#inception)
+  - [ft_irc](#ft_irc)
 
 ## Projects
 
@@ -31,10 +32,10 @@ A custom implementation of the C standard library function [`printf`](https://ma
 A project to sort data on a stack with a limited set of operations.
 
 ### [So Long](so_long/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
-A project to create a simple 2D game using the MinilibX library.
+A simple 2D game using the MinilibX library.
 
 ### [Minitalk](minitalk/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
-A project to create a small data exchange program using UNIX signals.
+A small data exchange program using UNIX signals.
 
 ### [Philosophers](philo/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to solve the classic dining philosophers problem using multithreading.
@@ -58,3 +59,6 @@ A two person group project to create a 3D game resembling Wolfenstein3D using th
 
 ### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
 A project to set up a small infrastructure composed of different services using Docker.
+
+### [ft_irc](ft_irc/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
+An IRC (Internet Relay Chat) server implementation in C++ that complies with the (RFC 1459 standard)[https://datatracker.ietf.org/doc/html/rfc1459]. The project involves handling multiple clients, managing channels, and implementing various IRC commands.
