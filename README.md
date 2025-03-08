@@ -53,7 +53,7 @@ A series of projects to learn and practice C++ programming, covering various top
 - [CPP Module 08](cpp/cpp08/)
 - [CPP Module 09](cpp/cpp09/)
 
-### [Cube3D](cube3D/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+### [Cube3D](cub3D/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to create a 3D game resembling Wolfenstein3D using the MinilibX library. It involves rendering a maze using raycasting.
 
 ### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
