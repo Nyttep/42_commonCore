@@ -19,7 +19,7 @@ This repository contains all the projects completed as part of the 42 Common Cor
 ## Projects
 
 ### [Libft](libft/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
-A C library of useful functions that can be reused in other projects.
+A C library of useful functions that can be reused in other projects. Most of the functions are part of the C stantard library.
 
 ### [Get Next Line](get_next_line/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A custom implementation of the C standard library function [`getline`](https://man7.org/linux/man-pages/man3/getline.3.html).
@@ -53,8 +53,8 @@ A series of projects to learn and practice C++ programming, covering various top
 - [CPP Module 08](cpp/cpp08/)
 - [CPP Module 09](cpp/cpp09/)
 
-### [Cub3D](cub3d/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
-A project to create a 3D game using the MinilibX library. It involves rendering a maze using raycasting.
+### [Cube3D](cube3D/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+A project to create a 3D game resembling Wolfenstein3D using the MinilibX library. It involves rendering a maze using raycasting.
 
 ### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
 A project to set up a small infrastructure composed of different services using Docker.
