@@ -18,42 +18,28 @@ This repository contains all the projects completed as part of the 42 Common Cor
 
 ## Projects
 
-### [Libft](libft/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
-A library of useful functions that can be reused in other projects.
+### [Libft](libft/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+A C library of useful functions that can be reused in other projects.
 
-- [Libft README](libft/README.md)
+### [Get Next Line](get_next_line/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+A custom implementation of the C standard library function [`getline`](https://man7.org/linux/man-pages/man3/getline.3.html).
 
-### [Get Next Line](get_next_line/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
-A project to create a C function that reads a line from a file descriptor.
+### [Printf](printf/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+A custom implementation of the C standard library function [`printf`](https://man7.org/linux/man-pages/man3/fprintf.3.html).
 
-- [Get Next Line README](get_next_line/README.md)
-
-### [Printf](printf/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
-A project to recreate the C library function `printf`.
-
-- [Printf README](printf/README.md)
-
-### [Push Swap](push_swap/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
+### [Push Swap](push_swap/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to sort data on a stack with a limited set of operations.
 
-- [Push Swap README](push_swap/README.md)
-
-### [So Long](so_long/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
+### [So Long](so_long/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to create a simple 2D game using the MinilibX library.
 
-- [So Long README](so_long/README.md)
-
-### [Minitalk](minitalk/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
+### [Minitalk](minitalk/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to create a small data exchange program using UNIX signals.
 
-- [Minitalk README](minitalk/README.md)
-
-### [Philosophers](philo/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
+### [Philosophers](philo/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to solve the classic dining philosophers problem using multithreading.
 
-- [Philosophers README](philo/README.md)
-
-### [CPP Modules](cpp/) ![C++](https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png)
+### [CPP Modules](cpp/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
 A series of projects to learn and practice C++ programming, covering various topics from basic syntax to advanced concepts.
 
 - [CPP Module 00](cpp/cpp00/)
@@ -67,12 +53,8 @@ A series of projects to learn and practice C++ programming, covering various top
 - [CPP Module 08](cpp/cpp08/)
 - [CPP Module 09](cpp/cpp09/)
 
-### [Cub3D](cub3d/) ![C](https://raw.githubusercontent.com/github/explore/main/topics/c/c.png)
+### [Cub3D](cub3d/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A project to create a 3D game using the MinilibX library. It involves rendering a maze using raycasting.
 
-- [Cub3D README](cub3d/cub3d/README.md)
-
-### [Inception](inception/) ![Docker](https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png)
+### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
 A project to set up a small infrastructure composed of different services using Docker.
-
-- [Inception README](inception/README.md)
