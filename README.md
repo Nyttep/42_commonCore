@@ -54,11 +54,11 @@ A series of projects to learn and practice C++ programming, covering various top
 - [CPP Module 08](cpp/cpp08/)
 - [CPP Module 09](cpp/cpp09/)
 
-### [Cube3D](https://github.com/Nyttep/cub3D/tree/2079aa9a7cc89a620ccdd39da177ced4b569f82c) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
+### [Cube3D](https://github.com/Nyttep/cub3D) <img src="https://raw.githubusercontent.com/github/explore/main/topics/c/c.png" width="20" style="vertical-align: middle;">
 A two person group project to create a 3D game resembling Wolfenstein3D using the MinilibX library. It involves rendering a maze using raycasting.
 
 ### [Inception](inception/) <img src="https://raw.githubusercontent.com/github/explore/main/topics/docker/docker.png" width="20" style="vertical-align: middle;">
 A project to set up a small infrastructure composed of different services using Docker.
 
-### [ft_irc](https://github.com/Nyttep/cub3D/tree/2079aa9a7cc89a620ccdd39da177ced4b569f82c) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
+### [ft_irc](https://github.com/Nyttep/ft_irc) <img src="https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png" width="20" style="vertical-align: middle;">
 An IRC (Internet Relay Chat) server implementation in C++ that complies with the [RFC 1459 standard](https://datatracker.ietf.org/doc/html/rfc1459). The project involves handling multiple clients, managing channels, and implementing various IRC commands.
