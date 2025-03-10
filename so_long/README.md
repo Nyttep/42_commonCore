@@ -11,6 +11,10 @@ The `so_long` project is a simple 2D game using the MinilibX library. The object
 - Collectibles
 - Exit to complete the level
 
+## Screenshot
+
+![so_long Screenshot](screenshot.png)
+
 ## Controls
 
 - `W`: Move up
